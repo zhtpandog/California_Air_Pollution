@@ -1,5 +1,5 @@
 # project-lorelei
-## team member: Haotian Zhang, Jing Peng, Fan Pan, Qinghui You ##
+## team member: Haotian Zhang, Jing Peng, Fan Pan, Qianhui You ##
 
 ## Week 1 ##
 Progress:  
