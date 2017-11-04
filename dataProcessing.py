@@ -85,12 +85,12 @@ data = collections.OrderedDict()
 with open('NO2.csv', 'rb') as f:
     reader = csv.reader(f)
     for temp in list(reader)[1:]:
-        if temp[0] == '04' and temp[1] == '013':
+        if temp[0] == '06':
             site = str(temp[2])
             if not site in data:
                 data[site] = collections.OrderedDict()
                 position = collections.OrderedDict()
-                position['latutude'] = temp[5]
+                position['latitude'] = temp[5]
                 position['longitude'] = temp[6]
                 data[site]['position'] = position
                 co = collections.OrderedDict()
