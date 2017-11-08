@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>line</title>
+		<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+		<style type="text/css">
+			/* No style rules here yet */
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			var w = 500;
+			var h = 300;
+			var padding = 100
+			var timestamp = ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
+
+
+			
+
+			d3.json("pie_example.json", function(json) {
+	            point = "0009"
+	            date = "2017-01-01"
+	            no2 = json[point]["NO2"][date]
+	            console.log(no2)
+
+	            createLine(json)
+            })
+
+            var createLine = function(json) {
+            	var yScale = d3.scaleLinear()
+            					.domain([0, d3.max(json, function(d) {return d[1];})])
+            					.range([h - padding, padding])
+
+            	var xScale = d3.scaleBand()
+            					.domain()
+            }
+			
+		</script>
+	</body>
+</html>

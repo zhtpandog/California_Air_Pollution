@@ -1,0 +1,19 @@
+"0009": {
+	"2017-01-01": {
+		"00:00": {
+			"CO": "0.5",
+			"NO2": "21.7", 
+			"SO2": "0.8"
+		}
+	}
+}
+
+
+
+
+var dataset = [
+  { label: 'Abulia', count: 10 },
+  { label: 'Betelgeuse', count: 20 },
+  { label: 'Cantaloupe', count: 30 },
+  { label: 'Dijkstra', count: 40 }
+];
