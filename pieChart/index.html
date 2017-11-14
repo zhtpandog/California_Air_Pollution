@@ -99,9 +99,9 @@
     <div class="col-2">
       <label for="exampleSelect1">Select site</label>
       <select class="form-control" id="exampleSelect1">
-        <option>0002</option>
-        <option>0004</option>
-        <option>0005</option>
+          <option>0002</option>
+          <option>0004</option>
+          <option>0005</option>
           <option>0011</option>      
           <option>1001</option>
           <option>1002</option>
@@ -128,7 +128,7 @@ var color = d3.scaleOrdinal(["#bdbdbd", "#9ecae1", "#bcbddc", "#fa9fb5"]);
 
 var pie = d3.pie()
     .sort(null)
-    .value(function(d) { return d.population; });
+    .value(function(d) { return d["population"]; });
 
 var path = d3.arc()
     .outerRadius(radius - 10)
@@ -148,12 +148,12 @@ d3.json("data.json", function(error, data) {
 
     arc.append("path")
       .attr("d", path)
-        .attr("fill", function(d) { return color(d.data.age); });
+        .attr("fill", function(d) { return color(d.data["age"]); });
 
     arc.append("text")
       .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
       .attr("dy", "0.35em")
-      .text(function(d) { return d.data.age; });
+      .text(function(d) { return d.data["age"]; });
 });
 
 </script>
