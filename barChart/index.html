@@ -1,0 +1,279 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="bar.css">
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+
+<body>
+	<div class="buttons">
+		<svg class="filters pollutant" height="100" width="500">
+			<rect class="button on" id="co_on" x="20" height="20"/>
+			<rect class="button on" id="no2_on" x="120" height="20"/>
+			<rect class="button on" id="so2_on" x="220" height="20"/>
+			<rect class="button on" id="o3_on" x="320" height="20"/>
+
+			<rect class="button off" id="co_off" x="20" height="0"/>
+			<rect class="button off" id="no2_off" x="120" height="0"/>
+			<rect class="button off" id="so2_off" x="220" height="0"/>
+			<rect class="button off" id="o3_off" x="320" height="0"/>
+		</svg>
+	</div>
+
+	<div class="bars">
+	<script type="text/javascript" >
+		d3.csv("bar.csv", function (dataset) {
+			var svgh = 1500
+			var svgw = 1200
+
+			var max = d3.max(dataset, function (d) {
+				return d.Sample
+			})
+
+			var xscale = d3.scaleLinear()
+							.domain([0,max])
+							.range([0,1000])
+
+			co_on = true
+			no2_on = true
+			o3_on = true
+			so2_on = true
+
+			var svg = d3.select(".bars")
+						.append("svg")
+						.attr("height", svgh)
+						.attr("width", svgw)
+
+			svg = svg.selectAll("apple")
+				.data(dataset)
+				.enter()
+				.append("rect")
+				.filter( function (d) {
+					return d.Date === "1/1/17"})
+				.filter( function (d) {
+					return d.Time === "5:00"})
+				.filter( function (d) {
+					return d.Pollutant === "CO"
+				})
+				.attr("class", "cob")
+				.attr("x", 100)
+				.attr("y", function (d,i) {
+					return svgh/i 
+				})
+				.attr("height", function (d,i) {
+					return svgh/i/4-5
+				})
+				.attr("width", function (d) {
+					return xscale(d.Sample)
+				})
+
+			svg = svg.selectAll("apple")
+				.data(dataset)
+				.enter()
+				.append("rect")
+				.filter( function (d) {
+					return d.Date === "1/1/17"})
+				.filter( function (d) {
+					return d.Time === "5:00"})
+				.filter( function (d) {
+					return d.Pollutant === "NO2"
+				})
+				.attr("class", "no2b")
+				.attr("x", 100)
+				.attr("y", function (d,i) {
+					return svgh/i+svgh/i/4-5 
+				})
+				.attr("height", function (d,i) {
+					return svgh/i/4-5
+				})
+				.attr("width", function (d) {
+					return xscale(d.Sample)
+				})
+
+			svg = svg.selectAll("apple")
+				.data(dataset)
+				.enter()
+				.append("rect")
+				.filter( function (d) {
+					return d.Date === "1/1/17"})
+				.filter( function (d) {
+					return d.Time === "5:00"})
+				.filter( function (d) {
+					return d.Pollutant === "Ozone"
+				})
+				.attr("class", "o3b")
+				.attr("x", 100)
+				.attr("y", function (d,i) {
+					return svgh/i+svgh/i/2-5 
+				})
+				.attr("height", function (d,i) {
+					return svgh/i/4-5
+				})
+				.attr("width", function (d) {
+					return xscale(d.Sample)
+				})
+
+			svg = svg.selectAll("apple")
+				.data(dataset)
+				.enter()
+				.append("rect")
+				.filter( function (d) {
+					return d.Date === "1/1/17"})
+				.filter( function (d) {
+					return d.Time === "5:00"})
+				.filter( function (d) {
+					return d.Pollutant === "SO2"
+				})
+				.attr("class", "so2b")
+				.attr("x", 100)
+				.attr("y", function (d,i) {
+					return svgh/i+3*svgh/i/4-5 
+				})
+				.attr("height", function (d,i) {
+					return svgh/i/4-5
+				})
+				.attr("width", function (d) {
+					return xscale(d.Sample)
+				})
+
+			d3.select("#co_on")
+				.on("click", function (d) {
+					d3.select("#co_on")
+						.attr("height", 0)
+
+					d3.select("#co_off")
+						.attr("height", 20)
+
+					co_on = false
+
+					d3.selectAll(".cob")
+						.transition()
+						.delay(600)
+						.attr("height", 0)
+
+				})
+
+			d3.select("#co_off")
+				.on("click", function (d) {
+					d3.select("#co_on")
+						.attr("height", 20)
+
+					d3.select("#co_off")
+						.attr("height", 0)
+
+					co_on = true
+
+					d3.selectAll(".cob")
+						.transition()
+						.delay(600)
+						.attr("height", 50/4-3)
+				})
+
+			d3.select("#no2_on")
+				.on("click", function (d) {
+					d3.select("#no2_on")
+						.attr("height", 0)
+
+					d3.select("#no2_off")
+						.attr("height", 20)
+
+					co_on = false
+
+					d3.selectAll(".no2b")
+						.transition()
+						.delay(600)
+						.attr("height", 0)
+
+				})
+
+			d3.select("#no2_off")
+				.on("click", function (d) {
+					d3.select("#no2_on")
+						.attr("height", 20)
+
+					d3.select("#no2_off")
+						.attr("height", 0)
+
+					co_on = true
+
+					d3.selectAll(".no2b")
+						.transition()
+						.delay(600)
+						.attr("height", 50/4-3)
+				})
+
+			d3.select("#o3_on")
+				.on("click", function (d) {
+					d3.select("#o3_on")
+						.attr("height", 0)
+
+					d3.select("#o3_off")
+						.attr("height", 20)
+
+					co_on = false
+
+					d3.selectAll(".o3b")
+						.transition()
+						.delay(600)
+						.attr("height", 0)
+
+				})
+
+			d3.select("#o3_off")
+				.on("click", function (d) {
+					d3.select("#o3_on")
+						.attr("height", 20)
+
+					d3.select("#o3_off")
+						.attr("height", 0)
+
+					co_on = true
+
+					d3.selectAll(".o3b")
+						.transition()
+						.delay(600)
+						.attr("height", 50/4-3)
+				})
+
+			d3.select("#so2_on")
+				.on("click", function (d) {
+					d3.select("#so2_on")
+						.attr("height", 0)
+
+					d3.select("#so2_off")
+						.attr("height", 20)
+
+					co_on = false
+
+					d3.selectAll(".so2b")
+						.transition()
+						.delay(600)
+						.attr("height", 0)
+
+				})
+
+			d3.select("#so2_off")
+				.on("click", function (d) {
+					d3.select("#so2_on")
+						.attr("height", 20)
+
+					d3.select("#so2_off")
+						.attr("height", 0)
+
+					co_on = true
+
+					d3.selectAll(".so2b")
+						.transition()
+						.delay(600)
+						.attr("height", 50/4-3)
+				})
+
+		
+		})
+
+
+	</script>
+	</div>
+</body>
+
+</html>
