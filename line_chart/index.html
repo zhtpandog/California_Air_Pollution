@@ -10,14 +10,17 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+		<!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> -->
 		<style type="text/css">
 			/* No style rules here yet */
 		</style>
 	</head>
 	<body>
 		<div class="container-fluid">
-		  <h1>My First Bootstrap Page</h1>
-		  <p>This is some text.</p> 
+		  <h1>Line Chart</h1>
+		  <p>Interactive Line Chart</p> 
 		</div>
 
 		<div class="btn-group" data-toggle="buttons">
@@ -39,17 +42,12 @@
 
 		</div>
 
-			<button type="button" class =" zoom-out btn btn-default">
-				<span class="glyphicon glyphicon-minus"></span>
-			</button>
-			<button type="button" class =" zoom-in btn btn-default">
-				<span class="glyphicon glyphicon-plus"></span>
-			</button>
-		</div>
 
 		<div class="line"></div>
+		<div><a href="file:///Users/ZhangHaotian/desktop/inf554/project-lorelei/pieChart/index.html">Pie Chart</a></div>
 
 		<script type="text/javascript">
+
 
 			var w = 1000;
 			var h = 600;
@@ -117,10 +115,9 @@
 				if (checkboxElem.checked) {
 					so2_on = true;
 					addLine(so2);
-					// updateLine();
 				} else {
 					so2_on = false;
-					svg.select(".so2").remove();
+					g.select("#so2").remove();
 					updateLine();
 				}
 			}
@@ -130,10 +127,9 @@
 				if (checkboxElem.checked) {
 					no2_on = true;
 					addLine(no2);
-					// updateLine();
 				} else {
 					no2_on = false;
-					svg.select(".no2").remove();
+					g.select("#no2").remove();
 					updateLine();
 				}
 			}
@@ -143,10 +139,9 @@
 				if (checkboxElem.checked) {
 					co_on = true;
 					addLine(co);
-					// updateLine();
 				} else {
 					co_on = false;
-					svg.select(".co").remove();
+					g.select("#co").remove();
 					updateLine();
 				}
 			}
@@ -156,10 +151,9 @@
 				if (checkboxElem.checked) {
 					ozone_on = true;
 					addLine(ozone);
-					// updateLine();
 				} else {
 					ozone_on = false;
-					svg.select(".ozone").remove();
+					g.select("#ozone").remove();
 					updateLine();
 				}
 			}
@@ -190,27 +184,24 @@
 					maxPool.push(ye[1]);
 				}
 
-				currYMin = Math.min(minPool);
-				currYMax = Math.max(maxPool);
+				currYMin = Math.min.apply(null, minPool);
+				currYMax = Math.max.apply(null, maxPool);
 				yExtent = [currYMin, currYMax];
 
+
 				if(so2_on) {
-					g.select(".so2").remove();
 					addLine(so2, yExtent);
 				}
 
 				if(no2_on) {
-					g.select(".no2").remove();
 					addLine(no2, yExtent);
 				}
 
 				if(co_on) {
-					g.select(".co").remove();
 					addLine(co, yExtent);
 				}
 
 				if(ozone_on) {
-					g.select(".ozone").remove();
 					addLine(ozone, yExtent);
 				}
 
@@ -230,7 +221,7 @@
 	            		currYMax = tempMax
 	            	}
 	            	yExtent = [currYMin, currYMax]
-	            }
+	            } 
 
 			    var x = d3.scaleTime()
 			    			.domain(d3.extent(data, function(d) {return d[0];}))
@@ -264,53 +255,53 @@
 					g.select(".so2").remove();
 					g.append("path")
 				      .datum(so2)
+				      .attr("d", line)
 				      .classed("so2", true)
+				      .attr("id", "so2")
 				      .attr("fill", "none")
 				      .attr("stroke", colorPick["so2"])
 				      .attr("stroke-linejoin", "round")
 				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5)
-				      //.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-				      .attr("d", line);
+				      .attr("stroke-width", 1.5);
 				}
 				if(no2_on) {
 					g.select(".no2").remove();
 					g.append("path")
 				      .datum(no2)
+				      .attr("d", line)
 				      .classed("no2", true)
+				      .attr("id", "no2")
 				      .attr("fill", "none")
 				      .attr("stroke", colorPick["no2"])
 				      .attr("stroke-linejoin", "round")
 				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5)
-				      //.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-				      .attr("d", line);
+				      .attr("stroke-width", 1.5);
 				}
 				if(co_on) {
 					g.select(".co").remove();
 					g.append("path")
 				      .datum(co)
+				      .attr("d", line)
 				      .classed("co", true)
+				      .attr("id", "co")
 				      .attr("fill", "none")
 				      .attr("stroke", colorPick["co"])
 				      .attr("stroke-linejoin", "round")
 				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5)
-				      //.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-				      .attr("d", line);
+				      .attr("stroke-width", 1.5);
 				}
 				if(ozone_on) {
 					g.select(".ozone").remove();
 					g.append("path")
 				      .datum(ozone)
+				      .attr("d", line)
 				      .classed("ozone", true)
+				      .attr("id", "ozone")
 				      .attr("fill", "none")
 				      .attr("stroke", colorPick["ozone"])
 				      .attr("stroke-linejoin", "round")
 				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5)
-				      //.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-				      .attr("d", line);
+				      .attr("stroke-width", 1.5);
 				}
 			}
 
@@ -357,8 +348,6 @@
 			      .attr("class", "x_axis")
 			      .attr("transform", "translate(0," + height + ")")
 			      .call(xAxis);
-			      //.select(".domain");
-			      // .remove();
 
 			    var yAxis = d3.axisLeft()
 			    				.scale(y)
@@ -377,128 +366,17 @@
 
 			  g.append("path")
 			      .datum(data)
+			      .attr("d", line)
 			      .classed(className, true)
+			      .attr("id", className)
 			      .attr("fill", "none")
 			      .attr("stroke", colorPick[className])
 			      .attr("stroke-linejoin", "round")
 			      .attr("stroke-linecap", "round")
-			      .attr("stroke-width", 1.5)
-			      .attr("d", line);
+			      .attr("stroke-width", 1.5);
+			      
 
             }
-
-    //         var createLine = function(data, data2, data3, data4) {
-
-    //         	if (typeof data2 == "undefined") { // only consider data
-    //         		yExtent = d3.extent(data, function(d) {return +d[1];});
-    //         	}
-    //         	else if (typeof data3 == "undefined") { // consider data and data2
-    //         		ye1 = d3.extent(data, function(d) {return d[1];});
-    //         		ye2 = d3.extent(data2, function(d) {return d[1];});
-    //         		yExtent = [Math.min(ye1[0], ye2[0]), Math.max(ye1[1], ye2[1])];
-    //         	}
-    //         	else if (typeof data4 == "undefined") { // consider data and data2
-    //         		ye1 = d3.extent(data, function(d) {return d[1];});
-    //         		ye2 = d3.extent(data2, function(d) {return d[1];});
-    //         		ye3 = d3.extent(data3, function(d) {return d[1];});
-    //         		yExtent = [Math.min(ye1[0], ye2[0], ye3[0]), Math.max(ye1[1], ye2[1], ye3[1])];
-    //         	}
-    //         	else {
-    //         		ye1 = d3.extent(data, function(d) {return d[1];});
-    //         		ye2 = d3.extent(data2, function(d) {return d[1];});
-    //         		ye3 = d3.extent(data3, function(d) {return d[1];});
-    //         		ye4 = d3.extent(data4, function(d) {return d[1];});
-    //         		yExtent = [Math.min(ye1[0], ye2[0], ye3[0], ye4[0]), Math.max(ye1[1], ye2[1], ye3[1], ye4[1])];
-    //         	}
-
-    //         	var w = 1000;
-				// var h = 600;
-
-    //         	var svg = d3.select("body")
-	   //          			.select(".line")
-	   //          			.append("svg")
-	   //          			.attr("width", w)
-	   //          			.attr("height", h)
-
-			 //    margin = {top: 20, right: 20, bottom: 30, left: 50},
-			 //    width = w - margin.left - margin.right,
-			 //    height = h - margin.top - margin.bottom,
-			 //    g = svg.append("g")
-			 //    		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-			 //    var x = d3.scaleTime()
-			 //    			.domain(d3.extent(data, function(d) {return d[0];}))
-			 //    			.rangeRound([0, width]);
-
-			 //    var y = d3.scaleLinear()
-			 //    			.domain(yExtent)
-			 //    			.rangeRound([height, 0]);
-
-			 //    var line = d3.line()
-			 //    				.x(function(d) {return x(d[0])})
-			 //    				.y(function(d) {return y(+d[1])});
-
-
-			 //    g.append("g")
-			 //      .attr("transform", "translate(0," + height + ")")
-			 //      .call(d3.axisBottom(x))
-			 //      .select(".domain");
-			 //      // .remove();
-
-			 //  g.append("g")
-			 //      .call(d3.axisLeft(y))
-			 //      .append("text")
-			 //      .attr("fill", "#000")
-			 //      .attr("transform", "rotate(-90)")
-			 //      .attr("y", 6)
-			 //      .attr("dy", "0.71em")
-			 //      .attr("text-anchor", "end")
-			 //      .text("read");
-
-			 //  g.append("path")
-			 //      .datum(data)
-			 //      .attr("fill", "none")
-			 //      .attr("stroke", "steelblue")
-			 //      .attr("stroke-linejoin", "round")
-			 //      .attr("stroke-linecap", "round")
-			 //      .attr("stroke-width", 1.5)
-			 //      .attr("d", line);
-
-			 //  if (typeof data2 != "undefined") {
-				//   g.append("path")
-				//       .datum(data2)
-				//       .attr("fill", "none")
-				//       .attr("stroke", "red")
-				//       .attr("stroke-linejoin", "round")
-				//       .attr("stroke-linecap", "round")
-				//       .attr("stroke-width", 1.5)
-				//       .attr("d", line);
-			 //  }
-
-			 //  if (typeof data3 != "undefined") {
-				//   g.append("path")
-				//       .datum(data3)
-				//       .attr("fill", "none")
-				//       .attr("stroke", "magenta")
-				//       .attr("stroke-linejoin", "round")
-				//       .attr("stroke-linecap", "round")
-				//       .attr("stroke-width", 1.5)
-				//       .attr("d", line);
-			 //  }
-
-			 //  if (typeof data4 != "undefined") {
-				//   g.append("path")
-				//       .datum(data4)
-				//       .attr("fill", "none")
-				//       .attr("stroke", "orange")
-				//       .attr("stroke-linejoin", "round")
-				//       .attr("stroke-linecap", "round")
-				//       .attr("stroke-width", 1.5)
-				//       .attr("d", line);
-			 //  }
-
-
-    //         }
 			
 		</script>
 	</body>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <style type="text/css">
+
+  .arc text {
+      font: 10px sans-serif;
+      text-anchor: middle;
+  }
+
+  .arc path {
+      stroke: #fff;
+  }
+
+  .out {
+  	position:relative;
+  }
+  .in {
+  	position:absolute;
+  	bottom:0px;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id = "myform" class="row">
+    <div class="col-2">
+      <label for="exampleSelect1">Select year</label>
+      <select class="form-control" id="year">
+        <option>2017</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Select month</label>
+      <select class="form-control" id="month">
+        <option>Jan</option>
+        <option>Feb</option>
+        <option>Mar</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Select day</label>
+      <select class="form-control" id="day">
+        <option>01</option>
+        <option>02</option>
+        <option>03</option>      
+        <option>04</option>
+        <option>05</option>
+        <option>06</option>      
+        <option>07</option>
+        <option>08</option>
+        <option>09</option>      
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>      
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>      
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>      
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>      
+        <option>24</option>
+        <option>25</option>
+        <option>26</option>      
+        <option>27</option>
+        <option>28</option>
+        <option>29</option>      
+        <option>30</option>
+        <option>31</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Select time</label>
+      <select class="form-control" id="time"">
+          <option>00:00</option>
+          <option>01:00</option>
+          <option>02:00</option>
+          <option>03:00</option>      
+          <option>04:00</option>
+          <option>05:00</option>
+          <option>06:00</option>      
+          <option>07:00</option>
+          <option>08:00</option>
+          <option>09:00</option>      
+          <option>10:00</option>
+          <option>11:00</option>
+          <option>12:00</option>
+          <option>13:00</option>      
+          <option>14:00</option>
+          <option>15:00</option>
+          <option>16:00</option>      
+          <option>17:00</option>
+          <option>18:00</option>
+          <option>19:00</option>      
+          <option>20:00</option>
+          <option>21:00</option>
+          <option>22:00</option>
+          <option>23:00</option>
+      </select>
+    </div>
+    <div class="col-2">
+      <label for="exampleSelect1">Select site</label>
+      <select class="form-control" id="site">
+          <option>0002</option>
+          <option>0004</option>
+          <option>0005</option>
+          <option>0011</option>      
+          <option>1001</option>
+          <option>1002</option>
+          <option>1004</option>      
+          <option>1022</option>
+          <option>1025</option>
+          <option>2004</option>      
+          <option>4003</option>
+      </select>
+    </div>
+    <div class="out">
+    	<div class="in">
+    		<button type="button" class="btn btn-secondary">See this date!</button>
+    	</div>
+    </div>
+  </div>
+
+  <svg width="960" height="500"></svg>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>
+
+var color = {CO:"#bdbdbd", Ozone:"#9ecae1", NO2:"#bcbddc", SO2:"#fa9fb5"};
+
+var monthdata = {Jan:"01", Feb:"02", Mar:"03"}
+
+var site = "0002"
+var time = "00:00"
+var year = "2017"
+var month = "01"
+var day= "01"
+piechart()
+
+$(document).ready(function(){
+    $("button").click(function(){
+		site = $("#site").val()
+		time = $("#time").val()
+		year = $("#year").val()
+		month = monthdata[$("#month").val()]
+		day = $("#day").val()
+		// console.log(site, year+"-"+month+"-"+day, time)
+		piechart()
+	});
+
+});
+
+function piechart(){
+
+	var svg = d3.select("svg"),
+	    width = +svg.attr("width"),
+	    height = +svg.attr("height"),
+	    radius = Math.min(width, height) / 2 - 15,
+	    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+		var pie = d3.pie()
+			.sort(null)
+	    	.value(function(d) { 
+	    		console.log(site, year+"-"+month+"-"+day, time)
+	    		console.log(d[site][year+"-"+month+"-"+day][time])
+	    		return d[site][year+"-"+month+"-"+day][time]
+	    	});
+	    	
+		var path = d3.arc()
+			.outerRadius(radius - 10)
+		    .innerRadius(0);
+
+	d3.json("pie_data.json", function(error, data) {
+	  if (error) throw error;
+
+		var arc = g.selectAll(".arc")
+			.data(pie(data))
+	      	.enter().append("g")
+	      	.attr("class", "arc");
+
+	    arc.append("path")
+	    	.attr("d", path)
+	        .attr("fill", function(d) { return color[d.data.pollutant]; });
+		
+
+
+		var legend = svg.selectAll(".legend")
+	        .data(pie(data))
+	        .enter().append("g")
+	        .attr("class", "legend")
+	        .attr("transform", function(d, i) { return "translate(10," + i * 25 + ")"; });
+
+		legend.append("rect")
+			.attr("x", width - 180)
+			.attr("y", 10)
+	        .attr("width", 18)
+	        .attr("height", 18)
+	        .style("fill", function (d) {
+	        	return color[d.data.pollutant]});
+
+	    // draw legend text
+	    legend.append("text")
+	        .attr("x", width - 150)
+	        .attr("y", 20)
+	        .attr("dy", ".35em")
+	        .style("text-anchor", "start")
+	        .text(function(d) { return d.data.pollutant;});
+
+	});
+}
+
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
