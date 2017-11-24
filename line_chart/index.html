@@ -10,374 +10,207 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-		<!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> -->
+
 		<style type="text/css">
 			/* No style rules here yet */
 		</style>
 	</head>
 	<body>
+
 		<div class="container-fluid">
 		  <h1>Line Chart</h1>
 		  <p>Interactive Line Chart</p> 
 		</div>
+		<div class="line"></div>
 
-		<div class="btn-group" data-toggle="buttons">
-		    <label class="btn btn-primary">
-		        <input type="checkbox" autocomplete="off" id="checkbox_no2" onchange="no2show(this)"> NO2
-		    </label>
 
-		    <label class="btn btn-primary active">
-		        <input type="checkbox" autocomplete="off" id="checkbox_so2" onchange="so2show(this)"> SO2
-		    </label>
-
-		    <label class="btn btn-primary">
-		        <input type="checkbox" autocomplete="off" id="checkbox_co" onchange="coshow(this)"> CO
-		    </label>
-
-		    <label class="btn btn-primary">
-		        <input type="checkbox" autocomplete="off" id="checkbox_ozone" onchange="ozoneshow(this)"> Ozone
-		    </label>
-
+		<div class="row">
+			<div class="col"></div>
+			<div class="col">
+				<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "m_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "m_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "m_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "m_ozone" value="">Ozone
+				    </label>
+				</div>
+		    </div>
+			<div class="col"></div>
 		</div>
 
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col" id="main"></div>
+		  <div class="col"></div>
+		</div>
 
-		<div class="line"></div>
-		<div><a href="file:///Users/ZhangHaotian/desktop/inf554/project-lorelei/pieChart/index.html">Pie Chart</a></div>
+		<div class="row">
+		  	 <div class="col"></div>
+		  	 <div class="col">Mon</div>
+		  	 <div class="col"></div>
+		  	 <div class="col"></div>
+		  	 <div class="col">Tue</div>
+		  	 <div class="col"></div>
+		  	 <div class="col"></div>
+		  	 <div class="col">Wed</div>
+		  	 <div class="col"></div>
+		  	 <div class="col"></div>
+		  	 <div class="col">Thu</div>
+		  	 <div class="col"></div>
+		  	 <div class="col"></div>
+		  	 <div class="col">Fri</div>
+		  	 <div class="col"></div>
+		  	 <div class="col"></div>
+		  	 <div class="col">Sat</div>
+		  	 <div class="col"></div>
+		  	 <div class="col"></div>
+		  	 <div class="col">Sun</div>
+		  	 <div class="col"></div>
+		</div>
+		</div>
 
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col" id="monday">
+		  	<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="tuesday">
+		  	<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="wednesday">
+		  	<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="thursday">
+		  	<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="friday">
+		  	<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="saturday">
+		  	<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="sunday">
+		  	<div>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		</div>
+
+		
+
+
+		<!-- <div class="line" id="main"></div> -->
+		<!-- <div><a href="file:///Users/ZhangHaotian/desktop/inf554/project-lorelei/pieChart/index.html">Pie Chart</a></div> -->
+
+		<script type="text/javascript" src="lineChart.js"></script>
+		
 		<script type="text/javascript">
-
-
-			var w = 1000;
-			var h = 600;
-			margin = {top: 20, right: 20, bottom: 30, left: 50};
-		    width = w - margin.left - margin.right;
-		    height = h - margin.top - margin.bottom;
-
-			var padding = 100;
-			var timestamp = ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
-
-			var colorPick = {"so2": "steelblue", "no2": "red", "co": "green", "ozone": "orange"};
-
-			interval = (w - 2 * padding) / 23
-			xRange = []
-			for (var i = 0; i < timestamp.length; i++) {
-				xRange.push(padding + interval * i);
-			}
-
-			var currYMax = 0
-			var currYMin = 100
-
-
-			var no2, so2, co, ozone;
-			var no2_on = false, so2_on = true, co_on = false, ozone_on = false;
-			var svg;
-			var x;
-			var y;
-			var g;
-
-			function parseAirDataOneDayPerPt(data, point, date, pol) {
-
-            	var parseTime = d3.timeParse("%Y-%m-%d %H:%M")
-
-            	temp = data[point][pol][date];
-            	timeAndVal = [];
-            	for (i in temp) {
-            		timeAndVal.push([i, parseFloat(temp[i])]);
-            	}
-            	timeAndVal.sort();
-
-            	dateTimeAndVal = [];
-            	for (var i = 0; i < timeAndVal.length; i++) {
-            		dateTimeAndVal.push([parseTime(date + " "+ timeAndVal[i][0]), timeAndVal[i][1]]);
-            	}
-
-            	return dateTimeAndVal;
-            	
-            }
-
-			d3.json("line_example.json", function(json) {
-
-
-				no2 = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "NO2");
-				so2 = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "SO2");
-				co = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "CO");
-				ozone = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "Ozone");
-
-				createLine(so2, "so2");
-	            
-
-            })
-
-            function so2show(checkboxElem) {
-
-				if (checkboxElem.checked) {
-					so2_on = true;
-					addLine(so2);
-				} else {
-					so2_on = false;
-					g.select("#so2").remove();
-					updateLine();
-				}
-			}
-
-			function no2show(checkboxElem) {
-
-				if (checkboxElem.checked) {
-					no2_on = true;
-					addLine(no2);
-				} else {
-					no2_on = false;
-					g.select("#no2").remove();
-					updateLine();
-				}
-			}
-
-			function coshow(checkboxElem) {
-
-				if (checkboxElem.checked) {
-					co_on = true;
-					addLine(co);
-				} else {
-					co_on = false;
-					g.select("#co").remove();
-					updateLine();
-				}
-			}
-
-			function ozoneshow(checkboxElem) {
-
-				if (checkboxElem.checked) {
-					ozone_on = true;
-					addLine(ozone);
-				} else {
-					ozone_on = false;
-					g.select("#ozone").remove();
-					updateLine();
-				}
-			}
-
-			function updateLine() {
-
-				minPool = [];
-				maxPool = [];
-
-				if(so2_on) {
-					ye = d3.extent(so2, function(d) {return d[1];});
-					minPool.push(ye[0]);
-					maxPool.push(ye[1]);
-				}
-				if(no2_on) {
-					ye = d3.extent(no2, function(d) {return d[1];});
-					minPool.push(ye[0]);
-					maxPool.push(ye[1]);
-				}
-				if(co_on) {
-					ye = d3.extent(co, function(d) {return d[1];});
-					minPool.push(ye[0]);
-					maxPool.push(ye[1]);
-				}
-				if(ozone_on) {
-					ye = d3.extent(ozone, function(d) {return d[1];});
-					minPool.push(ye[0]);
-					maxPool.push(ye[1]);
-				}
-
-				currYMin = Math.min.apply(null, minPool);
-				currYMax = Math.max.apply(null, maxPool);
-				yExtent = [currYMin, currYMax];
-
-
-				if(so2_on) {
-					addLine(so2, yExtent);
-				}
-
-				if(no2_on) {
-					addLine(no2, yExtent);
-				}
-
-				if(co_on) {
-					addLine(co, yExtent);
-				}
-
-				if(ozone_on) {
-					addLine(ozone, yExtent);
-				}
-
-
-			}
-
-			function addLine(data, yExtent) {
-
-				if (yExtent == null) {
-					ye = d3.extent(data, function(d) {return d[1];});
-	            	tempMin = ye[0]
-	            	tempMax = ye[1]
-	            	if (tempMin < currYMin) {
-	            		currYMin = tempMin
-	            	}
-	            	if (tempMax > currYMax) {
-	            		currYMax = tempMax
-	            	}
-	            	yExtent = [currYMin, currYMax]
-	            } 
-
-			    var x = d3.scaleTime()
-			    			.domain(d3.extent(data, function(d) {return d[0];}))
-			    			.rangeRound([0, width]);
-
-			    var y = d3.scaleLinear()
-			    			.domain(yExtent)
-			    			.rangeRound([height, 0]);
-
-			    var line = d3.line()
-			    				.x(function(d) {return x(d[0])})
-			    				.y(function(d) {return y(+d[1])});
-
-			    var xAxis = d3.axisBottom()
-			    				.scale(x);
-
-			    g.select(".x_axis")
-			      .transition()
-			      .duration(1000)
-			      .call(xAxis);
-
-			    var yAxis = d3.axisLeft()
-			    				.scale(y)
-
-			    g.select(".y_axis")
-			  	  .transition()
-			  	  .duration(1000)
-			      .call(d3.axisLeft(y))
-			  
-			  if(so2_on) {
-					g.select(".so2").remove();
-					g.append("path")
-				      .datum(so2)
-				      .attr("d", line)
-				      .classed("so2", true)
-				      .attr("id", "so2")
-				      .attr("fill", "none")
-				      .attr("stroke", colorPick["so2"])
-				      .attr("stroke-linejoin", "round")
-				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5);
-				}
-				if(no2_on) {
-					g.select(".no2").remove();
-					g.append("path")
-				      .datum(no2)
-				      .attr("d", line)
-				      .classed("no2", true)
-				      .attr("id", "no2")
-				      .attr("fill", "none")
-				      .attr("stroke", colorPick["no2"])
-				      .attr("stroke-linejoin", "round")
-				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5);
-				}
-				if(co_on) {
-					g.select(".co").remove();
-					g.append("path")
-				      .datum(co)
-				      .attr("d", line)
-				      .classed("co", true)
-				      .attr("id", "co")
-				      .attr("fill", "none")
-				      .attr("stroke", colorPick["co"])
-				      .attr("stroke-linejoin", "round")
-				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5);
-				}
-				if(ozone_on) {
-					g.select(".ozone").remove();
-					g.append("path")
-				      .datum(ozone)
-				      .attr("d", line)
-				      .classed("ozone", true)
-				      .attr("id", "ozone")
-				      .attr("fill", "none")
-				      .attr("stroke", colorPick["ozone"])
-				      .attr("stroke-linejoin", "round")
-				      .attr("stroke-linecap", "round")
-				      .attr("stroke-width", 1.5);
-				}
-			}
-
-            
-
-            function createLine(data, className) {
-
-            	ye = d3.extent(data, function(d) {return d[1];});
-            	tempMin = ye[0]
-            	tempMax = ye[1]
-            	if (tempMin < currYMin) {
-            		currYMin = tempMin
-            	}
-            	if (tempMax > currYMax) {
-            		currYMax = tempMax
-            	}
-            	yExtent = [currYMin, currYMax]
-
-            	svg = d3.select("body")
-	            			.select(".line")
-	            			.append("svg")
-	            			.attr("width", w)
-	            			.attr("height", h)
-
-			    g = svg.append("g")
-			    		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-			    x = d3.scaleTime()
-			    			.domain(d3.extent(data, function(d) {return d[0];}))
-			    			.rangeRound([0, width]);
-
-			    y = d3.scaleLinear()
-			    			.domain(yExtent)
-			    			.rangeRound([height, 0]);
-
-			    var line = d3.line()
-			    				.x(function(d) {return x(d[0])})
-			    				.y(function(d) {return y(+d[1])});
-
-			    var xAxis = d3.axisBottom()
-			    				.scale(x);
-
-			    g.append("g")
-			      .attr("class", "x_axis")
-			      .attr("transform", "translate(0," + height + ")")
-			      .call(xAxis);
-
-			    var yAxis = d3.axisLeft()
-			    				.scale(y)
-
-			    g.append("g")
-			      .attr("class", "y_axis")
-			      .call(yAxis)
-			      .append("text")
-			      .attr("fill", "#000")
-			      .attr("transform", "rotate(-90)")
-			      .attr("y", 6)
-			      .attr("dy", "0.71em")
-			      .attr("text-anchor", "end")
-			      .text("read");
-
-
-			  g.append("path")
-			      .datum(data)
-			      .attr("d", line)
-			      .classed(className, true)
-			      .attr("id", className)
-			      .attr("fill", "none")
-			      .attr("stroke", colorPick[className])
-			      .attr("stroke-linejoin", "round")
-			      .attr("stroke-linecap", "round")
-			      .attr("stroke-width", 1.5);
-			      
-
-            }
-			
 		</script>
+
 	</body>
 </html>

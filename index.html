@@ -21,7 +21,6 @@
   .navbar {
       margin-bottom: 0px;
   }
-
   .affix ~ .container-fluid {
      position: relative;
      top: 1px;
@@ -95,17 +94,14 @@
       d3.csv("avg_county.csv", function (dataset) {
           var svgh = 800
           var svgw = 1000
-
           co_max = d3.max(dataset, function (d) {
             return d.Sample
           })
-
           svg = d3.select("#section3")
                   .append("svg")
                   .attr("id", "bar_svg")
                   .attr("width", svgw)
                   .attr("height", svgh)
-
           svg.selectAll("apple")
               .data(dataset)
               .enter()
@@ -122,7 +118,6 @@
               .attr("width", function (d) {
                 return d.Sample * 5000
               })
-
           svg.selectAll("apple")
               .data(dataset)
               .enter()
@@ -139,7 +134,6 @@
               .attr("width", function (d) {
                 return d.Sample * 5000
               })
-
           svg.selectAll("apple")
               .data(dataset)
               .enter()
@@ -156,7 +150,6 @@
               .attr("width", function (d) {
                 return d.Sample * 5000
               })
-
           svg.selectAll("apple")
               .data(dataset)
               .enter()
@@ -199,4 +192,3 @@
 
 </body>
 </html>
-
