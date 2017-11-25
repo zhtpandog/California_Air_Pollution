@@ -5,14 +5,14 @@ var colorPick = {"so2": "steelblue", "no2": "red", "co": "green", "ozone": "oran
 var countyList = ["Alameda", "Contra Costa", "Fresno", "Humboldt", "Imperial", "Los Angeles", "Orange", "Riverside", "Sacramento", "San Bernardino", "San Diego", "Santa Barbara", "Santa Clara", "Solano"];
 
 
-margin_m = {top: 20, right: 20, bottom: 30, left: 50}; m_w = window_width / 2.5; m_h = window_width / 2.5 * 0.6;
-margin_mon = {top: 20, right: 20, bottom: 30, left: 50}; mon_w = window_width / 8; mon_h = window_width / 8 * 0.6;
-margin_tue = {top: 20, right: 20, bottom: 30, left: 50}; tue_w = window_width / 8; tue_h = window_width / 8 * 0.6;
-margin_wed = {top: 20, right: 20, bottom: 30, left: 50}; wed_w = window_width / 8; wed_h = window_width / 8 * 0.6;
-margin_thu = {top: 20, right: 20, bottom: 30, left: 50}; thu_w = window_width / 8; thu_h = window_width / 8 * 0.6;
-margin_fri = {top: 20, right: 20, bottom: 30, left: 50}; fri_w = window_width / 8; fri_h = window_width / 8 * 0.6;
-margin_sat = {top: 20, right: 20, bottom: 30, left: 50}; sat_w = window_width / 8; sat_h = window_width / 8 * 0.6;
-margin_sun = {top: 20, right: 20, bottom: 30, left: 50}; sun_w = window_width / 8; sun_h = window_width / 8 * 0.6;
+margin_m = {top: 20, right: 20, bottom: 30, left: 50}; m_w = window_width / 2.7; m_h = window_height / 2.7;
+margin_mon = {top: 20, right: 20, bottom: 30, left: 50}; mon_w = window_width / 5; mon_h = window_height / 5;
+margin_tue = {top: 20, right: 20, bottom: 30, left: 50}; tue_w = window_width / 5; tue_h = window_height / 5;
+margin_wed = {top: 20, right: 20, bottom: 30, left: 50}; wed_w = window_width / 5; wed_h = window_height / 5;
+margin_thu = {top: 20, right: 20, bottom: 30, left: 50}; thu_w = window_width / 5; thu_h = window_height / 5;
+margin_fri = {top: 20, right: 20, bottom: 30, left: 50}; fri_w = window_width / 5; fri_h = window_height / 5;
+margin_sat = {top: 20, right: 20, bottom: 30, left: 50}; sat_w = window_width / 5; sat_h = window_height / 5;
+margin_sun = {top: 20, right: 20, bottom: 30, left: 50}; sun_w = window_width / 5; sun_h = window_height / 5;
 
 
 // d3.select("#year").on("click", function() {
@@ -26,8 +26,10 @@ margin_sun = {top: 20, right: 20, bottom: 30, left: 50}; sun_w = window_width / 
 // 	ozone_y = parseAirDataOneDayPerPt(json, county_select, "2017-01-01", "Ozone");
 // })
 
-county_select = "San Diego"
+// default
+county_select = "Alameda"
 data_choice = "hour_county.json"
+
 createLineGraph("m", county_select, "main", data_choice, m_w, m_h, margin_m);
 createLineGraph("mon", county_select, "monday", data_choice, mon_w, mon_h, margin_mon);
 createLineGraph("tue", county_select, "tuesday", data_choice, tue_w, tue_h, margin_tue);
@@ -36,6 +38,30 @@ createLineGraph("thu", county_select, "thursday", data_choice, thu_w, thu_h, mar
 createLineGraph("fri", county_select, "friday", data_choice, fri_w, fri_h, margin_fri);
 createLineGraph("sat", county_select, "saturday", data_choice, sat_w, sat_h, margin_sat);
 createLineGraph("sun", county_select, "sunday", data_choice, sun_w, sun_h, margin_sun);
+
+
+d3.select("#inds").on("change", function() {
+	var sect = document.getElementById("inds");
+	var section = sect.options[sect.selectedIndex].value;
+	county_select = section;
+	d3.select("#m").remove();
+	d3.select("#mon").remove();
+	d3.select("#tue").remove();
+	d3.select("#wed").remove();
+	d3.select("#thu").remove();
+	d3.select("#fri").remove();
+	d3.select("#sat").remove();
+	d3.select("#sun").remove();
+	createLineGraph("m", county_select, "main", data_choice, m_w, m_h, margin_m);
+	createLineGraph("mon", county_select, "monday", data_choice, mon_w, mon_h, margin_mon);
+	createLineGraph("tue", county_select, "tuesday", data_choice, tue_w, tue_h, margin_tue);
+	createLineGraph("wed", county_select, "wednesday", data_choice, wed_w, wed_h, margin_wed);
+	createLineGraph("thu", county_select, "thursday", data_choice, thu_w, thu_h, margin_thu);
+	createLineGraph("fri", county_select, "friday", data_choice, fri_w, fri_h, margin_fri);
+	createLineGraph("sat", county_select, "saturday", data_choice, sat_w, sat_h, margin_sat);
+	createLineGraph("sun", county_select, "sunday", data_choice, sun_w, sun_h, margin_sun);
+})
+
 
 
 function createLineGraph(graphId, county, placeId, data, w, h, margin) {

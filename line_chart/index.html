@@ -11,56 +11,43 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 
-		<style type="text/css">
-			/* No style rules here yet */
-		</style>
+		<style type="text/css" src="line_style.css"></style>
+
 	</head>
 	<body>
-
-		<div class="container-fluid">
-		  <h1>Line Chart</h1>
-		  <p>Interactive Line Chart</p> 
-		</div>
-		<div class="line"></div>
-
-		<div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select County
-				<span class="caret"></span></button>
-				<ul class="dropdown-menu">
-                    <li><a class="dropdown-item active" id="alameda">Alameda</a></li>
-                    <li><a class="dropdown-item" id="contra_costa">Contra Costa</a></li>
-                    <li><a class="dropdown-item" id="fresno">Fresno</a></li>
-                    <li><a class="dropdown-item" id="humboldt">Humboldt</a></li>
-                    <li><a class="dropdown-item" id="imperial">Imperial</a></li>
-                    <li><a class="dropdown-item" id="los_angeles">Los Angeles</a></li>
-                    <li><a class="dropdown-item" id="orange">Orange</a></li>
-                    <li><a class="dropdown-item" id="riverside">Riverside</a></li>
-                    <li><a class="dropdown-item" id="sacramento">Sacramento</a></li>
-                    <li><a class="dropdown-item" id="san_bernardino">San Bernardino</a></li>
-                    <li><a class="dropdown-item" id="san_diego">San Diego</a></li>
-                    <li><a class="dropdown-item" id="santa_barbara">Santa Barbara</a></li>
-                    <li><a class="dropdown-item" id="santa_clara">Santa Clara</a></li>
-                    <li><a class="dropdown-item" id="solano">Solano</a></li>
-                </ul>
-        </div>
 
 
 		<div class="row">
 			<div class="col"></div>
 			<div class="col">
+				<div class="col"><h2>Average</h2></div>
 				<div>
-					<label class="checkbox-inline">
-				      <input type="checkbox" id= "m_no2" value="">NO2
-				    </label>
-				    <label class="checkbox-inline">
-				      <input type="checkbox" id= "m_so2" value="" checked="true">SO2
-				    </label>
-				    <label class="checkbox-inline">
-				      <input type="checkbox" id= "m_co" value="">CO
-				    </label>
-				    <label class="checkbox-inline">
-				      <input type="checkbox" id= "m_ozone" value="">Ozone
-				    </label>
+					<div class="row text-center">
+					<label for="info" class="btn btn-info"><input type="checkbox" id="m_so2" class="badgebox" checked="true">SO2</label>
+		        	<label for="success" class="btn btn-success"><input type="checkbox" id="m_co" class="badgebox">CO</label>
+		       		<label for="danger" class="btn btn-danger"><input type="checkbox" id="m_no2" class="badgebox">NO2</label>
+		        	<label for="warning" class="btn btn-warning"><input type="checkbox" id="m_ozone" class="badgebox">OZone</label>
+		       		
+				    <span style="padding-left:250px"></span>
+				    <select id="inds">
+					<option value="Alameda" selected="selected" id="Alameda">Alameda</option>
+	                <option value="Contra Costa" id="Contra Costa">Contra Costa</option>
+	                <option value="Fresno" id="Fresno">Fresno</option>
+	                <option value="Humboldt" id="Humboldt">Humboldt</option>
+	                <option value="Imperial" id="Imperial">Imperial</option>
+	                <option value="Los Angeles" id="Los Angeles">Los Angeles</option>
+	                <option value="Orange" id="Orange">Orange</option>
+	                <option value="Riverside" id="Riverside">Riverside</option>
+	                <option value="Sacramento" id="Sacramento">Sacramento</option>
+	                <option value="San Bernardino" id="San Bernardino">San Bernardino</option>
+	                <option value="San Diego" id="San Diego">San Diego</option>
+	                <option value="Santa Barbara" id="Santa Barbara">Santa Barbara</option>
+	                <option value="Santa Clara" id="Santa Clara">Santa Clara</option>
+	                <option value="Solano" id="Solano">Solano</option>
+				</select>
+
+			</div>
+				
 				</div>
 		    </div>
 			<div class="col"></div>
@@ -72,30 +59,6 @@
 		  <div class="col"></div>
 		</div>
 
-		<div class="row">
-		  	 <div class="col"></div>
-		  	 <div class="col">Mon</div>
-		  	 <div class="col"></div>
-		  	 <div class="col"></div>
-		  	 <div class="col">Tue</div>
-		  	 <div class="col"></div>
-		  	 <div class="col"></div>
-		  	 <div class="col">Wed</div>
-		  	 <div class="col"></div>
-		  	 <div class="col"></div>
-		  	 <div class="col">Thu</div>
-		  	 <div class="col"></div>
-		  	 <div class="col"></div>
-		  	 <div class="col">Fri</div>
-		  	 <div class="col"></div>
-		  	 <div class="col"></div>
-		  	 <div class="col">Sat</div>
-		  	 <div class="col"></div>
-		  	 <div class="col"></div>
-		  	 <div class="col">Sun</div>
-		  	 <div class="col"></div>
-		</div>
-		</div>
 
 		<div class="row">
 		  <div class="col"></div>
@@ -109,7 +72,9 @@
 
 		<div class="row">
 		  <div class="col" id="monday">
+		  <div class="col"><h3 style="padding-left:50px">Monday</h3></div>
 		  	<div>
+		  		<span style="padding-left:50px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "mon_no2" value="">NO2
 				    </label>
@@ -124,8 +89,11 @@
 				    </label>
 				</div>
 		  </div>
+
 		  <div class="col" id="tuesday">
+		  	<div class="col"><h3 style="padding-left:50px">Tuesday</h3></div>
 		  	<div>
+		  		<span style="padding-left:50px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "tue_no2" value="">NO2
 				    </label>
@@ -141,7 +109,9 @@
 				</div>
 		  </div>
 		  <div class="col" id="wednesday">
+		  	<div class="col"><h3 style="padding-left:50px">Wednesday</h3></div>
 		  	<div>
+		  		<span style="padding-left:50px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "wed_no2" value="">NO2
 				    </label>
@@ -157,7 +127,9 @@
 				</div>
 		  </div>
 		  <div class="col" id="thursday">
+		  	<div class="col"><h3 style="padding-left:50px">Thursday</h3></div>
 		  	<div>
+		  		<span style="padding-left:50px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "thu_no2" value="">NO2
 				    </label>
@@ -172,8 +144,13 @@
 				    </label>
 				</div>
 		  </div>
+		</div>
+
+		<div class="row">
 		  <div class="col" id="friday">
+		  	<div class="col"><h3 style="padding-left:50px">Friday</h3></div>
 		  	<div>
+		  		<span style="padding-left:50px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "fri_no2" value="">NO2
 				    </label>
@@ -189,7 +166,9 @@
 				</div>
 		  </div>
 		  <div class="col" id="saturday">
+		  	<div class="col"><h3 style="padding-left:50px">Saturday</h3></div>
 		  	<div>
+		  		<span style="padding-left:50px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "sat_no2" value="">NO2
 				    </label>
@@ -205,7 +184,9 @@
 				</div>
 		  </div>
 		  <div class="col" id="sunday">
+		  	<div class="col"><h3 style="padding-left:50px">Sunday</h3></div>
 		  	<div>
+		  		<span style="padding-left:50px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "sun_no2" value="">NO2
 				    </label>
