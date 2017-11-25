@@ -2,7 +2,10 @@ var window_width = window.innerWidth;
 var window_height = window.innerHeight;
 
 var colorPick = {"so2": "steelblue", "no2": "red", "co": "green", "ozone": "orange"};
-margin_m = {top: 20, right: 20, bottom: 30, left: 50}; m_w = 1000; m_h = 600;
+var countyList = ["Alameda", "Contra Costa", "Fresno", "Humboldt", "Imperial", "Los Angeles", "Orange", "Riverside", "Sacramento", "San Bernardino", "San Diego", "Santa Barbara", "Santa Clara", "Solano"];
+
+
+margin_m = {top: 20, right: 20, bottom: 30, left: 50}; m_w = window_width / 2.5; m_h = window_width / 2.5 * 0.6;
 margin_mon = {top: 20, right: 20, bottom: 30, left: 50}; mon_w = window_width / 8; mon_h = window_width / 8 * 0.6;
 margin_tue = {top: 20, right: 20, bottom: 30, left: 50}; tue_w = window_width / 8; tue_h = window_width / 8 * 0.6;
 margin_wed = {top: 20, right: 20, bottom: 30, left: 50}; wed_w = window_width / 8; wed_h = window_width / 8 * 0.6;
@@ -12,23 +15,39 @@ margin_sat = {top: 20, right: 20, bottom: 30, left: 50}; sat_w = window_width / 
 margin_sun = {top: 20, right: 20, bottom: 30, left: 50}; sun_w = window_width / 8; sun_h = window_width / 8 * 0.6;
 
 
-createLineGraph("m", "main", "line_example.json", m_w, m_h, margin_m);
-createLineGraph("mon", "monday", "line_example.json", mon_w, mon_h, margin_mon);
-createLineGraph("tue", "tuesday", "line_example.json", tue_w, tue_h, margin_tue);
-createLineGraph("wed", "wednesday", "line_example.json", wed_w, wed_h, margin_wed);
-createLineGraph("thu", "thursday", "line_example.json", thu_w, thu_h, margin_thu);
-createLineGraph("fri", "friday", "line_example.json", fri_w, fri_h, margin_fri);
-createLineGraph("sat", "saturday", "line_example.json", sat_w, sat_h, margin_sat);
-createLineGraph("sun", "sunday", "line_example.json", sun_w, sun_h, margin_sun);
+// d3.select("#year").on("click", function() {
+
+// })
+// county_select = "San Diego"
+// d3.json("hour_county.json", function(json) {
+// 	no2_y = parseAirDataOneDayPerPt(json, county_select, "2017-01-01", "NO2");
+// 	so2_y = parseAirDataOneDayPerPt(json, county_select, "2017-01-01", "SO2");
+// 	co_y = parseAirDataOneDayPerPt(json, county_select, "2017-01-01", "CO");
+// 	ozone_y = parseAirDataOneDayPerPt(json, county_select, "2017-01-01", "Ozone");
+// })
+
+county_select = "San Diego"
+data_choice = "hour_county.json"
+createLineGraph("m", county_select, "main", data_choice, m_w, m_h, margin_m);
+createLineGraph("mon", county_select, "monday", data_choice, mon_w, mon_h, margin_mon);
+createLineGraph("tue", county_select, "tuesday", data_choice, tue_w, tue_h, margin_tue);
+createLineGraph("wed", county_select, "wednesday", data_choice, wed_w, wed_h, margin_wed);
+createLineGraph("thu", county_select, "thursday", data_choice, thu_w, thu_h, margin_thu);
+createLineGraph("fri", county_select, "friday", data_choice, fri_w, fri_h, margin_fri);
+createLineGraph("sat", county_select, "saturday", data_choice, sat_w, sat_h, margin_sat);
+createLineGraph("sun", county_select, "sunday", data_choice, sun_w, sun_h, margin_sun);
 
 
-function createLineGraph(graphId, placeId, data, w, h, margin) {
+function createLineGraph(graphId, county, placeId, data, w, h, margin) {
+
 
 	d3.json(data, function(json) {
-		no2 = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "NO2");
-		so2 = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "SO2");
-		co = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "CO");
-		ozone = parseAirDataOneDayPerPt(json, "0009", "2017-01-01", "Ozone");
+		no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2");
+		so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2");
+		co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO");
+		ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone");
+
+		// console.log(no2)
 
 		createLine(so2, placeId, "so2", graphId, w, h, margin); //
 
@@ -196,7 +215,8 @@ function parseAirDataOneDayPerPt(data, point, date, pol) {
 
 	var parseTime = d3.timeParse("%Y-%m-%d %H:%M")
 
-	temp = data[point][pol][date];
+	// temp = data[point][pol][date];
+	temp = data[point][pol];
 	timeAndVal = [];
 	for (i in temp) {
 		timeAndVal.push([i, parseFloat(temp[i])]);
