@@ -30,15 +30,16 @@ margin_sun = {top: 20, right: 20, bottom: 30, left: 50}; sun_w = window_width / 
 county_select = "Alameda"
 data_choice = "hour_county.json"
 
-createLineGraph("m", county_select, "main", data_choice, m_w, m_h, margin_m);
-createLineGraph("mon", county_select, "monday", data_choice, mon_w, mon_h, margin_mon);
-createLineGraph("tue", county_select, "tuesday", data_choice, tue_w, tue_h, margin_tue);
-createLineGraph("wed", county_select, "wednesday", data_choice, wed_w, wed_h, margin_wed);
-createLineGraph("thu", county_select, "thursday", data_choice, thu_w, thu_h, margin_thu);
-createLineGraph("fri", county_select, "friday", data_choice, fri_w, fri_h, margin_fri);
-createLineGraph("sat", county_select, "saturday", data_choice, sat_w, sat_h, margin_sat);
-createLineGraph("sun", county_select, "sunday", data_choice, sun_w, sun_h, margin_sun);
+// main
+createLineGraph("m", county_select, "main", "hour_county.json", m_w, m_h, margin_m);
 
+createLineGraph("mon", county_select, "monday", "hour_dayofweek_county.json", mon_w, mon_h, margin_mon, "Mon");
+createLineGraph("tue", county_select, "tuesday", "hour_dayofweek_county.json", tue_w, tue_h, margin_tue, "Tue");
+createLineGraph("wed", county_select, "wednesday", "hour_dayofweek_county.json", wed_w, wed_h, margin_wed, "Wed");
+createLineGraph("thu", county_select, "thursday", "hour_dayofweek_county.json", thu_w, thu_h, margin_thu, "Thu");
+createLineGraph("fri", county_select, "friday", "hour_dayofweek_county.json", fri_w, fri_h, margin_fri, "Fri");
+createLineGraph("sat", county_select, "saturday", "hour_dayofweek_county.json", sat_w, sat_h, margin_sat, "Sat");
+createLineGraph("sun", county_select, "sunday", "hour_dayofweek_county.json", sun_w, sun_h, margin_sun, "Sun");
 
 d3.select("#inds").on("change", function() {
 	var sect = document.getElementById("inds");
@@ -52,49 +53,96 @@ d3.select("#inds").on("change", function() {
 	d3.select("#fri").remove();
 	d3.select("#sat").remove();
 	d3.select("#sun").remove();
-	createLineGraph("m", county_select, "main", data_choice, m_w, m_h, margin_m);
-	createLineGraph("mon", county_select, "monday", data_choice, mon_w, mon_h, margin_mon);
-	createLineGraph("tue", county_select, "tuesday", data_choice, tue_w, tue_h, margin_tue);
-	createLineGraph("wed", county_select, "wednesday", data_choice, wed_w, wed_h, margin_wed);
-	createLineGraph("thu", county_select, "thursday", data_choice, thu_w, thu_h, margin_thu);
-	createLineGraph("fri", county_select, "friday", data_choice, fri_w, fri_h, margin_fri);
-	createLineGraph("sat", county_select, "saturday", data_choice, sat_w, sat_h, margin_sat);
-	createLineGraph("sun", county_select, "sunday", data_choice, sun_w, sun_h, margin_sun);
+	createLineGraph("m", county_select, "main", "hour_county.json", m_w, m_h, margin_m);
+	createLineGraph("mon", county_select, "monday", "hour_dayofweek_county.json", mon_w, mon_h, margin_mon, "Mon");
+	createLineGraph("tue", county_select, "tuesday", "hour_dayofweek_county.json", tue_w, tue_h, margin_tue, "Tue");
+	createLineGraph("wed", county_select, "wednesday", "hour_dayofweek_county.json", wed_w, wed_h, margin_wed, "Wed");
+	createLineGraph("thu", county_select, "thursday", "hour_dayofweek_county.json", thu_w, thu_h, margin_thu, "Thu");
+	createLineGraph("fri", county_select, "friday", "hour_dayofweek_county.json", fri_w, fri_h, margin_fri, "Fri");
+	createLineGraph("sat", county_select, "saturday", "hour_dayofweek_county.json", sat_w, sat_h, margin_sat, "Sat");
+	createLineGraph("sun", county_select, "sunday", "hour_dayofweek_county.json", sun_w, sun_h, margin_sun, "Sun");
 })
 
 
 
-function createLineGraph(graphId, county, placeId, data, w, h, margin) {
 
+
+function createLineGraph(graphId, county, placeId, data, w, h, margin, dayofweek, season) {
 
 	d3.json(data, function(json) {
-		no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2");
-		so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2");
-		co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO");
-		ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone");
 
-		// console.log(no2)
+		if (dayofweek != null && season != null) {
+			no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2", dayofweek, season);
+			so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2", dayofweek, season);
+			co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO", dayofweek, season);
+			ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone", dayofweek, season);
 
-		createLine(so2, placeId, "so2", graphId, w, h, margin); //
+			createLine(so2, placeId, "so2", graphId, w, h, margin); //
 
-		d3.select("#" + graphId + "_co").on("change", function(){
-			update(no2, so2, co, ozone, graphId, w, h, margin);
-		})
+			d3.select("#" + graphId + "_co").on("change", function(){
+				update(data, graphId, w, h, margin, county, dayofweek, season);
+			})
 
-		d3.select("#" + graphId + "_no2").on("change", function() {
-			update(no2, so2, co, ozone, graphId, w, h, margin);
-		});
-        d3.select("#" + graphId + "_so2").on("change", function() {
-        	update(no2, so2, co, ozone, graphId, w, h, margin);
-        });
-        d3.select("#" + graphId + "_ozone").on("change", function() {
-        	update(no2, so2, co, ozone, graphId, w, h, margin);
-        });
+			d3.select("#" + graphId + "_no2").on("change", function() {
+				update(data, graphId, w, h, margin, county, dayofweek, season);
+			});
+	        d3.select("#" + graphId + "_so2").on("change", function() {
+	        	update(data, graphId, w, h, margin, county, dayofweek, season);
+	        });
+	        d3.select("#" + graphId + "_ozone").on("change", function() {
+	        	update(data, graphId, w, h, margin, county, dayofweek, season);
+	        });
 
-    })
+		}
+		else if (dayofweek != null) {
+			no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2", dayofweek);
+			so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2", dayofweek);
+			co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO", dayofweek);
+			ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone", dayofweek);
+
+			createLine(so2, placeId, "so2", graphId, w, h, margin); //
+
+			d3.select("#" + graphId + "_co").on("change", function(){
+				update(data, graphId, w, h, margin, county, dayofweek);
+			})
+
+			d3.select("#" + graphId + "_no2").on("change", function() {
+				update(data, graphId, w, h, margin, county, dayofweek);
+			});
+	        d3.select("#" + graphId + "_so2").on("change", function() {
+	        	update(data, graphId, w, h, margin, county, dayofweek);
+	        });
+	        d3.select("#" + graphId + "_ozone").on("change", function() {
+	        	update(data, graphId, w, h, margin, county, dayofweek);
+	        });
+		}
+		else {
+			no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2");
+			so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2");
+			co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO");
+			ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone");
+
+			createLine(so2, placeId, "so2", graphId, w, h, margin); //
+
+			d3.select("#" + graphId + "_co").on("change", function(){
+				update(data, graphId, w, h, margin, county);
+			})
+
+			d3.select("#" + graphId + "_no2").on("change", function() {
+				update(data, graphId, w, h, margin, county);
+			});
+	        d3.select("#" + graphId + "_so2").on("change", function() {
+	        	update(data, graphId, w, h, margin, county);
+	        });
+	        d3.select("#" + graphId + "_ozone").on("change", function() {
+	        	update(data, graphId, w, h, margin, county);
+	        });
+		}
+
+    });
 }
 
-function update(no2, so2, co, ozone, graphId, w, h, margin) {
+function update(data, graphId, w, h, margin, county, dayofweek, season) {
 
 
 	d3.select("#" + graphId + "_no2_line").remove();
@@ -112,137 +160,172 @@ function update(no2, so2, co, ozone, graphId, w, h, margin) {
 	if (d3.select("#" + graphId + "_co").property("checked")) {co_on = true;}
 	if (d3.select("#" + graphId + "_ozone").property("checked")) {ozone_on = true;}
 
-	// update axis upper and lower limit into yExtent
-	minPool = [];
-	maxPool = [];
+	// reload corresponding data
+	d3.json(data, function(json) {
 
-	if(so2_on) {
-		ye = d3.extent(so2, function(d) {return d[1];});
-		minPool.push(ye[0]);
-		maxPool.push(ye[1]);
-	}
-	if(no2_on) {
-		ye = d3.extent(no2, function(d) {return d[1];});
-		minPool.push(ye[0]);
-		maxPool.push(ye[1]);
-	}
-	if(co_on) {
-		ye = d3.extent(co, function(d) {return d[1];});
-		minPool.push(ye[0]);
-		maxPool.push(ye[1]);
-	}
-	if(ozone_on) {
-		ye = d3.extent(ozone, function(d) {return d[1];});
-		minPool.push(ye[0]);
-		maxPool.push(ye[1]);
-	}
+		if (dayofweek != null && season != null) {
+			no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2", dayofweek, season);
+			so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2", dayofweek, season);
+			co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO", dayofweek, season);
+			ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone", dayofweek, season);
 
-	currYMin = Math.min.apply(null, minPool);
-	currYMax = Math.max.apply(null, maxPool);
-	yExtent = [currYMin, currYMax];
+		}
+		else if (dayofweek != null) {
+			no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2", dayofweek);
+			so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2", dayofweek);
+			co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO", dayofweek);
+			ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone", dayofweek);
+		}
+		else {
+			no2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "NO2");
+			so2 = parseAirDataOneDayPerPt(json, county, "2017-01-01", "SO2");
+			co = parseAirDataOneDayPerPt(json, county, "2017-01-01", "CO");
+			ozone = parseAirDataOneDayPerPt(json, county, "2017-01-01", "Ozone");
+		}
 
-	// prepare y axis
-	width = w - margin.left - margin.right;
-	height = h - margin.top - margin.bottom;
+		// update axis upper and lower limit into yExtent
+		minPool = [];
+		maxPool = [];
 
-	var y = d3.scaleLinear()
-    			.domain(yExtent)
-    			.rangeRound([height, 0]);
+		if(so2_on) {
+			ye = d3.extent(so2, function(d) {return d[1];});
+			minPool.push(ye[0]);
+			maxPool.push(ye[1]);
+		}
+		if(no2_on) {
+			ye = d3.extent(no2, function(d) {return d[1];});
+			minPool.push(ye[0]);
+			maxPool.push(ye[1]);
+		}
+		if(co_on) {
+			ye = d3.extent(co, function(d) {return d[1];});
+			minPool.push(ye[0]);
+			maxPool.push(ye[1]);
+		}
+		if(ozone_on) {
+			ye = d3.extent(ozone, function(d) {return d[1];});
+			minPool.push(ye[0]);
+			maxPool.push(ye[1]);
+		}
 
-    var yAxis = d3.axisLeft()
-    				.scale(y)
+		currYMin = Math.min.apply(null, minPool);
+		currYMax = Math.max.apply(null, maxPool);
+		yExtent = [currYMin, currYMax];
 
-    d3.select("#" + graphId)
-      .select("#y_axis_" + graphId)
-  	  .transition()
-  	  .duration(1000)
-      .call(d3.axisLeft(y))
+		// prepare y axis
+		width = w - margin.left - margin.right;
+		height = h - margin.top - margin.bottom;
 
-    // prepare x axis
-	var x = d3.scaleTime()
-    			.domain(d3.extent(no2, function(d) {return d[0];}))
-    			.rangeRound([0, width]);
+		var y = d3.scaleLinear()
+	    			.domain(yExtent)
+	    			.rangeRound([height, 0]);
 
-    var xAxis = d3.axisBottom()
-    				.scale(x);
+	    var yAxis = d3.axisLeft()
+	    				.scale(y)
 
-    d3.select("#" + graphId)
-      .select("#x_axis_" + graphId)
-      .transition()
-      .duration(1000)
-      .call(xAxis);
+	    d3.select("#" + graphId)
+	      .select("#y_axis_" + graphId)
+	  	  .transition()
+	  	  .duration(1000)
+	      .call(d3.axisLeft(y))
 
-    var line = d3.line()
-    			 .x(function(d) {return x(d[0])})
-    			 .y(function(d) {return y(+d[1])});
+	    // prepare x axis
+		var x = d3.scaleTime()
+	    			.domain(d3.extent(no2, function(d) {return d[0];}))
+	    			.rangeRound([0, width]);
 
-	// add lines
-	if(so2_on) {
-		d3.select("#" + graphId)
-		  .append("path")
-	      .datum(so2)
-	      .attr("d", line)
-	      .classed("so2", true)
-	      .attr("id", graphId + "_so2_line")
-	      .attr("fill", "none")
-	      .attr("stroke", colorPick["so2"])
-	      .attr("stroke-linejoin", "round")
-	      .attr("stroke-linecap", "round")
-	      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-	      .attr("stroke-width", 1.5);
-	}
-	if(no2_on) {
-		d3.select("#" + graphId)
-		  .append("path")
-	      .datum(no2)
-	      .attr("d", line)
-	      .classed("no2", true)
-	      .attr("id", graphId + "_no2_line")
-	      .attr("fill", "none")
-	      .attr("stroke", colorPick["no2"])
-	      .attr("stroke-linejoin", "round")
-	      .attr("stroke-linecap", "round")
-	      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-	      .attr("stroke-width", 1.5);
-	}
-	if(co_on) {
-		d3.select("#" + graphId)
-		  .append("path")
-	      .datum(co)
-	      .attr("d", line)
-	      .classed("co", true)
-	      .attr("id", graphId + "_co_line")
-	      .attr("fill", "none")
-	      .attr("stroke", colorPick["co"])
-	      .attr("stroke-linejoin", "round")
-	      .attr("stroke-linecap", "round")
-	      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-	      .attr("stroke-width", 1.5);
-	}
-	if(ozone_on) {
-		d3.select("#" + graphId)
-		  .append("path")
-	      .datum(ozone)
-	      .attr("d", line)
-	      .classed("ozone", true)
-	      .attr("id", graphId + "_ozone_line")
-	      .attr("fill", "none")
-	      .attr("stroke", colorPick["ozone"])
-	      .attr("stroke-linejoin", "round")
-	      .attr("stroke-linecap", "round")
-	      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-	      .attr("stroke-width", 1.5);
-	}
+	    var xAxis = d3.axisBottom()
+	    				.scale(x);
+
+	    d3.select("#" + graphId)
+	      .select("#x_axis_" + graphId)
+	      .transition()
+	      .duration(1000)
+	      .call(xAxis);
+
+	    var line = d3.line()
+	    			 .x(function(d) {return x(d[0])})
+	    			 .y(function(d) {return y(+d[1])});
+
+		// add lines
+		if(so2_on) {
+			d3.select("#" + graphId)
+			  .append("path")
+		      .datum(so2)
+		      .attr("d", line)
+		      .classed("so2", true)
+		      .attr("id", graphId + "_so2_line")
+		      .attr("fill", "none")
+		      .attr("stroke", colorPick["so2"])
+		      .attr("stroke-linejoin", "round")
+		      .attr("stroke-linecap", "round")
+		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		      .attr("stroke-width", 1.5);
+		}
+		if(no2_on) {
+			d3.select("#" + graphId)
+			  .append("path")
+		      .datum(no2)
+		      .attr("d", line)
+		      .classed("no2", true)
+		      .attr("id", graphId + "_no2_line")
+		      .attr("fill", "none")
+		      .attr("stroke", colorPick["no2"])
+		      .attr("stroke-linejoin", "round")
+		      .attr("stroke-linecap", "round")
+		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		      .attr("stroke-width", 1.5);
+		}
+		if(co_on) {
+			d3.select("#" + graphId)
+			  .append("path")
+		      .datum(co)
+		      .attr("d", line)
+		      .classed("co", true)
+		      .attr("id", graphId + "_co_line")
+		      .attr("fill", "none")
+		      .attr("stroke", colorPick["co"])
+		      .attr("stroke-linejoin", "round")
+		      .attr("stroke-linecap", "round")
+		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		      .attr("stroke-width", 1.5);
+		}
+		if(ozone_on) {
+			d3.select("#" + graphId)
+			  .append("path")
+		      .datum(ozone)
+		      .attr("d", line)
+		      .classed("ozone", true)
+		      .attr("id", graphId + "_ozone_line")
+		      .attr("fill", "none")
+		      .attr("stroke", colorPick["ozone"])
+		      .attr("stroke-linejoin", "round")
+		      .attr("stroke-linecap", "round")
+		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		      .attr("stroke-width", 1.5);
+		}
+
+
+    });
 
 }
 
 
-function parseAirDataOneDayPerPt(data, point, date, pol) {
+function parseAirDataOneDayPerPt(data, point, date, pol, point2, point3) {
 
 	var parseTime = d3.timeParse("%Y-%m-%d %H:%M")
 
-	// temp = data[point][pol][date];
-	temp = data[point][pol];
+	var temp;
+	if (point2 != null && point3 != null) {
+		temp = data[point][point2][point3][pol];
+	}
+	else if (point2 != null) {
+		temp = data[point][point2][pol];
+	}
+	else {
+		temp = data[point][pol];
+	}
+
 	timeAndVal = [];
 	for (i in temp) {
 		timeAndVal.push([i, parseFloat(temp[i])]);
@@ -253,6 +336,7 @@ function parseAirDataOneDayPerPt(data, point, date, pol) {
 	for (var i = 0; i < timeAndVal.length; i++) {
 		dateTimeAndVal.push([parseTime(date + " "+ timeAndVal[i][0]), timeAndVal[i][1]]);
 	}
+	
 
 	return dateTimeAndVal;
 	
