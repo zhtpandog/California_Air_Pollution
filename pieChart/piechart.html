@@ -189,6 +189,7 @@ function piechart(){
 	        .attr("fill", function(d) { return color[d.data.pollutant]; });
 		
 
+console.log(pie(data))
 
 		var legend = svg.selectAll(".legend")
 	        .data(pie(data))

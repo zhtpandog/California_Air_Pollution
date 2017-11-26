@@ -13,46 +13,14 @@
     pointer-events: all;
   }
 
-    /*.parent1, .parent2, .parent3, .parent4 {*/
-    .parent {
+    .parentone, .parenttwo, .parentthree, .parentfour,  {
       display: table;
       width: 100%;
     }
-
-    .child1, .child2, .child3, .child4 {
+    .childone, .childtwo, .childthree, .childfour, .childfive, .childsix, .childseven, .childeight, .childnine, .childten, .childele, .childtwe, {
       display: table-cell;
-      width: 20%;
+      width: 30%; /* adjust */
     }
-
-/*    .child1, .child9 {
-      position:absolute;
-      display: table-cell;
-      top: 510px;
-      left: 0px;
-    }
-
-    .child5 {
-      position:absolute;
-      display: table-cell;
-      top: 780px;
-      left: 0px;
-    }
-
-    .child2, .child6, .child10 {
-      position:absolute;
-      display: table-cell;
-      left: 300px;
-    }
-    .child3, .child7, .child11 {
-      position:absolute;
-      display: table-cell;
-      left: 600px;
-    }
-    .child4, .child8, .child12 {
-      position:absolute;
-      display: table-cell;
-      left: 900px;
-  }*/
 
     .upper {
       display: table;
@@ -62,8 +30,8 @@
     .reporter {
       position:absolute;
       display: table-cell;
-      top: 60%;
-      left: 15%;
+      top: 35%;
+      width: 30%; /* adjust */
     }
     .mainchart {
       display: table-cell;
@@ -84,19 +52,26 @@
   </div>
   
 </center>
-
-	<div class ="parent">
-	  <div class="child1"></div>
-	  <div class="child2"></div>  
-	  <div class="child3"></div>
-	  <div class="child4"></div>
-	</div>
-<!-- 	<div class ="parent2">
-	  <div class="child5"></div>
-	  <div class="child6"></div>  
-	  <div class="child7"></div>
-	  <div class="child8"></div>
-	</div> -->
+<div class ="parentone">
+  <div class="childone"></div>
+  <div class="childtwo"></div>
+  <div class="childthree"></div>
+</div>
+<div class ="parenttwo">
+  <div class="childfour"></div>
+  <div class="childfive"></div>
+  <div class="childsix"></div>
+</div>
+<div class ="parentthree">
+  <div class="childseven"></div>
+  <div class="childeight"></div>
+  <div class="childnine"></div>
+</div>
+<div class ="parentfour">
+  <div class="childten"></div>
+  <div class="childele"></div>
+  <div class="childtwe"></div>
+</div>
 
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
@@ -104,7 +79,7 @@
 var margin = {top: 250, right: 350, bottom: 250, left: 350},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
 
-var margin2 = {top: 100, right: 150, bottom: 100, left: 150},
+var margin2 = {top: 150, right: 210, bottom: 150, left: 210},
     radius2 = Math.min(margin2.top, margin2.right, margin2.bottom, margin2.left) - 10;
 
 var svg;
@@ -297,54 +272,9 @@ svg = d3.select(".mainchart").append("svg");
 dataset = "pollution.json";      
 drawPie(svg, dataset, margin, radius);
 
-svg = d3.select(".child1").append("svg");
-dataset = "pollution.json";  
+svg = d3.select(".childone").append("svg");
+dataset = "flare.json"; 
 drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child2").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child3").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child4").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child1").append("svg");
-dataset = "pollution.json";  
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child2").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child3").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child4").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child1").append("svg");
-dataset = "pollution.json";  
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child2").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child3").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
-svg = d3.select(".child4").append("svg");
-dataset = "pollution.json"; 
-drawPie(svg, dataset, margin2, radius2);
-
 
 
 </script>

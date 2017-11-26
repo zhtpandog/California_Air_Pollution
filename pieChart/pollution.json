@@ -1,22 +1,17 @@
 {
- "name": "season",
+ "name": "Season",
  "children": [
   {
-   "name": "first",
+   "name": "Season #1",
    "children": [
-    {
-      "name": "firstSeason",
-      "children": [
         {"name": "CO", "size": 0.167966802},
         {"name": "NO2", "size": 1.663969175},
         {"name": "Ozone", "size": 5.097229011},
         {"name": "SO2", "size": 0.130969484}
-      ]
-    }
    ]
   },
   {
-   "name": "second",
+   "name": "Season #2",
    "children": [
     {"name": "CO", "size": 0.102594184},
     {"name": "NO2", "size": 0.960493929},
@@ -25,7 +20,7 @@
    ]
   },
   {
-   "name": "third",
+   "name": "Season #3",
    "children": [
     {"name": "CO", "size": 0.109903178},
     {"name": "NO2", "size": 1.060297595},
@@ -34,7 +29,7 @@
    ]
   },
   {
-   "name": "forth",
+   "name": "Season #4",
    "children": [
     {"name": "CO", "size": 0.166119346},
     {"name": "NO2", "size": 1.754981739},
