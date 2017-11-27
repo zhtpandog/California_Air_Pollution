@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Guide For Interactive Human Body Organs Diagram</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+    .style13 {font-size: 150%}
+    .style18 {color: #0000FF}
+    .style19 {
+	color: #FF0000;
+	font-weight: bold;
+}
+    .style20 {
+	color: #00FF00;
+	font-weight: bold;
+}
+    .style21 {
+	color: #FF00FF;
+	font-weight: bold;
+}
+    .style22 {
+	color: #00FFFF;
+	font-weight: bold;
+}
+    .style24 {color: #0000FF; font-weight: bold; }
+    .style25 {color: #FF0000}
+    </style>
+    <script src="assets/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Interactive Human Body Organs Diagram&rdquo; Documentation by &ldquo;Art101&rdquo;</h3>
+		
+<hr>
+		
+	  <h1 class="center">&ldquo;Interactive Human Body Organs Diagram&rdquo;</h1>
+	  <div align="center" class="style13"></div>
+  <div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>Released on: August 2015<br>
+					Our rating: <img src="assets/images/rating_star_big.png" width="13" height="12"></strong><img src="assets/images/rating_star_big.png" width="13" height="12"><img src="assets/images/rating_star_big.png" width="13" height="12"><img src="assets/images/rating_star_big.png" width="13" height="12"><img src="assets/images/rating_star_big.png" width="13" height="12"><br>
+					Please don't forget to <a href="http://codecanyon.net/downloads">rate</a> the work <img src="assets/images/happy.png" width="16" height="16"></p>
+</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my work. If you have any questions that are beyond the scope of this help file, please feel free to email me <strong>directly</strong> through the contact form <a href="http://codecanyon.net/user/Art101#from" target="_blank"><strong>here</strong></a>. Thanks so much!</p>
+	</div>
+	  </div><!-- end div .borderTop -->
+		
+		<hr>
+		<h2 id="up" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+		  <li><a href="#GeneralOverview">General overview</a></li>
+		  <li><a href="#installation">Installation</a></li>
+      <li><a href="#wp">How to integrate the diagram into WordPress site?</a></li>
+		  <li><a href="#organs-customization">Organs Customization</a></li>
+		  <li><a href="#markers">How to add/remove and modify hotspots?</a></li>
+		  <li><a href="#xy">How to get X, Y coordinates?</a></li>
+      <li><a href="#resize">How to resize the diagram?</a></li>
+      <li><a href="#tricks">Tips and tricks</a></li>
+      <li><a href="#other">Other works</a></li>
+	  </ol>
+	  <div align="center"><img src="assets/images/line.png">
+	    </div>
+	  <h3 id="GeneralOverview"><strong><u>General overview</u></strong> - <a href="#up">top</a></h3>
+		<p align="left">This is an interactive human body organs diagram coded in HTML5 based on Scalable Vector Graphics (SVG) utilizing a high quality image as a background. So it can be scaled to any size up to 840px X 1200px without losing its quality. Also it can be customized through easy to use 2 Javascript files; "organs-config.js" to customize the general organ colors, links, and hover description. And "hotspots-config.js" allows you to put customizable clickable spot anywhere on the diagram using <a href="#xy">XY coordinate</a>.</p>
+	  <div align="center"><img src="assets/images/line.png">
+		    
+        </div>
+	  <h3 id="installation"><strong><u>Installation</u></strong> - <a href="#up">top</a></h3>
+	  <p>To insert the diagram to your website, please follow these steps:</p>
+	  <ol>
+	    <li>Open the "organs.html" file using any text editor such as Sublime Text, Adobe Dreamweaver, or Notepad.</li>
+	    <li>Copy the code from the head tag and paste it before the closing head tag of your page<br/><img src="assets/images/head.png"></li>
+	    <li>Upload the "organs-bg.png" image and the CSS file and the 3 JS files plus the jquery file to your site. If you want to put them in another directory, please make sure that the relative path is correct or use their absolute path like this <br><code>&lt;script src="http://www.yoursite.com/diagram/organs-config.js" type="text/javascript"&gt;&lt;/script&gt;</code></li>
+	    <li>Copy the code from the body tag and paste it anywhere you want to insert the diagram in your page<br/><img src="assets/images/body.png"></li>
+	    <li>Save and test it.</li>
+      </ol>
+      <p>If you have any questions about these steps, please don't hesitate to <a href="http://codecanyon.net/user/Art101#from"><strong>contact</strong></a> us.<br><strong>Note:</strong> We offer installation and customization service for little extra charge, just drop us a line and we will get back to you.</p>
+      	  <div align="center"><img src="assets/images/line.png">
+      </div>
+      <h3 id="wp"><strong>How to integrate the diagram into WordPress site</strong> - <a href="#up">top</a></h3>
+      <table width="618" border="0">
+          <tr>
+            <td><div align="center"><img src="assets/images/Wordpress1.png" width="64" height="64"> </div></td>
+            <td><ol>
+              <li>Upload the diagram folder to your site using FTP client. To test it, use the direct link to open the diagram in your browser. It could be a link like this:<br><code><strong>http://www.yoursite.com/diagram/body.html</strong></code> </li>
+              <li>Install the <a href="http://wordpress.org/plugins/insert-html-snippet/">HTML Snippet</a> plugin to create a new snippet for the diagram.</li>
+              <li>Copy the code from the "body.html" file, then paste it in the new snippet. You can use the full path of the image, JSs and CSS files. And you don't need the <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> tags, So the code in the snippet should be similar to:<br>
+                <span style="color:blue;">
+                <code style="font-size:10px;">&lt;link rel="stylesheet" type="text/css" href="http://www.yoursite.com/diagram/organs-style.css" /&gt;</code><br>
+                <code style="font-size:10px;">&lt;script src="http://www.yoursite.com/diagram/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;</code><br>
+                <code style="font-size:10px;">&lt;script src="http://www.yoursite.com/diagram/organs-config.js" type="text/javascript"&gt;&lt;/script&gt;</code><br>
+                <code style="font-size:10px;">&lt;script src="http://www.yoursite.com/diagram/hotspots-config.js" type="text/javascript"&gt;&lt;/script&gt;</code><br>
+                <code style="font-size:10px;">&lt;script src="http://www.yoursite.com/diagram/organs-interact.js" type="text/javascript"&gt;&lt;/script&gt;</code><br>
+                <code style="font-size:10px;"> &lt;span id="organs-tip"&gt;&lt;/span&gt;</code><br>
+                <code style="font-size:10px;"> &lt;div id="organswrapper"&gt;</code><br>
+                <code style="font-size:10px;"> &lt;div id="organs_base"&gt;</code><br>
+                <code style="font-size:10px;"> &lt;svg ersion="1.1" xmlns="http://www.w3.org/2000/svg" width="420px" height="600px" viewBox="0 0 420 600" xml:space="preserve"></code><br>
+                <code style="font-size:10px;"> &lt;image overflow="visible" width="840" height="1200" <strong><u>xlink:href="http://www.yoursite.com/diagram/organs-bg.png"</u></strong> transform="matrix(0.5 0 0 0.5 0 -4.882813e-004)">&lt;/image></code><br>
+                <code style="font-size:10px;"> ..etc</code>
+                </span><br>
+                Note: Make sure that you are using the correct file path of the "organs-bg.png" image and the CSS, JSs files.
+              </li>
+              <li>Copy the generated shortcode, and paste it in a WP page where you want to place the diagram.</li>
+            </ol>You have also the <a href="http://wordpress.org/extend/plugins/search.php?q=iframe">iframe</a> option.</td>
+          </tr>
+        </table>
+      <p>If you have any questions about these steps, please don't hesitate to <a href="http://codecanyon.net/user/Art101#from"><strong>contact</strong></a> us.<br><strong>Note:</strong> We offer installation and customization service for little extra charge, just drop us a line and we will get back to you.</p>
+        <div align="center"><img src="assets/images/line.png"></div>
+
+
+	  <h3 id="organs-customization"><strong><u>Organs Customization?</u></strong> - <a href="#up">top</a></h3>
+	  <h3 class="style26">You can customize the colors, links, hover description for each organ independently through the included &quot;organs-config.js&quot; like this:</h3>
+      <table width="618" border="0">
+        <tr>
+          <td>
+            <ul>
+              <li><strong>'hover'</strong>: '<span class="style18">You can use HTML code</span>', //organ hover content <br><strong>NOTE</strong>: The hover popup expands as much as you put content for an organ. but the hover popup is not responsive so don't add too much content. </li>
+              <li><strong>'enable'</strong><span class="style18">:true</span>,//true/false to enable/disable this organ.</li>
+              <li><strong>'url'</strong>:'<span class="style18">http://www.yourlink.com/</span>', //Goto URL</li>
+              <li><strong>'target'</strong>:'<span class="style18">same_window</span>', //open link in new window:"new_window", open in current window:"same_window", or "None" for nothing.<br>
+              <strong>Trick</strong>: Using 'None' is very useful if you have enough content in the hover popup and you don't want to link this organ to other pages).</li>
+              <br>
+              <li><strong>'upColor'</strong>:'<span class="style18">red</span>', //organ color when page loads</li>
+              <li><strong>'upOpacity'</strong>:'<span class="style18">0</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <li><strong>'outlineUpColor'</strong>:'#<span class="style18">0000FF</span>', //outline color when page loads</li>
+              <li><strong>'outlineUpOpacity'</strong>:'<span class="style18">0.4</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <br>
+              <li><strong>'overColor'</strong>:'<span class="style18">red</span>', //organ color when mouse hover</li>
+              <li><strong>'overOpacity'</strong>:'<span class="style18">0.3</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <li><strong>'outlineOverColor'</strong>:'#<span class="style18">0000FF</span>', //outline color when mouse hover</li>
+              <li><strong>'outlineOverOpacity'</strong>:'<span class="style18">1</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <br>
+              <li><strong>'downColor'</strong>:'#<span class="style18">993366</span>', //organ color when mouse clicking</li>
+              <li><strong>'downOpacity'</strong>:'<span class="style18">0.5</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <li><strong>'outlineDownColor'</strong>:'#<span class="style18">FFFF00</span>', //outline color when mouse clicking</li>
+              <li><strong>'outlineDownOpacity'</strong>:'<span class="style18">0.8</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+            </ul>
+          <td><div align="left"><a href="http://www.w3schools.com/tags/ref_colorpicker.asp"><img src="assets/images/HTMLColorPicker.png" width="110" height="115" border="0"></a></div></td>
+        </tr>
+      </table>
+
+      <div align="center"><img src="assets/images/line.png">
+      </div>
+
+
+
+      <h3 id="markers"><strong>How to add/remove and modify hotspots?</strong> - <a href="#up">top</a></h3>
+	    <p>Using  the included &quot;<strong>hotspots-config.js</strong>&quot; file, for your convenience you can just copy/paste the code of any of the existing spots and change its parameters, You can use <strong><a href="#xy">this</a></strong> guide to get the X, Y coordinates.</p>
+	    <table width="790" border="0">
+          <tr>
+            <td><ul>
+              <li><strong>'hover'</strong>:'<span class="style18">You can use HTML code</span>', //the content of the hover popup<br>
+              	<strong>NOTE</strong>: The hover popup expands as much as you put content for a spot. but the hover popup is not responsive so adding too much content may affect mobile users view.
+              </li>
+              <li><strong>'pos_X'</strong>:'<span class="style25">84</span>', //location of the spot on X axis (<a href="#xy">How</a>?)</li>
+              <li><strong>'pos_Y'</strong>:'<span class="style25">137</span>', //location of the spot on Y axis (<a href="#xy">How</a>?)</li>
+              <li><strong>'diameter'</strong>:'<span class="style25">16</span>', // diameter of this spot</li>
+              <br>
+              <li><strong>'upColor'</strong>:'<span class="style18">red</span>', //spot color when page loads</li>
+              <li><strong>'upOpacity'</strong>:'<span class="style18">0.8</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <li><strong>'outlineUpColor'</strong>:'#<span class="style18">FFFF00</span>', //outline color when page loads</li>
+              <li><strong>'outlineUpOpacity'</strong>:'<span class="style18">0.8</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <br>
+              <li><strong>'overColor'</strong>:'#<span class="style18">FAE105</span>', //spot color when mouse hover</li>
+              <li><strong>'overOpacity'</strong>:'<span class="style18">1</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <li><strong>'outlineOverColor'</strong>:'#<span class="style18">FF0000</span>', //outline color when mouse hover</li>
+              <li><strong>'outlineOverOpacity'</strong>:'<span class="style18">1</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <br>
+              <li><strong>'downColor'</strong>:'#<span class="style18">FF6600</span>', //spot color when mouse clicking</li>
+              <li><strong>'downOpacity'</strong>:'<span class="style18">1</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <li><strong>'outlineDownColor'</strong>:'#<span class="style18">CC3300</span>', //outline color when mouse clicking</li>
+              <li><strong>'outlineDownOpacity'</strong>:'<span class="style18">1</span>', // opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)</li>
+              <br>
+              <li><strong>'url'</strong>:'<span class="style18">http://www.yourlink.com/</span>', //Goto URL</li>
+              <li><strong>'target'</strong>:'<span class="style18">same_window</span>', //open link in new window:"new_window", open in current window:"same_window", or "None" for nothing.<br>
+              <strong>Trick</strong>: Using 'None' is very useful if you have enough content in the hover popup and you don't want to link this organ to other pages).</li>
+              <li><strong>'enable'</strong><span class="style18">:true</span>,//true/false to enable/disable this organ.</li>
+            </ul></td>
+            <td><div align="left"><img src="assets/images/spots.png" ></div></td>
+          </tr>
+        </table>
+<div align="center"><img src="assets/images/line.png"></div>
+
+	    <h3 id="xy"><strong>How to get X, Y coordinates?</strong> - <a href="#up">top</a></h3>
+	    <p>Click any where on this diagram to get the X, Y values:</p>
+
+	    <p align="center">
+	      <script type="text/javascript">
+AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','420','height','600','src','assets/images/xyguide','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','assets/images/xyguide' ); //end AC code
+</script><noscript><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="420" height="600">
+            <param name="movie" value="assets/images/xyguide.swf">
+            <param name="quality" value="high">
+            <embed src="assets/images/xyguide.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="420" height="600"></embed>
+          </object></noscript>
+	    </p>
+<div align="center"><img src="assets/images/line.png"></div>
+
+      <h3 id="resize"><strong>How to resize the diagram</strong> - <a href="#up">top</a></h3>
+    <p align="left">The diagram already has a default size for different screen sizes but if you put it in a small div according to your website design, you may notice an empty area above and below the diagram, to remove this gap simply adjust the height values of the #organs_base svg in the included organs-style.css file.<br><strong>Note:</strong> A fixed height value is required for IE to load SVG shape in the required size otherwise it will be shrinked to a minimum size, so you can adjust the height value but don't delete it.</p>
+
+      <div align="center"><img src="assets/images/line.png"></div>
+      <h3 id="tricks"><strong>Tips and tricks</strong> - <a href="#up">top</a></h3>
+	    <ul>
+	      <li>You can use any background color, you can set it at the organs-style.css file line no.5</li>
+	      <li>You can make some or all the organs disabled in the organs-config.js file to make a good use of the hotspot option.</li>
+	      <li>You have unlimited possibilities for playing around the diagram color and opacity. Use it!</li>
+	      <li>When you use the X, Y coordinate guide, after clicking the diagram, just double click on the output number and copy it then paste it in the javascript file.</li>
+	      <li>To get a color code, you can use <a href="http://www.w3schools.com/tags/ref_colorpicker.asp"><strong>this</strong></a> color picker.</li>
+        <li><strong>IMPORTANT:</strong> For better interactive animation, the hover popup is floating so in some templates, it could be pushed away for where it should be, to adjust it, move the span "organs-tip" line of code to either just after the body tag of YOUR PAGE or in the Footer section, like this:<br>
+          <strong><code>&lt;body&gt;</code><br>
+          <code>&lt;span id="organs-tip"&lt;span&gt;</code></strong> <br>
+          if you need any help please <strong><a href="http://codecanyon.net/user/Art101#from">email</a></strong> us directly and I will be glad to assist you.</li>
+      </ul>
+
+      <div align="center"><img src="assets/images/line.png"></div>
+      <h3 id="other"><strong>See also:</strong> <a href="#up">top</a></h3>
+      <table width="100%" border="0">
+        <tr>
+          <td><div align="center">
+            <p>
+              <a href="http://www.html5interactivemaps.com/interactive-world-map.html"><img src="assets/images/250wd.png" width="250" height="164"></a> 
+              <a href="http://www.html5interactivemaps.com/interactive-usa-map.html"><img src="assets/images/250us.png" width="250" height="164"></a> 
+              <a href="http://www.html5interactivemaps.com/interactive-us-map-wordpress-plugin.html"><img src="assets/images/250uswp.png" width="250" height="164"></a>
+            </p>
+            <p>
+              <a href="http://www.html5interactivemaps.com/interactive-map-of-france.html"><img src="assets/images/250fr.png" width="250" height="164"></a> 
+              <a href="http://www.html5interactivemaps.com/interactive-uk-map.html"><img src="assets/images/250uk.png" width="250" height="164"></a> 
+              <a href="http://www.html5interactivemaps.com/interactive-map-of-germany.html"><img src="assets/images/250gr.png" width="250" height="164"></a>
+            </p>
+            <p>
+              <a href="http://graphicriver.net/item/social-media-icons/3166966"><img src="assets/images/social 375.png" width="375" height="164"></a> 
+              <a href="http://graphicriver.net/item/254-flags-of-the-world/180180"><img src="assets/images/flags 375.png" width="375" height="164"></a>
+            </p>
+          </div></td>
+        </tr>
+      </table>
+      <hr>
+      <h3 align="left"><strong>That's it :)</strong></h3>
+          <p align="left">Once again, thank you so much for purchasing my work. As I said at the beginning, I'd be glad to help you if you have any questions relating to this file. No guarantees, but I'll do my best to assist. If you need a special customization, please don't hesitate to contact me anytime directly via my <a href="http://codecanyon.net/user/Art101#from">profile</a> page on CodeCanyon.</p>
+      <p class="append-bottom alt large"><strong>Thank you</strong>
+	</p>
+</div><!-- end div .container -->
+</body>
+</html>
