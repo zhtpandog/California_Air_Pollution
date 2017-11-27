@@ -1,41 +1,89 @@
 {
- "name": "Season",
- "children": [
-  {
-   "name": "Season #1",
-   "children": [
-        {"name": "CO", "size": 0.167966802},
-        {"name": "NO2", "size": 1.663969175},
-        {"name": "Ozone", "size": 5.097229011},
-        {"name": "SO2", "size": 0.130969484}
+   "name":"Season",
+   "children":[
+      {
+         "name":"Spring",
+         "children":[
+            {
+               "name":"CO",
+               "size":0.167966802
+            },
+            {
+               "name":"NO2",
+               "size":1.663969175
+            },
+            {
+               "name":"Ozone",
+               "size":5.097229011
+            },
+            {
+               "name":"SO2",
+               "size":0.130969484
+            }
+         ]
+      },
+      {
+         "name":"Summer",
+         "children":[
+            {
+               "name":"CO",
+               "size":0.102594184
+            },
+            {
+               "name":"NO2",
+               "size":0.960493929
+            },
+            {
+               "name":"Ozone",
+               "size":7.164177269
+            },
+            {
+               "name":"SO2",
+               "size":0.115825563
+            }
+         ]
+      },
+      {
+         "name":"Autumn",
+         "children":[
+            {
+               "name":"CO",
+               "size":0.109903178
+            },
+            {
+               "name":"NO2",
+               "size":1.060297595
+            },
+            {
+               "name":"Ozone",
+               "size":6.534804732
+            },
+            {
+               "name":"SO2",
+               "size":0.121811826
+            }
+         ]
+      },
+      {
+         "name":"Winter",
+         "children":[
+            {
+               "name":"CO",
+               "size":0.166119346
+            },
+            {
+               "name":"NO2",
+               "size":1.754981739
+            },
+            {
+               "name":"Ozone",
+               "size":4.626864028
+            },
+            {
+               "name":"SO2",
+               "size":0.10759933
+            }
+         ]
+      }
    ]
-  },
-  {
-   "name": "Season #2",
-   "children": [
-    {"name": "CO", "size": 0.102594184},
-    {"name": "NO2", "size": 0.960493929},
-    {"name": "Ozone", "size": 7.164177269},
-    {"name": "SO2", "size": 0.115825563}
-   ]
-  },
-  {
-   "name": "Season #3",
-   "children": [
-    {"name": "CO", "size": 0.109903178},
-    {"name": "NO2", "size": 1.060297595},
-    {"name": "Ozone", "size": 6.534804732},
-    {"name": "SO2", "size": 0.121811826}
-   ]
-  },
-  {
-   "name": "Season #4",
-   "children": [
-    {"name": "CO", "size": 0.166119346},
-    {"name": "NO2", "size": 1.754981739},
-    {"name": "Ozone", "size": 4.626864028},
-    {"name": "SO2", "size": 0.10759933}
-   ]
-  }
- ]
 }
