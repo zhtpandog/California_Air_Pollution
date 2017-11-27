@@ -1,0 +1,16 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-121.784217,37.687526]},"properties":{"County":"Alameda","Latitude":37.687526,"Longitude":-121.784217}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.026154,37.936013]},"properties":{"County":"Contra Costa","Latitude":37.936013,"Longitude":-122.026154}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-119.741966,36.705506]},"properties":{"County":"Fresno","Latitude":36.705506,"Longitude":-119.741966}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-124.1775,40.776944]},"properties":{"County":"Humboldt","Latitude":40.776944,"Longitude":-124.1775}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-115.484144,32.676186]},"properties":{"County":"Imperial","Latitude":32.676186,"Longitude":-115.484144}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-117.92391,34.1365]},"properties":{"County":"Los Angeles","Latitude":34.1365,"Longitude":-117.92391}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-117.93845,33.83062]},"properties":{"County":"Orange","Latitude":33.83062,"Longitude":-117.93845}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-117.088649,33.447867]},"properties":{"County":"Riverside","Latitude":33.447867,"Longitude":-117.088649}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-121.38109,38.71209]},"properties":{"County":"Sacramento","Latitude":38.71209,"Longitude":-121.38109}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-117.024484,34.895007]},"properties":{"County":"San Bernardino","Latitude":34.895007,"Longitude":-117.024484}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-117.059075,32.631231]},"properties":{"County":"San Diego","Latitude":32.631231,"Longitude":-117.059075}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-120.02551,34.46245]},"properties":{"County":"Santa Barbara","Latitude":34.46245,"Longitude":-120.02551}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-121.894898,37.348497]},"properties":{"County":"Santa Clara","Latitude":37.348497,"Longitude":-121.894898}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-122.237976,38.102507]},"properties":{"County":"Solano","Latitude":38.102507,"Longitude":-122.237976}}
+]}
