@@ -26,7 +26,7 @@ window.onload = function() {
 
   var layer_co = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/2016_avg_co/MapServer",
-    opacity: 0.45
+    opacity: 0.0
   }).addTo(map);
   layer_group.push(layer_co);
 
@@ -407,15 +407,15 @@ var oz_4 = document.getElementById('oz_4');
                 console.log(props.County);
             }
             // 
-            this._div.innerHTML = '<h4>Pollutantion in California</h4>' +  (props ?
-                ('<b>' + props.County + '<hr>' + 
-                    (props.CO != 0 ? 
+            this._div.innerHTML = '<h4>Pollutants in California State</h4>' +  (props ?
+                ('<p>' + ' -- ' + props.County +  ' ‰' + ' -- ' +'<hr>' + 
+                    "<p>" + (props.CO != 0 ? 
                         "CO: " + Math.round(props.CO * 1000, 3)  + " | " +
                         "NO2: " + Math.round(props.NO2 * 1000, 3)  + " | " +
                         "SO2: " + Math.round(props.SO2 * 1000, 3)  + " | " +
-                        "Ozone: " + Math.round(props.Ozone * 1000, 3) :'No Data'))
+                        "Ozone: " + Math.round(props.Ozone * 1000, 3) + "</br> " +  '</p>' :'No Data' ))
                 // + ' e-3 ppm' 
-                : 'Hover over a state');
+                : '<p>' + 'Zoom out and hover over a station!' + '</p>' );
         };
 
         info.addTo(map);
@@ -467,7 +467,11 @@ function highlightFeature(e) {
 }
 
 function resetHighlight(e) {
-    geoJson.resetStyle(e.target);
+    // geoJson.resetStyle(e.target);
+    var layer = e.target;
+    Myicon = L.icon({iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Map_pin_icon.svg/2000px-Map_pin_icon.svg.png',
+                     iconSize: [25, 35]});
+    layer.setIcon(Myicon);
     // alert(e.target);
     info.update();
 }
