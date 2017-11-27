@@ -1,174 +1,354 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
+<head>
+  <style>
 
-circle,
-path {
-  cursor: pointer;
-}
+  circle,
+  path {
+    cursor: pointer;
+  }
 
-circle {
-  fill: none;
-  pointer-events: all;
-}
+  circle {
+    fill: none;
+    pointer-events: all;
+  }
 
-</style>
+    /*.parent1, .parent2, .parent3, .parent4 {*/
+    .parent {
+      display: table;
+      width: 100%;
+    }
+
+    .child1, .child2, .child3, .child4 {
+      display: table-cell;
+      width: 20%;
+    }
+
+/*    .child1, .child9 {
+      position:absolute;
+      display: table-cell;
+      top: 510px;
+      left: 0px;
+    }
+
+    .child5 {
+      position:absolute;
+      display: table-cell;
+      top: 780px;
+      left: 0px;
+    }
+
+    .child2, .child6, .child10 {
+      position:absolute;
+      display: table-cell;
+      left: 300px;
+    }
+    .child3, .child7, .child11 {
+      position:absolute;
+      display: table-cell;
+      left: 600px;
+    }
+    .child4, .child8, .child12 {
+      position:absolute;
+      display: table-cell;
+      left: 900px;
+  }*/
+
+    .upper {
+      display: table;
+      width: 100%;
+    }
+    
+    .reporter {
+      position:absolute;
+      display: table-cell;
+      top: 60%;
+      left: 15%;
+    }
+    .mainchart {
+      display: table-cell;
+      width: 70%; /* adjust */
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
 <body>
+
+<center>
+  <div class="upper">
+    <div class="reporter">
+      <h3><span id="message" class="badge badge-secondary">Check info here!</span></h3>
+    </div>
+    <div class="mainchart"></div>
+  </div>
+  
+</center>
+
+	<div class ="parent">
+	  <div class="child1"></div>
+	  <div class="child2"></div>  
+	  <div class="child3"></div>
+	  <div class="child4"></div>
+	</div>
+<!-- 	<div class ="parent2">
+	  <div class="child5"></div>
+	  <div class="child6"></div>  
+	  <div class="child7"></div>
+	  <div class="child8"></div>
+	</div> -->
+
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = {top: 350, right: 480, bottom: 350, left: 480},
+var margin = {top: 250, right: 350, bottom: 250, left: 350},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
 
-var hue = d3.scale.category10();
+var margin2 = {top: 100, right: 150, bottom: 100, left: 150},
+    radius2 = Math.min(margin2.top, margin2.right, margin2.bottom, margin2.left) - 10;
 
-var luminance = d3.scale.sqrt()
-    .domain([0, 1e6])
-    .clamp(true)
-    .range([90, 20]);
+var svg;
+var dataset;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", margin.left + margin.right)
-    .attr("height", margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var partition = d3.layout.partition()
-    .sort(function(a, b) { return d3.ascending(a.name, b.name); })
-    .size([2 * Math.PI, radius]);
+function drawPie(svg, dataset, margin, radius) {
 
-var arc = d3.svg.arc()
-    .startAngle(function(d) { return d.x; })
-    .endAngle(function(d) { return d.x + d.dx ; })
-    .padAngle(.01)
-    .padRadius(radius / 3)
-    .innerRadius(function(d) { return radius / 3 * d.depth; })
-    .outerRadius(function(d) { return radius / 3 * (d.depth + 1) - 1; });
+    var hue = d3.scale.category10();
 
-d3.json("flare.json", function(error, root) {
-  if (error) throw error;
+    var luminance = d3.scale.sqrt()
+        .domain([0, 30])
+        .clamp(true)
+        .range([85, 20]);
 
-  // Compute the initial layout on the entire tree to sum sizes.
-  // Also compute the full name and fill color for each node,
-  // and stash the children so they can be restored as we descend.
-  partition
-      .value(function(d) { return d.size; })
-      .nodes(root)
-      .forEach(function(d) {
-        d._children = d.children;
-        d.sum = d.value;
-        d.key = key(d);
-        d.fill = fill(d);
-      });
+    var partition = d3.layout.partition()
+        .sort(function(a, b) { return d3.ascending(a.name, b.name); })
+        .size([2 * Math.PI, radius]);
 
-  // Now redefine the value function to use the previously-computed sum.
-  partition
-      .children(function(d, depth) { return depth < 2 ? d._children : null; })
-      .value(function(d) { return d.sum; });
+    var svg = svg.attr("width", margin.left + margin.right)
+        .attr("height", margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  var center = svg.append("circle")
-      .attr("r", radius / 3)
-      .on("click", zoomOut);
+    var arc = d3.svg.arc()
+        .startAngle(function(d) { return d.x; })
+        .endAngle(function(d) { return d.x + d.dx ; })
+        .padAngle(.01)
+        .padRadius(radius / 3)
+        .innerRadius(function(d) { return radius / 3 * d.depth; })
+        .outerRadius(function(d) { return radius / 3 * (d.depth + 1) - 1; });
 
-  center.append("title")
-      .text("zoom out");
+    d3.json(dataset, function(error, root) {
+      if (error) throw error;
 
-  var path = svg.selectAll("path")
-      .data(partition.nodes(root).slice(1))
-    .enter().append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return d.fill; })
-      .each(function(d) { this._current = updateArc(d); })
-      .on("click", zoomIn);
+      // Compute the initial layout on the entire tree to sum sizes.
+      // Also compute the full name and fill color for each node,
+      // and stash the children so they can be restored as we descend.
+      partition
+          .value(function(d) { return d.size; })
+          .nodes(root)
+          .forEach(function(d) {
+            d._children = d.children;
+            d.sum = d.value;
+            d.key = key(d);
+            d.fill = fill(d);
+          });
 
-  function zoomIn(p) {
-    if (p.depth > 1) p = p.parent;
-    if (!p.children) return;
-    zoom(p, p);
-  }
+      // Now redefine the value function to use the previously-computed sum.
+      partition
+          .children(function(d, depth) { return depth < 2 ? d._children : null; })
+          .value(function(d) { return d.sum; });
 
-  function zoomOut(p) {
-    if (!p.parent) return;
-    zoom(p.parent, p);
-  }
+      var yearsum = partition.nodes(root).slice(1)[0].value + partition.nodes(root).slice(1)[5].value + 
+      partition.nodes(root).slice(1)[15].value + partition.nodes(root).slice(1)[10].value;
+      console.log(yearsum);
 
-  // Zoom to the specified new root.
-  function zoom(root, p) {
-    if (document.documentElement.__transition__) return;
-
-    // Rescale outside angles to match the new layout.
-    var enterArc,
-        exitArc,
-        outsideAngle = d3.scale.linear().domain([0, 2 * Math.PI]);
-
-    function insideArc(d) {
-      return p.key > d.key
-          ? {depth: d.depth - 1, x: 0, dx: 0} : p.key < d.key
-          ? {depth: d.depth - 1, x: 2 * Math.PI, dx: 0}
-          : {depth: 0, x: 0, dx: 2 * Math.PI};
-    }
-
-    function outsideArc(d) {
-      return {depth: d.depth + 1, x: outsideAngle(d.x), dx: outsideAngle(d.x + d.dx) - outsideAngle(d.x)};
-    }
-
-    center.datum(root);
-
-    // When zooming in, arcs enter from the outside and exit to the inside.
-    // Entering outside arcs start from the old layout.
-    if (root === p) enterArc = outsideArc, exitArc = insideArc, outsideAngle.range([p.x, p.x + p.dx]);
-
-    path = path.data(partition.nodes(root).slice(1), function(d) { return d.key; });
-
-    // When zooming out, arcs enter from the inside and exit to the outside.
-    // Exiting outside arcs transition to the new layout.
-    if (root !== p) enterArc = insideArc, exitArc = outsideArc, outsideAngle.range([p.x, p.x + p.dx]);
-
-    d3.transition().duration(d3.event.altKey ? 7500 : 750).each(function() {
-      path.exit().transition()
-          .style("fill-opacity", function(d) { return d.depth === 1 + (root === p) ? 1 : 0; })
-          .attrTween("d", function(d) { return arcTween.call(this, exitArc(d)); })
-          .remove();
-
-      path.enter().append("path")
-          .style("fill-opacity", function(d) { return d.depth === 2 - (root === p) ? 1 : 0; })
+      var path = svg.selectAll("path")
+          .data(partition.nodes(root).slice(1))
+          .enter().append("path")
+          .attr("d", arc)
           .style("fill", function(d) { return d.fill; })
+          .each(function(d) { this._current = updateArc(d); })
           .on("click", zoomIn)
-          .each(function(d) { this._current = enterArc(d); });
+            .on("mouseover", function(d, i){
+              console.log(partition.nodes(root).slice(1));
+              console.log(i);
+              if (i % 5 === 0) d3.select("#message").text(partition.nodes(root).slice(1)[i].name + 
+                ": " + Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+              else {
+                d3.select("#message").text(
+                  partition.nodes(root).slice(1)[i].name + " of " +
+                  partition.nodes(root).slice(1)[i].parent.name + ": " + 
+                  Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+              }
+          });
 
-      path.transition()
-          .style("fill-opacity", 1)
-          .attrTween("d", function(d) { return arcTween.call(this, updateArc(d)); });
+      var center = svg.append("circle")
+          .attr("r", radius / 3)
+          .attr("fill", "black")
+          .on("click", zoomOut);
+
+      center.append("title")
+          .text("zoom out");
+
+      function zoomIn(p) {
+        if (p.depth > 1) p = p.parent;
+        if (!p.children) return;
+        zoom(p, p);
+      }
+
+      function zoomOut(p) {
+        if (!p.parent) return;
+        zoom(p.parent, p);
+      }
+
+      // Zoom to the specified new root.
+      function zoom(root, p) {
+        if (document.documentElement.__transition__) return;
+
+        // Rescale outside angles to match the new layout.
+        var enterArc,
+            exitArc,
+            outsideAngle = d3.scale.linear().domain([0, 2 * Math.PI]);
+
+        function insideArc(d) {
+          return p.key > d.key
+              ? {depth: d.depth - 1, x: 0, dx: 0} : p.key < d.key
+              ? {depth: d.depth - 1, x: 2 * Math.PI, dx: 0}
+              : {depth: 0, x: 0, dx: 2 * Math.PI};
+        }
+
+        function outsideArc(d) {
+          return {depth: d.depth + 1, x: outsideAngle(d.x), dx: outsideAngle(d.x + d.dx) - outsideAngle(d.x)};
+        }
+
+        center.datum(root);
+
+        // When zooming in, arcs enter from the outside and exit to the inside.
+        // Entering outside arcs start from the old layout.
+        if (root === p) enterArc = outsideArc, exitArc = insideArc, outsideAngle.range([p.x, p.x + p.dx]);
+
+        path = path.data(partition.nodes(root).slice(1), function(d) { return d.key; });
+
+        // When zooming out, arcs enter from the inside and exit to the outside.
+        // Exiting outside arcs transition to the new layout.
+        if (root !== p) enterArc = insideArc, exitArc = outsideArc, outsideAngle.range([p.x, p.x + p.dx]);
+
+        d3.transition().duration(d3.event.altKey ? 7500 : 750).each(function() {
+          path.exit().transition()
+              .style("fill-opacity", function(d) { return d.depth === 1 + (root === p) ? 1 : 0; })
+              .attrTween("d", function(d) { return arcTween.call(this, exitArc(d)); })
+              .remove();
+
+          path.enter().append("path")
+              .style("fill-opacity", function(d) { return d.depth === 2 - (root === p) ? 1 : 0; })
+              .style("fill", function(d) { return d.fill; })
+              .on("click", zoomIn)
+            .on("mouseover", function(d, i){
+              console.log(partition.nodes(root).slice(1));
+              console.log(i);
+              if (i % 5 === 0) d3.select("#message").text(partition.nodes(root).slice(1)[i].name + 
+                ": " + Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+              else {
+                d3.select("#message").text(
+                  partition.nodes(root).slice(1)[i].name + " of " +
+                  partition.nodes(root).slice(1)[Math.floor(i/5) * 5].name + ": " + 
+                  Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+              }
+          })
+              .each(function(d) { this._current = enterArc(d); });
+
+          path.transition()
+              .style("fill-opacity", 1)
+              .attrTween("d", function(d) { return arcTween.call(this, updateArc(d)); });
+        });
+      }
     });
-  }
-});
 
-function key(d) {
-  var k = [], p = d;
-  while (p.depth) k.push(p.name), p = p.parent;
-  return k.reverse().join(".");
+    function key(d) {
+      var k = [], p = d;
+      while (p.depth) k.push(p.name), p = p.parent;
+      return k.reverse().join(".");
+    }
+
+    function fill(d) {
+      var p = d;
+      while (p.depth > 1) p = p.parent;
+      var c = d3.lab(hue(p.name));
+      c.l = luminance(d.sum);
+      return c;
+    }
+
+    function arcTween(b) {
+      var i = d3.interpolate(this._current, b);
+      this._current = i(0);
+      return function(t) {
+        return arc(i(t));
+      };
+    }
+
+    function updateArc(d) {
+      return {depth: d.depth, x: d.x, dx: d.dx};
+    }
+
+    d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
 }
 
-function fill(d) {
-  var p = d;
-  while (p.depth > 1) p = p.parent;
-  var c = d3.lab(hue(p.name));
-  c.l = luminance(d.sum);
-  return c;
-}
+svg = d3.select(".mainchart").append("svg");  
+dataset = "pollution.json";      
+drawPie(svg, dataset, margin, radius);
 
-function arcTween(b) {
-  var i = d3.interpolate(this._current, b);
-  this._current = i(0);
-  return function(t) {
-    return arc(i(t));
-  };
-}
+svg = d3.select(".child1").append("svg");
+dataset = "pollution.json";  
+drawPie(svg, dataset, margin2, radius2);
 
-function updateArc(d) {
-  return {depth: d.depth, x: d.x, dx: d.dx};
-}
+svg = d3.select(".child2").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
 
-d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
+svg = d3.select(".child3").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child4").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child1").append("svg");
+dataset = "pollution.json";  
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child2").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child3").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child4").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child1").append("svg");
+dataset = "pollution.json";  
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child2").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child3").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+svg = d3.select(".child4").append("svg");
+dataset = "pollution.json"; 
+drawPie(svg, dataset, margin2, radius2);
+
+
 
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
