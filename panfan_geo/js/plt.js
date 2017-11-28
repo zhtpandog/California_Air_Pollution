@@ -4,8 +4,7 @@ var dash_line_margin = {top: 20, right: 20, bottom: 30, left: 50};
 var dash_line_w = 400;
 var dash_line_h = 300;
 
-
-// createLineGraph("dash", "Alameda", "dash_line", "js/hour_season_county.json", dash_line_w, dash_line_h, dash_line_margin, "1", "so2");
+// console.log(d3.select("#dash_pie").attr("width"))
 
 function createLineGraph(graphId, county, placeId, data, w, h, margin, season, pollutant) {
     // pollutant is no2, so2, co, ozone

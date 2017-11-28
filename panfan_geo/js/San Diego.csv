@@ -1,0 +1,21 @@
+County,Pollutant,Sample
+Imperial,CO,0.007042831
+Los Angeles,CO,0.010199964
+Orange,CO,0.011896499
+Riverside,CO,0.007154904
+San Diego,CO,0.011467177
+Imperial,NO2,0.08267239
+Los Angeles,NO2,0.154868223
+Orange,NO2,0.158806263
+Riverside,NO2,0.084669058
+San Diego,NO2,0.093091472
+Imperial,Ozone,0.432601965
+Los Angeles,Ozone,0.412432205
+Orange,Ozone,0.417756155
+Riverside,Ozone,0.52324289
+San Diego,Ozone,0.495797266
+Imperial,SO2,0.009386846
+Los Angeles,SO2,0.007901866
+Orange,SO2,0.001511487
+Riverside,SO2,0.003125907
+San Diego,SO2,0.001276565
