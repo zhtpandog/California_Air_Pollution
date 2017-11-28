@@ -1,6 +1,6 @@
 ﻿var organs_config = {
 	'organ_1':{
-		'hover': '<b><u>APPENDIX</u></b><br><span style="color: yellow">Write any text and load images!</span><br><img src="example.png">',//organ hover content
+		'hover': '<b><u>APPENDIX</u></b><br><span style="color: yellow">HAHAHAHAHAHWrite any text and load images!</span><br><img src="example.png">',//organ hover content
 		'enable':true,//true/false to enable/disable this organ
 		'url':'http://codecanyon.net/user/art101/portfolio',//Goto URL
 		'target':'same_window',//open link in new window:new_window, open in current window:same_window, or none for nothing.
