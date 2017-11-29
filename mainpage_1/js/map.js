@@ -10,11 +10,12 @@ window.onload = function() {
     // var map = L.map('mapid').setView([34.0522, -118.2437], 10);
     document.getElementById("bar_buttons").style.visibility = "hidden";
     document.getElementById("checkboxes").style.visibility = "hidden";
-    mycolor = d3.rgb("#FFFAF0");
-    d3.select("body").style("background-color", mycolor) 
-    var map = L.map('mapid').setView([36.3382, -120.8863], 6);
+    // mycolor = d3.rgb("#FFFAF0");
+    // d3.select("body").style("background-color", mycolor) 
+    var map = L.map('mapid').setView([37.5, -120.5], 6);
     // 37.3382° N, 121.8863° 
     layer_group = [];
+    current_layer = null;
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 10,
@@ -34,79 +35,68 @@ window.onload = function() {
   var layer_co = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/2016_avg_co/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_co);
+  });
 
 //ozone
   var layer_ozone = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/ozone_avg_2016/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_ozone);
+  });
 
 //SO2
   var layer_so2 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/so2_2016_2/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_so2);
+  });
 
 //no2
   var layer_no2 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/no2_avg_2016/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_no2);
+  });
 
 
 //Co season1 
   var layer_co1 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/co_spring/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_co1);
+  });
 
 //Co season2
   var layer_co2 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/co_summer/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_co2);
+  });
 
 //Co season3
   var layer_co3 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/co_fall/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_co3);
+  });
 
 //Co season4
   var layer_co4 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/co_winter/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_co4);
+  });
 
 //NO2 season1
 var layer_no21 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/no2_spring/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_no21);
+  });
 
 //NO2 season2
 var layer_no22 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/no2_summer/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_no22);
+  });
 
 //NO2 season3
 var layer_no23 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/no2_fall/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_no23);
+  });
 
 //NO2 season4
 // var layer21 = L.esri.tiledMapLayer({
@@ -119,181 +109,282 @@ var layer_no23 = L.esri.tiledMapLayer({
 var layer_so21 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/sp_so2/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_so21);
+  });
 
 //So2 season2
 var layer_so22 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/sum_so2/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_so22);
+  });
 
 // So2 season3
 var layer_so23 = L.esri.tiledMapLayer({
     url: "https://services1.arcgis.com/ZIL9uO234SBBPGL7/arcgis/rest/services/no2_2016/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_so23);
+  });
 
 //So2 season4
 var layer_so24 = L.esri.tiledMapLayer({
     url: "https://services1.arcgis.com/ZIL9uO234SBBPGL7/arcgis/rest/services/no2_2016/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_so24);
+  });
 
 //Ozone season1
 var layer_ozone1 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/sp_ozone/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_ozone1); 
+  }); 
 
 //Ozone season2
 var layer_ozone2 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/sum_ozone/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_ozone2); 
+  }); 
 
 //Ozone season3
 var layer_ozone3 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/aut_ozone/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_ozone3);
+  });
 
 //Ozone season4
 var layer_ozone4 = L.esri.tiledMapLayer({
     url: "https://tiles.arcgis.com/tiles/ZIL9uO234SBBPGL7/arcgis/rest/services/win_ozone/MapServer",
     opacity: 0.0
-  }).addTo(map);
-  layer_group.push(layer_ozone4);
+  });
 
 
  var co_y = document.getElementById('co_y');
  co_y.addEventListener('click', e => {
     lastClicked = "co_y";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_co);
-    layer_co.setOpacity(0.25);})
+    layer_co.setOpacity(0.45);
+    current_layer = layer_co;
+    })
 
 var co_1 = document.getElementById('co_1');
  co_1.addEventListener('click', e => {
     lastClicked = "co_1";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_co1);
-    layer_co1.setOpacity(0.25);})
+    layer_co1.setOpacity(0.45);
+    current_layer = layer_co1;
+   
+    })
 
 var co_2 = document.getElementById('co_2');
  co_2.addEventListener('click', e => {
     lastClicked = "co_2";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_co2);
-    layer_co2.setOpacity(0.25);})
+    layer_co2.setOpacity(0.45);
+    current_layer = layer_co2;
+   
+    })
 
 var co_3 = document.getElementById('co_3');
  co_3.addEventListener('click', e => {
     lastClicked = "co_3";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_co3);
-    layer_co3.setOpacity(0.25);})
+    layer_co3.setOpacity(0.45);
+    current_layer = layer_co3;
+   
+    })
 
 var co_4 = document.getElementById('co_4');
  co_4.addEventListener('click', e => {
     lastClicked = "co_4";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_co4);
-    layer_co4.setOpacity(0.25);})
+    layer_co4.setOpacity(0.45);
+    current_layer = layer_co4;
+   
+    })
 
 var so2_y = document.getElementById('so2_y');
  so2_y.addEventListener('click', e => {
     lastClicked = "so2_y";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_so2);
-    layer_so2.setOpacity(0.25);})
+    layer_so2.setOpacity(0.45);
+    current_layer = layer_so2;
+   
+    })
 
 var so2_1 = document.getElementById('so2_1');
  so2_1.addEventListener('click', e => {
     lastClicked = "so2_1";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_so21);
-    layer_so21.setOpacity(0.25);})
+    layer_so21.setOpacity(0.45);
+     current_layer = layer_so21;
+    })
 
 var so2_2 = document.getElementById('so2_2');
  so2_2.addEventListener('click', e => {
     lastClicked = "so2_2";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_so22);
-    layer_so22.setOpacity(0.25);})
+    layer_so22.setOpacity(0.45);
+    current_layer = layer_so22;
+    })
 
 var so2_3 = document.getElementById('so2_3');
  so2_3.addEventListener('click', e => {
     lastClicked = "so2_3";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_so23);
-    layer_so23.setOpacity(0.25);})
+    layer_so23.setOpacity(0.45);
+    current_layer = layer_so23;
+    })
 
 var so2_4 = document.getElementById('so2_4');
  so2_4.addEventListener('click', e => {
     lastClicked = "so2_4";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_so24);
-    layer_so24.setOpacity(0.25);})
+    layer_so24.setOpacity(0.45);
+    current_layer = layer_so24;
+    })
 
  var no2_y = document.getElementById('no2_y');
  no2_y.addEventListener('click', e => {
     lastClicked = "no2_y";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_no2);
-    layer_no2.setOpacity(0.25);})
+    layer_no2.setOpacity(0.45);
+    current_layer = layer_no2;
+    })
 
  var no2_1 = document.getElementById('no2_1');
  no2_1.addEventListener('click', e => {
     lastClicked = "no2_1";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_no21);
-    layer_no21.setOpacity(0.25);})
+    layer_no21.setOpacity(0.45);
+    current_layer = layer_no21;
+    })
 
 var no2_2 = document.getElementById('no2_2');
  no2_2.addEventListener('click', e => {
     lastClicked = "no2_2";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_no22);
-    layer_no22.setOpacity(0.25);})
+    layer_no22.setOpacity(0.45);
+    current_layer = layer_no22;
+    })
 
 var no2_3 = document.getElementById('no2_3');
  no2_3.addEventListener('click', e => {
     lastClicked = "no2_3";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_no23);
-    layer_no23.setOpacity(0.25);})
+    layer_no23.setOpacity(0.45);
+    current_layer = layer_no23;
+    })
 
 
 var no2_4 = document.getElementById('no2_4');
  no2_4.addEventListener('click', e => {
     lastClicked = "no2_4";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_no24);
-    layer_no24.setOpacity(0.25);})
+    layer_no24.setOpacity(0.45);
+    current_layer = layer_no24;
+    })
 
 var oz_y = document.getElementById('oz_y');
  oz_y.addEventListener('click', e => {
     lastClicked = "oz_y";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_ozone);
-    layer_ozone.setOpacity(0.25);})
+    layer_ozone.setOpacity(0.45);
+    current_layer = layer_ozone;
+    })
 
 var oz_1 = document.getElementById('oz_1');
  oz_1.addEventListener('click', e => {
     lastClicked = "oz_1";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_ozone1);
-    layer_ozone1.setOpacity(0.25);})
+    layer_ozone1.setOpacity(0.45);
+    current_layer = layer_ozone1;
+
+    })
 
 var oz_2 = document.getElementById('oz_2');
  oz_2.addEventListener('click', e => {
     lastClicked = "oz_2";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_ozone2);
-    layer_ozone2.setOpacity(0.25);})
+    layer_ozone2.setOpacity(0.45);
+   current_layer = layer_ozone2;
+    })
 
 var oz_3 = document.getElementById('oz_3');
  oz_3.addEventListener('click', e => {
     lastClicked = "oz_3";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_ozone3);
-    layer_ozone3.setOpacity(0.25);})
+    layer_ozone3.setOpacity(0.45);
+   current_layer = layer_ozone3;
+    })
 
 var oz_4 = document.getElementById('oz_4');
  oz_4.addEventListener('click', e => {
     lastClicked = "oz_4";
+    if (current_layer != null) {
+      map.removeLayer(current_layer);
+    }
     map.addLayer(layer_ozone4);
-    layer_ozone4.setOpacity(0.25);})
+    layer_ozone4.setOpacity(0.45);
+   current_layer = layer_ozone4;
+    })
 
+function update_layer(layer) {
+  old_layer = layer_group.pop();
 
+}
 
   // function visibility(name) {
   //   for (var i = 0; i < layer_group.length; i++) {
@@ -301,84 +392,84 @@ var oz_4 = document.getElementById('oz_4');
   //   }
   //   if (name == "no2") {
   //     map.addLayer(layer_no2);
-  //     layer.setOpacity(0.25);
+  //     layer.setOpacity(0.45);
   //   } 
 
   //   else if (name == "co") {
   //     map.addLayer(layer_co);
-  //     layer_co.setOpacity(0.25);
+  //     layer_co.setOpacity(0.45);
   //   }
   //   else if (name == "so2") {
   //     map.addLayer(layer_so2);
-  //     layer_so2.setOpacity(0.25);
+  //     layer_so2.setOpacity(0.45);
   //   }
   //   else if (name == "ozone") {
   //     map.addLayer(layer_ozone);
-  //     layer_ozone.setOpacity(0.25);
+  //     layer_ozone.setOpacity(0.45);
   //   }
   //   else if (name == "s1_co") {
   //     map.addLayer(layer_co1);
-  //     layer_co1.setOpacity(0.25);
+  //     layer_co1.setOpacity(0.45);
   //   }
   //   else if (name == "s2_co") {
   //     map.addLayer(layer_co2);
-  //     layer_co2.setOpacity(0.25);
+  //     layer_co2.setOpacity(0.45);
   //   }
   //   else if (name == "s3_co") {
   //     map.addLayer(layer_co3);
-  //     layer_co3.setOpacity(0.25);
+  //     layer_co3.setOpacity(0.45);
   //   }
   //   else if (name == "s4_co") {
   //     map.addLayer(layer_co4);
-  //     layer_co4.setOpacity(0.25);
+  //     layer_co4.setOpacity(0.45);
   //   }
   //   else if (name == "s1_so2") {
   //     map.addLayer(layer_so21);
-  //     layer_so21.setOpacity(0.25);
+  //     layer_so21.setOpacity(0.45);
   //   }
   //   else if (name == "s2_so2") {
   //     map.addLayer(layer_so22);
-  //     layer_so22.setOpacity(0.25);
+  //     layer_so22.setOpacity(0.45);
   //   }
   //   else if (name == "s3_so2") {
   //     map.addLayer(layer_so23);
-  //     layer_so23.setOpacity(0.25);
+  //     layer_so23.setOpacity(0.45);
   //   }
   //   else if (name == "s4_so2") {
   //     map.addLayer(layer_so24);
-  //     layer_so24.setOpacity(0.25);
+  //     layer_so24.setOpacity(0.45);
   //   }
   //   else if (name == "s1_no2") {
   //     map.addLayer(layer_no21);
-  //     layer_no21.setOpacity(0.25);
+  //     layer_no21.setOpacity(0.45);
   //   }
   //   else if (name == "s2_no2") {
   //     map.addLayer(layer_no22);
-  //     layer_no22.setOpacity(0.25);
+  //     layer_no22.setOpacity(0.45);
   //   }
   //   else if (name == "s3_no2") {
   //     map.addLayer(layer_no23);
-  //     layer_no23.setOpacity(0.25);
+  //     layer_no23.setOpacity(0.45);
   //   }
   //   else if (name == "s4_no2") {
   //     map.addLayer(layer_no24);
-  //     layer_no24.setOpacity(0.25);
+  //     layer_no24.setOpacity(0.45);
   //   }
   //   else if (name == "s1_ozone") {
   //     map.addLayer(layer_ozone1);
-  //     layer_ozone1.setOpacity(0.25);
+  //     layer_ozone1.setOpacity(0.45);
   //   }
   //   else if (name == "s2_ozone") {
   //     map.addLayer(layer_ozone2);
-  //     layer_ozone2.setOpacity(0.25);
+  //     layer_ozone2.setOpacity(0.45);
   //   }
   //   else if (name == "s3_ozone") {
   //     map.addLayer(layer_ozone3);
-  //     layer_ozone3.setOpacity(0.25);
+  //     layer_ozone3.setOpacity(0.45);
   //   }
   //   else if (name == "s4_ozone") {
   //     map.addLayer(layer_ozone4);
-  //     layer_ozone4.setOpacity(0.25);
+  //     layer_ozone4.setOpacity(0.45);
   //   }
   // }
     // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>line</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+
+		<style type="text/css" src="line_style_seasonly.css"></style>
+
+	</head>
+	<body>
+
+
+		<div class="row">
+			<div class="col"></div>
+			<div class="col">
+				<div class="col">
+					<h2 src="file:///index.html">Seasonly Average</h2>
+					<!-- <span style="font-family:sans-serif; font-size: 35px">Average</span>
+					<select id="yearseason">
+						<option value="Yearly" selected="selected" id="Yearly" class="yearseasonchoice">Yearly</option>
+		                <option value="Seasonly" id="Seasonly" class="yearseasonchoice">Seasonly</option>
+					</select> -->
+				</div>
+				<div>
+					<div class="row text-center">
+					<label for="danger" class="btn btn-danger"><input type="checkbox" id="m_no2" class="badgebox">NO2</label>
+					<label for="info" class="btn btn-info ml-2"><input type="checkbox" id="m_so2" class="badgebox" checked="true">SO2</label>
+		        	<label for="success" class="btn btn-success ml-2"><input type="checkbox" id="m_co" class="badgebox">CO</label>
+		        	<label for="warning" class="btn btn-warning ml-2"><input type="checkbox" id="m_ozone" class="badgebox">OZone</label>
+		       		
+
+		        	<!-- <span style="padding-left:100px"></span>
+				    <select id="seasonselect">
+						<option value="Spring" selected="selected" id="Spring">Spring</option>
+		                <option value="Summer" id="Summer">Summer</option>
+		                <option value="Autumn" id="Autumn">Autumn</option>
+		                <option value="Winter" id="Winter">Winter</option>
+					</select> -->
+
+				    <span style="padding-left:200px"></span>
+				    <select id="inds">
+						<option value="Alameda" selected="selected" id="Alameda">Alameda</option>
+		                <option value="Contra Costa" id="Contra Costa">Contra Costa</option>
+		                <option value="Fresno" id="Fresno">Fresno</option>
+		                <option value="Humboldt" id="Humboldt">Humboldt</option>
+		                <option value="Imperial" id="Imperial">Imperial</option>
+		                <option value="Los Angeles" id="Los Angeles">Los Angeles</option>
+		                <option value="Orange" id="Orange">Orange</option>
+		                <option value="Riverside" id="Riverside">Riverside</option>
+		                <option value="Sacramento" id="Sacramento">Sacramento</option>
+		                <option value="San Bernardino" id="San Bernardino">San Bernardino</option>
+		                <option value="San Diego" id="San Diego">San Diego</option>
+		                <option value="Santa Barbara" id="Santa Barbara">Santa Barbara</option>
+		                <option value="Santa Clara" id="Santa Clara">Santa Clara</option>
+		                <option value="Solano" id="Solano">Solano</option>
+					</select>
+
+			</div>
+				
+				</div>
+		    </div>
+			<div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h3>Spring</h3></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h3>Summer</h3></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col jumbotron" id="main"></div>
+		  <div class="col" id="main2"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h3>Autumn</h3></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h3>Winter</h3></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col" id="main3"></div>
+		  <div class="col" id="main4"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col" id="monday">
+		  <div class="col"><h3 style="padding-left:50px">Monday</h3></div>
+		  	<div>
+		  		<span style="padding-left:20px"></span>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "mon_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+
+		  <div class="col" id="tuesday">
+		  	<div class="col"><h3 style="padding-left:50px">Tuesday</h3></div>
+		  	<div>
+		  		<span style="padding-left:20px"></span>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "tue_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="wednesday">
+		  	<div class="col"><h3 style="padding-left:50px">Wednesday</h3></div>
+		  	<div>
+		  		<span style="padding-left:20px"></span>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "wed_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="thursday">
+		  	<div class="col"><h3 style="padding-left:50px">Thursday</h3></div>
+		  	<div>
+		  		<span style="padding-left:20px"></span>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "thu_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="friday">
+		  	<div class="col"><h3 style="padding-left:50px">Friday</h3></div>
+		  	<div>
+		  		<span style="padding-left:20px"></span>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "fri_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="saturday">
+		  	<div class="col"><h3 style="padding-left:50px">Saturday</h3></div>
+		  	<div>
+		  		<span style="padding-left:20px"></span>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sat_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		  <div class="col" id="sunday">
+		  	<div class="col"><h3 style="padding-left:50px">Sunday</h3></div>
+		  	<div>
+		  		<span style="padding-left:20px"></span>
+					<label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_no2" value="">NO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_so2" value="" checked="true">SO2
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_co" value="">CO
+				    </label>
+				    <label class="checkbox-inline">
+				      <input type="checkbox" id= "sun_ozone" value="">Ozone
+				    </label>
+				</div>
+		  </div>
+		</div>
+
+
+		<!-- <div class="line" id="main"></div> -->
+		<!-- <div><a href="file:///Users/ZhangHaotian/desktop/inf554/project-lorelei/pieChart/index.html">Pie Chart</a></div> -->
+
+		<script type="text/javascript" src="lineChart_seasonly.js"></script>
+		
+		<script type="text/javascript">
+		</script>
+
+	</body>
+</html>

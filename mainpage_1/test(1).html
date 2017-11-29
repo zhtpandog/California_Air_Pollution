@@ -37,13 +37,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 
-
-
-    
-
      <style type="text/css">
         body { margin:0; padding:0; }
-        #mapid { position: absolute; top:150px; bottom:0px; right:20px; left:20px; height: 780px; width: 600px}
+        #mapid { position: absolute; top:100px; bottom:0px; right:20px; left:20px; height: 790px; width: 550px}
         .legend {
             line-height: 18px;
             color: #555;
@@ -126,34 +122,44 @@
           display:inline;
         }
 
+        .custom {
+         width: 130px !important;
+     }
+
 
         }
     </style>
 </head>
 <body>
-<button id = 'co_y'>2016_Year_Avg_CO</button>
-<button id = 'co_1'>2016_Spring_CO</button>
-<button id = 'co_2'>2016_Summer_CO</button>
-<button id = 'co_3'>2016_Autumn_CO</button>
-<button id = 'co_4'>2016_Winter_CO</button>
 
-<button id = 'no2_y'>2016_Year_Avg_NO2</button>
-<button id = 'no2_1'>2016_Spring_NO2</button>
-<button id = 'no2_2'>2016_Summer_NO2</button>
-<button id = 'no2_3'>2016_Autumn_NO2</button>
-<button id = 'no2_4'>2016_Winter_NO2</button>
+<div class = "container-fluid">
+  <div class="row m-1">
+    <button id = 'co_y' type="button" class="btn btn-primary custom">CO: Year </button>
+    <button id = 'co_1' type="button" class="btn btn-success ml-1 custom">CO: Spring </button>
+    <button id = 'co_2' type="button" class="btn btn-info ml-1 custom">CO: Summer </button>
+    <button id = 'co_3' type="button" class="btn btn-warning ml-1 custom">CO: Autumn </button>
+    <button id = 'co_4' type="button" class="btn btn-danger ml-1 custom">CO: Winter </button>
+    <button id = 'no2_y' type="button" class="btn btn-primary ml-2 custom">NO2: Year </button>
+    <button id = 'no2_1' type="button" class="btn btn-success ml-1 custom">NO2: Spring </button>
+    <button id = 'no2_2' type="button" class="btn btn-info ml-1 custom">NO2: Summer </button>
+    <button id = 'no2_3' type="button" class="btn btn-warning ml-1 custom">NO2: Autumn </button>
+    <button id = 'no2_4' type="button" class="btn btn-danger ml-1 custom">NO2: Winter </button>
+  </div>
+  <div class="row m-1">
+    <button id = 'so2_y' type="button" class="btn btn-primary custom">SO2:Year</button>
+    <button id = 'so2_1' type="button" class="btn btn-success ml-1 custom">SO2:Spring</button>
+    <button id = 'so2_2' type="button" class="btn btn-info ml-1 custom">SO2:Summer</button>
+    <button id = 'so2_3' type="button" class="btn btn-warning ml-1 custom">SO2:Autumn</button>
+    <button id = 'so2_4' type="button" class="btn btn-danger ml-1 custom">SO2:Winter</button>
+    <button id = 'oz_y' type="button" class="btn btn-primary ml-2 custom">Ozone:Year</button>
+    <button id = 'oz_1' type="button" class="btn btn-success ml-1 custom">Ozone:Spring</button>
+    <button id = 'oz_2' type="button" class="btn btn-info ml-1 custom">Ozone:Summer</button>
+    <button id = 'oz_3' type="button" class="btn btn-warning ml-1 custom">Ozone:Autumn</button>
+    <button id = 'oz_4' type="button" class="btn btn-danger ml-1 custom">Ozone:Winter</button>
+  </div>
+</div>
 
-<button id = 'so2_y'>2016_Year_Avg_SO2</button>
-<button id = 'so2_1'>2016_Spring_SO2</button>
-<button id = 'so2_2'>2016_Summer_SO2</button>
-<button id = 'so2_3'>2016_Autumn_SO2</button>
-<button id = 'so2_4'>2016_Winter_SO2</button>
 
-<button id = 'oz_y'>2016_Year_Avg_Ozone</button>
-<button id = 'oz_1'>2016_Spring_Ozone</button>
-<button id = 'oz_2'>2016_Summer_Ozone</button>
-<button id = 'oz_3'>2016_Autumn_Ozone</button>
-<button id = 'oz_4'>2016_Winter_Ozone</button>
 <div id="mapid"></div>
 
 <div id="chartArea1" width="600px" height = "500px" style="padding-left:700px; padding-top:100px">

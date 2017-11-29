@@ -20,10 +20,20 @@
 <style type="text/css" src="line_style_yearly.css"></style>
 
   <style>
+  #mystyle {
+    background-color: #262626;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 0px;
+  }
   body {
       position: relative; 
       background-color: black;
   }
+  .dropdown-toggle {
+    font-size: 16px;
+  }
+
   .affix {
       top:0;
       width: 100%;
@@ -37,26 +47,29 @@
      position: relative;
      top: 1px;
   }
-  #section1 {padding-top:50px;height:1200px;color: #fff; background-color: #493d26;}
-  #section2 {padding-top:50px;height:1200px;color: #fff; background-color: black;}
-  #section3 {padding-top:50px;height:1200px;color: black; background-color: white;}
-  #section4 {padding-top:50px;height:1200px;color: #fff; background-color: black;}
-  #section5 {padding-top:50px;height:1300px;color: white; background-color: black;}
-  #section5-2 {padding-top:50px;height:1300px;color: white; background-color: black;}
-  #section6 {padding-top:50px;height:800px;color: #fff; background-color: black;}
-  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
-  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+  .selections {
+    font-size: 16px;
+  }
+  #section1 {padding-top:0px;height:700px;color: #fff; background-color: #493d26;}
+  #section2 {padding-top:0px;height:1000px;color: #fff; background-color: white;}
+  #section3 {padding-top:10px;height:1100px;color: black; background-color: white;}
+  #section4 {padding-top:10px;height:800px;color: #fff; background-color: black;}
+  #section5 {padding-top:10px;height:1300px;color: white; background-color: black;}
+  #section5-2 {padding-top:10px;height:1500px;color: white; background-color: black;}
+  #section6 {padding-top:10px;height:800px;color: #fff; background-color: black;}
+  #section41 {padding-top:10px;height:300px;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:10px;height:300px;color: #fff; background-color: #009688;}
   </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 
 <div id = "title" style="background-color:#262626; color: #e5e4e2; height: 70px;">
-  <h1 style="font-size: 40pt;"> <center>California Air Pollution Dashboard</center></h1>
+  <h1 style="font-size: 40pt; padding-top: 10px; padding-bottom: 10px"> <center>California Air Pollution Dashboard</center></h1>
 </div>
-<div class="container-fluid" style="background-color:black;color:#fff;height: 100%;">
+<!-- <div class="container-fluid" style="background-color:black;color:#fff;height: 100%;">
   <img src="Pollution.png" alt="pollution" style='height: 100%; width: 100%;'/>
-</div>
+</div> -->
 
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="500">
   <div class="container-fluid">
@@ -66,22 +79,22 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#"><strong>CA AIR POLLUTION DASHBOARD</strong></a>
+      <!-- <a class="navbar-brand" href="#"><strong>CA AIR POLLUTION DASHBOARD</strong></a> -->
     </div>
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="#section1">Introdution</a></li>
-          <li><a href="#section2">Map & Dashboard</a></li>
-          <li><a href="#section3">Geographical Comparison</a></li>
-          <li><a href="#section4">Pollution Composition</a></li>
-          <li><a href="#section5">Yearly Trend Analysis</a></li>
-          <li><a href="#section5-2">Seasonly Trend Analysis</a></li>
-          <li><a href="#section6">Bodily Harm</a></li>
+          <li><a href="#section1" class= "selections">Introdution</a></li>
+          <li><a href="#section2" class= "selections">Map & Dashboard</a></li>
+          <li><a href="#section3" class= "selections">Geographical Comparison</a></li>
+          <li><a href="#section4" class= "selections">Pollution Composition</a></li>
+          <li><a href="#section5" class= "selections">Yearly Trend</a></li>
+          <li><a href="#section5-2" class= "selections">Seasonly Trend</a></li>
+          <li><a href="#section6" class= "selections">Bodily Harm</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Information<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#section41">Data Processing</a></li>
-              <li><a href="#section42">Team</a></li>
+              <li><a href="#section41" class= "selections">Data Source</a></li>
+              <li><a href="#section42" class= "selections">Team</a></li>
             </ul>
           </li>
         </ul>
@@ -91,11 +104,10 @@
 </nav>    
 
 <div id="section1" class="container-fluid">
-  
   <br></br>
   <div class="col-sm-4">
-      <h1 style="margin-top:30%">Introduction</h1>
-    <p style="font-size:20px; margin-top:10%">California is known to have the most polluted air in the US. In a 2011 survey done by Public Policy Institute of California, about 45% of the Los Angeles surveyees showed concern about air pollution. While most of us do not have direct control over the issue, as residents of CA, it is still important for us to have a better understanding of the current air pollution situation in order to make wiser decisions for ourselves, our family and our society. This website aims to provide not only a real-time dashboard of air pollution readings but also a thorough analysis of pollution data from the past year. We carefully selected data from 14 monitor stations located in the most populated areas in CA. The visualizations presented will be relevant to both environmentalists who study the issue in depth as well as commoners who just want to be a little more informed.</p>
+      <h1 style="margin-top:20%">Introduction</h1>
+    <p style="font-size:14px; margin-top:0%">California is known to have the most polluted air in the US. In a 2011 survey done by Public Policy Institute of California, about 45% of the Los Angeles surveyees showed concern about air pollution. While most of us do not have direct control over the issue, as residents of CA, it is still important for us to have a better understanding of the current air pollution situation in order to make wiser decisions for ourselves, our family and our society. This website aims to provide not only a real-time dashboard of air pollution readings but also a thorough analysis of pollution data from the past year. We carefully selected data from 14 monitor stations located in the most populated areas in CA. The visualizations presented will be relevant to both environmentalists who study the issue in depth as well as commoners who just want to be a little more informed.</p>
   </div>
   <div class="col-sm-8">
   <center><div id="myCarousel" class="carousel slide" data-ride="carousel" style="display: inline-block; width: 100%; height: 100%; object-fit: contain;">
@@ -110,7 +122,7 @@
     <div class="carousel-inner" style="width: 100%; height: 100%; object-fit: contain;">
 
       <div class="item active">
-        <img src="la.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="la2.jpg" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
           <h3>Los Angeles</h3>
           <p>In general most polluted city in USA</p>
@@ -118,7 +130,7 @@
       </div>
 
       <div class="item">
-        <img src="fresno.jpg" alt="Fresno" style="width:100%;height:80%">
+        <img src="fre.jpg" alt="Fresno" style="width:100%;height:80%">
         <div class="carousel-caption">
           <h3>Fresno</h3>
           <p>3rd most PM2.5 polluted city in USA</p>
@@ -126,7 +138,7 @@
       </div>
     
       <div class="item">
-        <img src="sandiego.jpg" alt="New York" style="width:100%;height:120%">
+        <img src="sd.jpg" alt="New York" style="width:100%;height:120%">
         <div class="carousel-caption">
           <h3>San Diego</h3>
           <p>7th most Ozone polluted city in USA</p>
@@ -147,18 +159,18 @@
   </div>
 </div></center>
 </div>
-
+<div id = "mystyle"><h1 style = "color: white;">Map & Dashboard</h1></div>
 <div id="section2" class="container-fluid">
-  <h1>Map & Dashboard</h1>
-  <div style="margin: 0 auto; width:100%; height:1000px;">
+<!--   <h1>Map & Dashboard</h1> -->
+  <div style="margin: 0 auto; width:100%; height:990px;">
     <object type="text/html" data="test(1).html"
             style="width:100%; height:100%; ">
     </object>
 </div>
 
 </div>
+<div id = "mystyle"><h1 style = "color: white;">Geographical Comparison</h1></div>
 <div id="section3" class="container-fluid">
-  <h1>Geographical Comparison</h1>
   <p style="color: white;">space</p>
   <div style="width: 500px; display: inline-block;">
     <p style="font-size: 12pt;"> – Click on the squares to add/remove pollutant(s): </p>
@@ -1986,16 +1998,18 @@
       })
   </script>
 </div>
+<div id = "mystyle"><h1 style = "color: white;">Pollution Composition</h1></div>
 <div id="section4" class="container-fluid">
-  <h1>Pollution Composition</h1>
-  <div style="margin: 0 auto; width:100%; height:1200px;"> 
+<!--   <h1>Pollution Composition</h1> -->
+  <div style="margin: 0 auto; width:100%; height:600px;"> 
    <object type="text/html" data="index_dount.html" style="width:100%; height:100%;">
     </object>
   </div> 
   
 </div>
+<!-- <div id = "mystyle"><h1 style = "color: white;">Yearly Trend</h1></div> -->
 <div id="section5" class="container-fluid">
-  <h1>Yearly Trend Analysis</h1>
+  <h1>Yearly Trend</h1>
   <div style="margin: 0 auto; width:100%; height:1200px;">
     <object type="text/html" data="index_line_year.html" style="width:100%; height:100%;">
     </object>
@@ -2003,9 +2017,9 @@
 </div>
 
 <div id="section5-2" class="container-fluid">
-  <h1>Seasonly Trend Analysis</h1>
+  <h1>Seasonly Trend</h1>
   <div style="margin: 0 auto; width:100%; height:1200px;">
-    <object type="text/html" data="index line_season.html" style="width:100%; height:100%;">
+    <object type="text/html" data="index line_season2.html" style="width:100%; height:100%;">
     </object></div>
 </div>
 
@@ -2014,12 +2028,12 @@
   <p>to be filled</p>
 </div>
 <div id="section41" class="container-fluid">
-  <h1>Data Processing</h1>
+  <h1>Data Source</h1>
   <p>to be filled</p>
 </div>
 <div id="section42" class="container-fluid">
   <h1>Team</h1>
-  <p>to be filled</p>
+  <h3>Haotian Zhang, Fan Pan, Jing Peng, Gabrielle You</h3>
   
 </div>
 
