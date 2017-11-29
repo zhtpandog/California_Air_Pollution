@@ -118,6 +118,14 @@
           bottom:0px;
         }
 
+        #dash_line {
+          float:left;
+        }
+
+        #dash_pie {
+          display:inline;
+        }
+
 
         }
     </style>
@@ -148,9 +156,9 @@
 <button id = 'oz_4'>2016_Winter_Ozone</button>
 <div id="mapid"></div>
 
-
-
-      <div id="dash_line" style="padding-left:700px">
+<div id="chartArea1" width="600px" height = "500px" style="padding-left:700px; padding-top:100px">
+  
+      <div id="dash_line" >
       <div id="checkboxes">
           <label class="checkbox-inline">
               <input type="checkbox" id= "dash_no2_dashboard" value="">NO2
@@ -167,15 +175,12 @@
         </div>
     </div>
 
-    <div width="650" height="300" id="dash_pie" style="padding-left:700px"></div>
+    <!-- style="padding-left:1100px" -->
+    <div width="650" height="300" id="dash_pie" style="padding-top:100px"></div>
+  </div>
 
-    
-    
-      
-
-    <!-- <div id = "myform" class="row" style="padding-left:700px"> --><!-- <div width="650" height="300" id="dash_pie" style="padding-left:700px"></div> --><!-- </div> -->
-    <!-- <svg width="960" height="500" id="dash_pie"></svg> -->
-
+    <!-- style="padding-left:700px" -->
+    <div id="chartArea2" style="padding-left:700px; padding-top: 100px">
     <div id="dash_bar">
       <div class="buttons" id="bar_buttons">
       <svg class="filters_bar" height="100" width="500">
@@ -198,8 +203,8 @@
       </svg>
     </div>
     </div>
-    </div>
-</div>
+  </div>
+
 <!-- <svg width="960" height="500" id="dash_pie"></svg> -->
 </body>
 </html>
