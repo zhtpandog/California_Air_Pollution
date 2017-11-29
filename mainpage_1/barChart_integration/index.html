@@ -8,17 +8,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-
-<!-- for line chart -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script> -->
-<!-- <script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script> -->
-
-<!-- <style type="text/css" src="line_style_yearly.css"></style> -->
-<style type="text/css" src="line_style_yearly.css"></style>
-
   <style>
   body {
       position: relative; 
@@ -37,12 +26,11 @@
      position: relative;
      top: 1px;
   }
-  #section1 {padding-top:50px;height:1200px;color: #fff; background-color: #493d26;}
-  #section2 {padding-top:50px;height:1200px;color: #fff; background-color: black;}
+  #section1 {padding-top:50px;height:1000px;color: #fff; background-color: #493d26;}
+  #section2 {padding-top:50px;height:800px;color: #fff; background-color: black;}
   #section3 {padding-top:50px;height:1200px;color: black; background-color: white;}
-  #section4 {padding-top:50px;height:1200px;color: #fff; background-color: black;}
-  #section5 {padding-top:50px;height:1300px;color: white; background-color: black;}
-  #section5-2 {padding-top:50px;height:1300px;color: white; background-color: black;}
+  #section4 {padding-top:50px;height:800px;color: #fff; background-color: grey;}
+  #section5 {padding-top:50px;height:800px;color: black; background-color: white;}
   #section6 {padding-top:50px;height:800px;color: #fff; background-color: black;}
   #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
   #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
@@ -75,8 +63,7 @@
           <li><a href="#section2">Map & Dashboard</a></li>
           <li><a href="#section3">Geographical Comparison</a></li>
           <li><a href="#section4">Pollution Composition</a></li>
-          <li><a href="#section5">Yearly Trend Analysis</a></li>
-          <li><a href="#section5-2">Seasonly Trend Analysis</a></li>
+          <li><a href="#section5">Trend Analysis</a></li>
           <li><a href="#section6">Bodily Harm</a></li>
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Information<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -91,11 +78,10 @@
 </nav>    
 
 <div id="section1" class="container-fluid">
-  
+  <h1>Project Introduction</h1>
   <br></br>
   <div class="col-sm-4">
-      <h1 style="margin-top:30%">Introduction</h1>
-    <p style="font-size:20px; margin-top:10%">California is known to have the most polluted air in the US. In a 2011 survey done by Public Policy Institute of California, about 45% of the Los Angeles surveyees showed concern about air pollution. While most of us do not have direct control over the issue, as residents of CA, it is still important for us to have a better understanding of the current air pollution situation in order to make wiser decisions for ourselves, our family and our society. This website aims to provide not only a real-time dashboard of air pollution readings but also a thorough analysis of pollution data from the past year. We carefully selected data from 14 monitor stations located in the most populated areas in CA. The visualizations presented will be relevant to both environmentalists who study the issue in depth as well as commoners who just want to be a little more informed.</p>
+    <p>California is known to have the most polluted air in the US. In a 2011 survey done by Public Policy Institute of California, about 45% of the Los Angeles surveyees showed concern about air pollution. While most of us do not have direct control over the issue, as residents of CA, it is still important for us to have a better understanding of the current air pollution situation in order to make wiser decisions for ourselves, our family and our society. This website aims to provide not only a real-time dashboard of air pollution readings but also a thorough analysis of pollution data from the past year. We carefully selected data from 14 monitor stations located in the most populated areas in CA. The visualizations presented will be relevant to both environmentalists who study the issue in depth as well as commoners who just want to be a little more informed.</p>
   </div>
   <div class="col-sm-8">
   <center><div id="myCarousel" class="carousel slide" data-ride="carousel" style="display: inline-block; width: 100%; height: 100%; object-fit: contain;">
@@ -113,23 +99,23 @@
         <img src="la.jpg" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
           <h3>Los Angeles</h3>
-          <p>In general most polluted city in USA</p>
+          <p>LA is always so much fun!</p>
         </div>
       </div>
 
       <div class="item">
-        <img src="fresno.jpg" alt="Fresno" style="width:100%;height:80%">
+        <img src="chicago.jpg" alt="Chicago" style="width:100%;">
         <div class="carousel-caption">
-          <h3>Fresno</h3>
-          <p>3rd most PM2.5 polluted city in USA</p>
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
         </div>
       </div>
     
       <div class="item">
-        <img src="sandiego.jpg" alt="New York" style="width:100%;height:120%">
+        <img src="ny.jpg" alt="New York" style="width:100%;">
         <div class="carousel-caption">
-          <h3>San Diego</h3>
-          <p>7th most Ozone polluted city in USA</p>
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
         </div>
       </div>
   
@@ -150,12 +136,8 @@
 
 <div id="section2" class="container-fluid">
   <h1>Map & Dashboard</h1>
-  <div style="margin: 0 auto; width:100%; height:1000px;">
-    <object type="text/html" data="test(1).html"
-            style="width:100%; height:100%; ">
-    </object>
-</div>
-
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 </div>
 <div id="section3" class="container-fluid">
   <h1>Geographical Comparison</h1>
@@ -1988,42 +1970,30 @@
 </div>
 <div id="section4" class="container-fluid">
   <h1>Pollution Composition</h1>
-  <div style="margin: 0 auto; width:100%; height:1200px;"> 
-   <object type="text/html" data="index_dount.html" style="width:100%; height:100%;">
-    </object>
-  </div> 
-  
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 </div>
 <div id="section5" class="container-fluid">
-  <h1>Yearly Trend Analysis</h1>
-  <div style="margin: 0 auto; width:100%; height:1200px;">
-    <object type="text/html" data="index_line_year.html" style="width:100%; height:100%;">
-    </object>
+  <h1>Trend Analysis</h1>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 </div>
-</div>
-
-<div id="section5-2" class="container-fluid">
-  <h1>Seasonly Trend Analysis</h1>
-  <div style="margin: 0 auto; width:100%; height:1200px;">
-    <object type="text/html" data="index line_season.html" style="width:100%; height:100%;">
-    </object></div>
-</div>
-
 <div id="section6" class="container-fluid">
   <h1>Bodily Harm</h1>
-  <p>to be filled</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 </div>
 <div id="section41" class="container-fluid">
   <h1>Data Processing</h1>
-  <p>to be filled</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 </div>
 <div id="section42" class="container-fluid">
   <h1>Team</h1>
-  <p>to be filled</p>
-  
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
+  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
 </div>
 
-<script type="text/javascript" src="lineChart_yearly.js"></script>
 </body>
 </html>
 

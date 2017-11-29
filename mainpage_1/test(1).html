@@ -1,0 +1,210 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Historic Topographic Maps</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <!-- Load d3 and bootstrap from CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+    crossorigin=""></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.1.1/dist/esri-leaflet.js"
+    integrity="sha512-ECQqaYZke9cSdqlFG08zSkudgrdF6I1d8ViSa7I3VIszJyVqw4ng1G8sehEXlumdMnFYfzY0tMgdQa4WCs9IUw=="
+    crossorigin=""></script>
+    <!-- <script src="http://d3js.org/d3.v4.min.js"></script> -->
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/plt.js"></script>
+    <!-- <script type="text/javascript" src="js/pie_pppj.js"></script> -->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+
+
+    
+
+     <style type="text/css">
+        body { margin:0; padding:0; }
+        #mapid { position: absolute; top:150px; bottom:0px; right:20px; left:20px; height: 780px; width: 600px}
+        .legend {
+            line-height: 18px;
+            color: #555;
+            width: 100px;
+            height: 200px;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            opacity: 0.8;
+        }
+        .info h4 {
+            /*margin: 0 0 5px;*/
+            color: #777;
+            font-size: 18px;
+            font-family: ‘sans-serif’;
+    
+        }
+
+        .info p {
+          font-size: 15px;
+          font-family: ‘sans-serif’;
+        }
+
+       /* #co_y, #co_1 {
+          padding: 10px 15px;
+          font-size: 13px;
+          text-align: center;
+          cursor: pointer;
+          outline: none;
+          color: #fff;
+          background-color: #4CAF50;
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0 5px #999;
+        }*/
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+          background-color: #3e8e41;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+        }
+
+        .arc text {
+            font: 10px sans-serif;
+            text-anchor: middle;
+        }
+
+
+        .arc path {
+            stroke: #fff;
+        }
+
+        .out {
+          position:relative;
+        }
+        .in {
+          position:absolute;
+          bottom:0px;
+        }
+
+        #dash_line {
+          float:left;
+        }
+
+        #dash_pie {
+          display:inline;
+        }
+
+
+        }
+    </style>
+</head>
+<body>
+<button id = 'co_y'>2016_Year_Avg_CO</button>
+<button id = 'co_1'>2016_Spring_CO</button>
+<button id = 'co_2'>2016_Summer_CO</button>
+<button id = 'co_3'>2016_Autumn_CO</button>
+<button id = 'co_4'>2016_Winter_CO</button>
+
+<button id = 'no2_y'>2016_Year_Avg_NO2</button>
+<button id = 'no2_1'>2016_Spring_NO2</button>
+<button id = 'no2_2'>2016_Summer_NO2</button>
+<button id = 'no2_3'>2016_Autumn_NO2</button>
+<button id = 'no2_4'>2016_Winter_NO2</button>
+
+<button id = 'so2_y'>2016_Year_Avg_SO2</button>
+<button id = 'so2_1'>2016_Spring_SO2</button>
+<button id = 'so2_2'>2016_Summer_SO2</button>
+<button id = 'so2_3'>2016_Autumn_SO2</button>
+<button id = 'so2_4'>2016_Winter_SO2</button>
+
+<button id = 'oz_y'>2016_Year_Avg_Ozone</button>
+<button id = 'oz_1'>2016_Spring_Ozone</button>
+<button id = 'oz_2'>2016_Summer_Ozone</button>
+<button id = 'oz_3'>2016_Autumn_Ozone</button>
+<button id = 'oz_4'>2016_Winter_Ozone</button>
+<div id="mapid"></div>
+
+<div id="chartArea1" width="600px" height = "500px" style="padding-left:700px; padding-top:100px">
+  
+      <div id="dash_line" >
+      <div id="checkboxes">
+          <label class="checkbox-inline">
+              <input type="checkbox" id= "dash_no2_dashboard" value="">NO2
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id= "dash_so2_dashboard" value="" checked="true">SO2
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id= "dash_co_dashboard" value="">CO
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" id= "dash_ozone_dashboard" value="">Ozone
+            </label>
+        </div>
+    </div>
+
+    <!-- style="padding-left:1100px" -->
+    <div width="650" height="300" id="dash_pie" style="padding-top:100px"></div>
+  </div>
+
+    <!-- style="padding-left:700px" -->
+    <div id="chartArea2" style="padding-left:700px; padding-top: 100px">
+    <div id="dash_bar">
+      <div class="buttons" id="bar_buttons">
+      <svg class="filters_bar" height="100" width="500">
+        <rect class="filter_on co_col" id="co_on" x="20" y="20" width="20" height="20" stroke="lightgrey" stroke-width="2"/>
+        <rect class="filter_on no2_col" id="no2_on" x="120" y="20" width="20" height="20" stroke="lightgrey" stroke-width="2"/>
+        <rect class="filter_on o3_col" id="o3_on" x="220" y="20" width="20" height="20" stroke="lightgrey" stroke-width="2"/>
+        <rect class="filter_on so2_col" id="so2_on" x="320" y="20" width="20" height="20" stroke="lightgrey" stroke-width="2"/>
+        
+
+        <rect class="filter_off" id="co_off" x="20" y="20" width="20" height="0" stroke="lightgrey" stroke-width="2" fill="white"/>
+        <rect class="filter_off" id="no2_off" x="120" y="20" width="20" height="0" stroke="lightgrey" stroke-width="2" fill="white"/>
+        <rect class="filter_off" id="o3_off" x="220" y="20" width="20" height="0" stroke="lightgrey" stroke-width="2" fill="white"/>
+        <rect class="filter_off" id="so2_off" x="320" y="20" width="20" height="0" stroke="lightgrey" stroke-width="2" fill="white"/>
+
+        <text x="50" y="35" id="co_bar" style="font-weight: bold;">CO </text>
+        <text x="150" y="35" id="no2_bar" style="font-weight: bold;">NO2 </text>
+        <text x="250" y="35" id="o3_bar" style="font-weight: bold;">O3 </text>
+        <text x="350" y="35" id="so2_bar" style="font-weight: bold;">SO2 </text>
+        
+      </svg>
+    </div>
+    </div>
+  </div>
+
+<!-- <svg width="960" height="500" id="dash_pie"></svg> -->
+</body>
+</html>
