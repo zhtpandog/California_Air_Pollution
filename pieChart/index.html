@@ -162,22 +162,22 @@
 	<div class ="parent">
 	  <div class="child1">
 	    <div class="logo1">
-	      <h4>Sp</h4>
+	      <h4>Spring</h4>
 	    </div>  
 	  </div>
 	  <div class="child2">
 	    <div class="logo2">
-	      <h4>Su</h4>
+	      <h4>Summer</h4>
 	    </div> 
 	  </div>  
 	  <div class="child3">
 	    <div class="logo3">
-	      <h4>Au</h4>
+	      <h4>Autumn</h4>
 	    </div>   
 	  </div>
 	  <div class="child4">
 	    <div class="logo4">
-	      <h4>Wi</h4>
+	      <h4>Winter</h4>
 	    </div> 
 	  </div>
 	</div>
@@ -199,6 +199,9 @@
 
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
+
+var window_width = window.innerWidth;
+var window_height = window.innerHeight;
 
 var margin = {top: 225, right: 350, bottom: 225, left: 350},
     radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
@@ -510,8 +513,6 @@ drawPie(svg, dataset, margin2, radius2, 3);
 svg = d3.select(".child4").append("svg");
 dataset = "winter.json"; 
 drawPie(svg, dataset, margin2, radius2, 4);
-
-
 
 
 </script>
