@@ -1,0 +1,21 @@
+County,Pollutant,Sample
+Alameda,CO,0.01246034
+Contra Costa,CO,0.009252424
+Humboldt,CO,0.006533604
+Sacramento,CO,0.01063564
+Solano,CO,0.010839608
+Alameda,NO2,0.109131002
+Contra Costa,NO2,0.061569634
+Humboldt,NO2,0.018236545
+Sacramento,NO2,0.068328687
+Solano,NO2,0.072016527
+Alameda,Ozone,0.356317993
+Contra Costa,Ozone,0.360410456
+Humboldt,Ozone,0.353247076
+Sacramento,Ozone,0.388479845
+Solano,Ozone,0.363594123
+Alameda,SO2,0.011427313
+Contra Costa,SO2,0.015858708
+Humboldt,SO2,0.003458054
+Sacramento,SO2,0.035469512
+Solano,SO2,0.009727463

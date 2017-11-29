@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <style type="text/css">
+
+  .arc text {
+      font: 10px sans-serif;
+      text-anchor: middle;
+  }
+
+  .arc path {
+      stroke: #fff;
+  }
+
+  .out {
+  	position:relative;
+  }
+  .in {
+  	position:absolute;
+  	bottom:0px;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id = "myform" class="row">
+
+  <svg width="960" height="500"></svg>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>
+
+var color = {CO:"#bdbdbd", Ozone:"#9ecae1", NO2:"#bcbddc", SO2:"#fa9fb5"};
+
+var county = "Los Angeles";
+var season = "4";
+piechart(county, season);
+
+function piechart(county, season){
+
+	var svg = d3.select("svg"),
+	    width = +svg.attr("width"),
+	    height = +svg.attr("height"),
+	    radius = Math.min(width, height) / 2 - 15,
+	    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+		var pie = d3.pie()
+			.sort(null)
+	    	.value(function(d) { 
+	    		return d[county][season]
+	    	});
+	    	
+		var path = d3.arc()
+			.outerRadius(radius - 10)
+		    .innerRadius(0);
+
+	d3.json("dataofPie.json", function(error, data) {
+	  if (error) throw error;
+
+		var arc = g.selectAll(".arc")
+			.data(pie(data))
+	      	.enter().append("g")
+	      	.attr("class", "arc");
+
+	    arc.append("path")
+	    	.attr("d", path)
+	        .attr("fill", function(d) { return color[d.data.pollutant]; });
+		
+
+console.log(pie(data))
+
+		var legend = svg.selectAll(".legend")
+	        .data(pie(data))
+	        .enter().append("g")
+	        .attr("class", "legend")
+	        .attr("transform", function(d, i) { return "translate(10," + i * 25 + ")"; });
+
+		legend.append("rect")
+			.attr("x", width - 180)
+			.attr("y", 10)
+	        .attr("width", 18)
+	        .attr("height", 18)
+	        .style("fill", function (d) {
+	        	return color[d.data.pollutant]});
+
+	    // draw legend text
+	    legend.append("text")
+	        .attr("x", width - 150)
+	        .attr("y", 20)
+	        .attr("dy", ".35em")
+	        .style("text-anchor", "start")
+	        .text(function(d) { return d.data.pollutant;});
+
+	});
+}
+
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>

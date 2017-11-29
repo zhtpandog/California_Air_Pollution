@@ -1,0 +1,21 @@
+County,Pollutant,Sample
+Fresno,CO,0.00841268
+Los Angeles,CO,0.010199964
+Orange,CO,0.011896499
+Santa Barbara,CO,0.005366834
+Santa Clara,CO,0.013372871
+Fresno,NO2,0.104955461
+Los Angeles,NO2,0.154868223
+Orange,NO2,0.158806263
+Santa Barbara,NO2,0.026654691
+Santa Clara,NO2,0.136568868
+Fresno,Ozone,0.4640728
+Los Angeles,Ozone,0.412432205
+Orange,Ozone,0.417756155
+Santa Barbara,Ozone,0.42688764
+Santa Clara,Ozone,0.348586014
+Fresno,SO2,0.006151218
+Los Angeles,SO2,0.007901866
+Orange,SO2,0.001511487
+Santa Barbara,SO2,0.002521814
+Santa Clara,SO2,0.002704225
