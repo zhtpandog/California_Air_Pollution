@@ -19,7 +19,7 @@ window.onload = function() {
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         minZoom: 6,
-        maxZoom: 8,
+        maxZoom: 7,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiY2hlbmpseSIsImEiOiJjajlmemNscGQycTU2MzNtcW51ZGJoZ2ViIn0.Gf3W96-E5bA7JX2dz56QWw',
         noWrap: true
