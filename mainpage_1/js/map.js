@@ -12,13 +12,14 @@ window.onload = function() {
     document.getElementById("checkboxes").style.visibility = "hidden";
     // mycolor = d3.rgb("#FFFAF0");
     // d3.select("body").style("background-color", mycolor) 
-    var map = L.map('mapid').setView([37.5, -120.5], 6);
+    var map = L.map('mapid').setView([37.5, -120.5], 7);
     // 37.3382° N, 121.8863° 
     layer_group = [];
     current_layer = null;
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 10,
+        minZoom: 6,
+        maxZoom: 8,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiY2hlbmpseSIsImEiOiJjajlmemNscGQycTU2MzNtcW51ZGJoZ2ViIn0.Gf3W96-E5bA7JX2dz56QWw',
         noWrap: true
@@ -159,6 +160,9 @@ var layer_ozone4 = L.esri.tiledMapLayer({
     lastClicked = "co_y";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_co);
     layer_co.setOpacity(0.45);
@@ -170,6 +174,9 @@ var co_1 = document.getElementById('co_1');
     lastClicked = "co_1";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_co1);
     layer_co1.setOpacity(0.45);
@@ -182,6 +189,9 @@ var co_2 = document.getElementById('co_2');
     lastClicked = "co_2";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_co2);
     layer_co2.setOpacity(0.45);
@@ -194,6 +204,9 @@ var co_3 = document.getElementById('co_3');
     lastClicked = "co_3";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_co3);
     layer_co3.setOpacity(0.45);
@@ -206,6 +219,9 @@ var co_4 = document.getElementById('co_4');
     lastClicked = "co_4";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_co4);
     layer_co4.setOpacity(0.45);
@@ -218,6 +234,9 @@ var so2_y = document.getElementById('so2_y');
     lastClicked = "so2_y";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_so2);
     layer_so2.setOpacity(0.45);
@@ -230,6 +249,9 @@ var so2_1 = document.getElementById('so2_1');
     lastClicked = "so2_1";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_so21);
     layer_so21.setOpacity(0.45);
@@ -241,6 +263,9 @@ var so2_2 = document.getElementById('so2_2');
     lastClicked = "so2_2";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_so22);
     layer_so22.setOpacity(0.45);
@@ -252,6 +277,9 @@ var so2_3 = document.getElementById('so2_3');
     lastClicked = "so2_3";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_so23);
     layer_so23.setOpacity(0.45);
@@ -263,6 +291,9 @@ var so2_4 = document.getElementById('so2_4');
     lastClicked = "so2_4";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_so24);
     layer_so24.setOpacity(0.45);
@@ -274,6 +305,9 @@ var so2_4 = document.getElementById('so2_4');
     lastClicked = "no2_y";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_no2);
     layer_no2.setOpacity(0.45);
@@ -285,6 +319,9 @@ var so2_4 = document.getElementById('so2_4');
     lastClicked = "no2_1";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_no21);
     layer_no21.setOpacity(0.45);
@@ -296,6 +333,9 @@ var no2_2 = document.getElementById('no2_2');
     lastClicked = "no2_2";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_no22);
     layer_no22.setOpacity(0.45);
@@ -307,6 +347,9 @@ var no2_3 = document.getElementById('no2_3');
     lastClicked = "no2_3";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_no23);
     layer_no23.setOpacity(0.45);
@@ -319,6 +362,9 @@ var no2_4 = document.getElementById('no2_4');
     lastClicked = "no2_4";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_no24);
     layer_no24.setOpacity(0.45);
@@ -330,6 +376,9 @@ var oz_y = document.getElementById('oz_y');
     lastClicked = "oz_y";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_ozone);
     layer_ozone.setOpacity(0.45);
@@ -341,6 +390,9 @@ var oz_1 = document.getElementById('oz_1');
     lastClicked = "oz_1";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_ozone1);
     layer_ozone1.setOpacity(0.45);
@@ -353,6 +405,9 @@ var oz_2 = document.getElementById('oz_2');
     lastClicked = "oz_2";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_ozone2);
     layer_ozone2.setOpacity(0.45);
@@ -364,6 +419,9 @@ var oz_3 = document.getElementById('oz_3');
     lastClicked = "oz_3";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_ozone3);
     layer_ozone3.setOpacity(0.45);
@@ -375,6 +433,9 @@ var oz_4 = document.getElementById('oz_4');
     lastClicked = "oz_4";
     if (current_layer != null) {
       map.removeLayer(current_layer);
+      document.getElementById("intro").remove();
+      // d3.select("#intro").remove();
+      
     }
     map.addLayer(layer_ozone4);
     layer_ozone4.setOpacity(0.45);
