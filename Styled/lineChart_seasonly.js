@@ -1,7 +1,7 @@
 var window_width = window.innerWidth;
 var window_height = window.innerHeight;
 
-var colorPick = {"so2": "steelblue", "no2": "red", "co": "green", "ozone": "orange"};
+var colorPick = {"so2": "#839192", "no2": "#A93226", "co": "#AF601A", "ozone": "#6D4C41"};
 var countyList = ["Alameda", "Contra Costa", "Fresno", "Humboldt", "Imperial", "Los Angeles", "Orange", "Riverside", "Sacramento", "San Bernardino", "San Diego", "Santa Barbara", "Santa Clara", "Solano"];
 
 
@@ -569,7 +569,7 @@ function update(data, graphId, w, h, margin, county, dayofweek, season) {
 		      .attr("stroke-linejoin", "round")
 		      .attr("stroke-linecap", "round")
 		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-		      .attr("stroke-width", 2.5);
+		      .attr("stroke-width", 3);
 		}
 		if(no2_on) {
 			d3.select("#" + graphId)
@@ -583,7 +583,7 @@ function update(data, graphId, w, h, margin, county, dayofweek, season) {
 		      .attr("stroke-linejoin", "round")
 		      .attr("stroke-linecap", "round")
 		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-		      .attr("stroke-width", 2.5);
+		      .attr("stroke-width", 3);
 		}
 		if(co_on) {
 			d3.select("#" + graphId)
@@ -597,7 +597,7 @@ function update(data, graphId, w, h, margin, county, dayofweek, season) {
 		      .attr("stroke-linejoin", "round")
 		      .attr("stroke-linecap", "round")
 		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-		      .attr("stroke-width", 2.5);
+		      .attr("stroke-width", 3);
 		}
 		if(ozone_on) {
 			d3.select("#" + graphId)
@@ -611,7 +611,7 @@ function update(data, graphId, w, h, margin, county, dayofweek, season) {
 		      .attr("stroke-linejoin", "round")
 		      .attr("stroke-linecap", "round")
 		      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-		      .attr("stroke-width", 2.5);
+		      .attr("stroke-width", 3);
 		}
 
 
@@ -702,11 +702,10 @@ function createLine(data, placeId, className, graphId, w, h, margin) {
       .call(yAxis)
       .append("text")
       .attr("fill", "#000")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", "0.71em")
+      .attr("y", 0)
+      .attr("x", 60)
       .attr("text-anchor", "end")
-      .text("read");
+      .text("Pollution Index");
 
 
   g.append("path")
@@ -718,6 +717,6 @@ function createLine(data, placeId, className, graphId, w, h, margin) {
       .attr("stroke", colorPick[className])
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
-      .attr("stroke-width", 2.5);
+      .attr("stroke-width", 3);
 
 }

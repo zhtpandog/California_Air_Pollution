@@ -11,7 +11,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 		<link rel="stylesheet" href="bootstrap.css">
-		<style type="text/css" src="line_style_yearly.css"></style>
+		<style type="text/css" src="line_style_seasonly.css"></style>
+
 
 	</head>
 	<body>
@@ -20,28 +21,34 @@
 		<div class="row">
 			<div class="col"></div>
 			<div class="col">
-				<div class="col">
-					<h4> </h4>
-					<!-- <a href="file:///Users/ZhangHaotian/desktop/inf554/project-lorelei/line_chart/line_seasonly.html"> season</a> -->
+				<!-- <div class="col"> -->
+					<!-- <h5 src="file:///index.html">Seasonly Average</h5> -->
 					<!-- <span style="font-family:sans-serif; font-size: 35px">Average</span>
 					<select id="yearseason">
 						<option value="Yearly" selected="selected" id="Yearly" class="yearseasonchoice">Yearly</option>
 		                <option value="Seasonly" id="Seasonly" class="yearseasonchoice">Seasonly</option>
 					</select> -->
-				</div>
+				<!-- </div> -->
 				<div>
-					<div class="row text-center">
+					<div class="row text-center" style = "margin-top: 10px;">
 					<p style="font-weight: bold;">Select pollutant(s):</p>
 					<span style="padding-left:5px"></span>
 					<label for="success" class="btn btn-co ml-2"><input type="checkbox" id="m_co" class="badgebox">CO</label>
 					<label for="danger" class="btn btn-no2 ml-2"><input type="checkbox" id="m_no2" class="badgebox">NO<sub>2</sub></label>
 					<label for="warning" class="btn btn-oz ml-2"><input type="checkbox" id="m_ozone" class="badgebox">O<sub>3</sub></label>
 					<label for="info" class="btn btn-so2 ml-2"><input type="checkbox" id="m_so2" class="badgebox" checked="true">SO<sub>2</sub></label>
-					</div>
-		      		<br>
+		        	</div>
+		       		
 
-		      		<div class="row">
-		       		<p style="font-weight: bold;">Select a county:</p>
+		        	<!-- <span style="padding-left:100px"></span>
+				    <select id="seasonselect">
+						<option value="Spring" selected="selected" id="Spring">Spring</option>
+		                <option value="Summer" id="Summer">Summer</option>
+		                <option value="Autumn" id="Autumn">Autumn</option>
+		                <option value="Winter" id="Winter">Winter</option>
+					</select> -->
+					<div class="row">
+					<p style="font-weight: bold;">Select a county:</p>
 				    <span style="padding-left:25px"></span>
 				    <select id="inds">
 						<option value="Alameda" selected="selected" id="Alameda">Alameda</option>
@@ -60,20 +67,68 @@
 		                <option value="Solano" id="Solano">Solano</option>
 					</select>
 
-					</div>
+			</div>
 				
 				</div>
 		    </div>
-
 			<div class="col"></div>
 		</div>
 
 		<div class="row">
 		  <div class="col"></div>
-		  <div class="col" id="main"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h5>Spring</h5></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h5>Summer</h5></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
 		  <div class="col"></div>
 		</div>
 
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col jumbotron" id="main"></div>
+		  <div class="col" id="main2"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h5>Autumn</h5></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"><h5>Winter</h5></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		  <div class="col"></div>
+		</div>
+
+		<div class="row">
+		  <div class="col"></div>
+		  <div class="col" id="main3"></div>
+		  <div class="col" id="main4"></div>
+		  <div class="col"></div>
+		</div>
 
 		<div class="row">
 		  <div class="col"></div>
@@ -87,9 +142,9 @@
 
 		<div class="row">
 		  <div class="col" id="monday">
-		  <div class="col"><h5 style="padding-left:50px">Monday</h5></div>
+		  <div class="col"><h5 style="padding-left:10px">Monday</h5></div>
 		  	<div>
-		  		<span style="padding-left:50px"></span>
+		  		<span style="padding-left:20px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "mon_no2" value="">NO2
 				    </label>
@@ -106,9 +161,9 @@
 		  </div>
 
 		  <div class="col" id="tuesday">
-		  	<div class="col"><h5 style="padding-left:50px">Tuesday</h5></div>
+		  	<div class="col"><h5 style="padding-left:10px">Tuesday</h5></div>
 		  	<div>
-		  		<span style="padding-left:50px"></span>
+		  		<span style="padding-left:20px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "tue_no2" value="">NO2
 				    </label>
@@ -123,11 +178,10 @@
 				    </label>
 				</div>
 		  </div>
-
 		  <div class="col" id="wednesday">
-		  	<div class="col"><h5 style="padding-left:50px">Wednesday</h5></div>
+		  	<div class="col"><h5 style="padding-left:10px">Wednesday</h5></div>
 		  	<div>
-		  		<span style="padding-left:50px"></span>
+		  		<span style="padding-left:20px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "wed_no2" value="">NO2
 				    </label>
@@ -142,11 +196,10 @@
 				    </label>
 				</div>
 		  </div>
-
 		  <div class="col" id="thursday">
-		  	<div class="col"><h5 style="padding-left:50px">Thursday</h5></div>
+		  	<div class="col"><h5 style="padding-left:10px">Thursday</h5></div>
 		  	<div>
-		  		<span style="padding-left:50px"></span>
+		  		<span style="padding-left:20px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "thu_no2" value="">NO2
 				    </label>
@@ -161,11 +214,10 @@
 				    </label>
 				</div>
 		  </div>
-
 		  <div class="col" id="friday">
-		  	<div class="col"><h5 style="padding-left:50px">Friday</h5></div>
+		  	<div class="col"><h5 style="padding-left:10px">Friday</h5></div>
 		  	<div>
-		  		<span style="padding-left:50px"></span>
+		  		<span style="padding-left:20px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "fri_no2" value="">NO2
 				    </label>
@@ -180,13 +232,10 @@
 				    </label>
 				</div>
 		  </div>
-<!-- 		</div>
-
-		<div class="row"> -->
 		  <div class="col" id="saturday">
-		  	<div class="col"><h5 style="padding-left:50px">Saturday</h5></div>
+		  	<div class="col"><h5 style="padding-left:10px">Saturday</h5></div>
 		  	<div>
-		  		<span style="padding-left:50px"></span>
+		  		<span style="padding-left:20px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "sat_no2" value="">NO2
 				    </label>
@@ -201,11 +250,10 @@
 				    </label>
 				</div>
 		  </div>
-
 		  <div class="col" id="sunday">
-		  	<div class="col"><h5 style="padding-left:50px">Sunday</h5></div>
+		  	<div class="col"><h5 style="padding-left:10px">Sunday</h5></div>
 		  	<div>
-		  		<span style="padding-left:50px"></span>
+		  		<span style="padding-left:20px"></span>
 					<label class="checkbox-inline">
 				      <input type="checkbox" id= "sun_no2" value="">NO2
 				    </label>
@@ -222,13 +270,11 @@
 		  </div>
 		</div>
 
-		
-
 
 		<!-- <div class="line" id="main"></div> -->
 		<!-- <div><a href="file:///Users/ZhangHaotian/desktop/inf554/project-lorelei/pieChart/index.html">Pie Chart</a></div> -->
 
-		<script type="text/javascript" src="lineChart_yearly.js"></script>
+		<script type="text/javascript" src="lineChart_seasonly.js"></script>
 		
 		<script type="text/javascript">
 		</script>
