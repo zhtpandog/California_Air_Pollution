@@ -39,20 +39,20 @@
 
      <style type="text/css">
         body { margin:0; padding:0; }
-        #mapid { position: absolute; top:150px; bottom:0px; right:20px; left:20px; height: 790px; width: 550px}
-        .legend {
+        #mapid { /*position: absolute; top:150px; bottom:0px; right:20px; left:20px; */height: 650px; width: 550px}
+        /*.legend {
             line-height: 18px;
             color: #555;
             width: 100px;
             height: 200px;
-        }
-        .legend i {
+        }*/
+        /*.legend i {
             width: 18px;
             height: 18px;
             float: left;
             margin-right: 8px;
-            opacity: 0.7;
-        }
+            opacity: 0.0;
+        }*/
         .info {
             padding: 6px 8px;
             font: 14px/16px Arial, Helvetica, sans-serif;
@@ -118,9 +118,9 @@
           float:left;
         }
 
-        #dash_pie {
+/*        #dash_pie {
           display:inline;
-        }
+        }*/
 
         .custom {
          width: 130px !important;
@@ -129,6 +129,21 @@
     </style>
 </head>
 <body>
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-11">
+    <div id = "intro">
+
+      <h2>Instruction</h2>
+      <p style="font-size:16px">Click the buttons to choose a time frame for the heat map.</p>
+      <p style="font-size:16px">Move your mouse over the icons on the map to see pollution details.</p>
+      <p style="font-size:16px">Click the icons on the map to see the dashboard.</p>
+
+    </div>
+  </div>
+</div>
+
 <div class = "container-fluid">
   <div class="row m-1">
     <div style="width: 50";><p style="font-size: 15; font-weight: bold;">CO</p></div>
@@ -140,6 +155,7 @@
       <button id = 'co_4' type="button" class="btn btn-co btn-lg custom">Winter </button>
     </div>
   </div>
+
 
   <div class="row m-1">
     <div style="width: 50";><p style="font-size: 15; font-weight: bold;">NO<sub>2</sub></p></div>
@@ -174,44 +190,53 @@
     </div>
   </div>
 </div>
+<br>
 
 
 
-<div id="mapid"></div>
+<div class="row">
+  <div class="col-md">
+    <div id="mapid"></div>
+  </div>
 
-<div id="chartArea1" width="600px" height = "500px" style="padding-left:700px; padding-top:100px">
+<!-- <div id="chartArea1" width="600px" height = "500px" style="padding-left:700px; padding-top:100px"> -->
   
+
+
+  <div class="col-7">
+    
+    <div class="row">
+
+      <div class="col-sm">
       <div id="dash_line" >
-      <div id="checkboxes">
+        <div id="checkboxes">
           <label class="checkbox-inline">
-              <input type="checkbox" id= "dash_no2_dashboard" value="">NO2
+              <input type="checkbox" id= "dash_no2_dashboard" value="">NO<sub>2</sub>
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" id= "dash_so2_dashboard" value="" checked="true">SO2
+              <input type="checkbox" id= "dash_so2_dashboard" value="" checked="true">SO<sub>2</sub>
             </label>
             <label class="checkbox-inline">
               <input type="checkbox" id= "dash_co_dashboard" value="">CO
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" id= "dash_ozone_dashboard" value="">Ozone
+              <input type="checkbox" id= "dash_ozone_dashboard" value="">O<sub>3</sub>
             </label>
         </div>
-    </div>
-     <div id = "intro">
-      <h3>Interaction</h3>
-      <p style="font-size:20px">First click the Rainbow button on the top, until it deliver a Heatmap of specific season within certain pollutant,</p>
-      <p style="font-size:20px">Then continue mouse over one station, it will give you corresponding readings,</p>
-      <p style="font-size:20px">Stay here, click it until the Red Icon become a Red Mushroom</p>
-      <p style="font-size:20px">It will present the details by three different charts which present variation among time series,</p>
-      <p style="font-size:20px">and also includs analysis comparison among different counties and pollutants</p>
-    </div>
+      </div>
+      </div>
 
+      <div class="col-sm">
     <!-- style="padding-left:1100px" -->
-    <div width="650" height="300" id="dash_pie" style="padding-top:100px"></div>
-  </div>
+        <div width="250" height="200" id="dash_pie" style="padding-top:20px"></div>
+      </div>
 
+    </div>
+  
+<!-- </div> -->
     <!-- style="padding-left:700px" -->
-    <div id="chartArea2" style="padding-left:700px; padding-top: 100px">
+<!--     <div id="chartArea2" style="padding-left:700px; padding-top: 100px"> -->
+    <div class="row">
     <div id="dash_bar">
       <div class="buttons" id="bar_buttons">
       <svg class="filters_bar" height="100" width="500">
@@ -225,17 +250,22 @@
         <rect class="filter_off" id="no2_off" x="120" y="20" width="20" height="0" stroke="lightgrey" stroke-width="2" fill="white"/>
         <rect class="filter_off" id="o3_off" x="220" y="20" width="20" height="0" stroke="lightgrey" stroke-width="2" fill="white"/>
         <rect class="filter_off" id="so2_off" x="320" y="20" width="20" height="0" stroke="lightgrey" stroke-width="2" fill="white"/>
-
-        <text x="50" y="35" id="co_bar" style="font-weight: bold;">CO </text>
-        <text x="150" y="35" id="no2_bar" style="font-weight: bold;">NO2 </text>
-        <text x="250" y="35" id="o3_bar" style="font-weight: bold;">O3 </text>
-        <text x="350" y="35" id="so2_bar" style="font-weight: bold;">SO2 </text>
+        <!-- <img src = '/legend/co_fall.png'> -->
+        <text x="50" y="35" style="font-weight: bold;">CO </text>
+        <text x="150" y="35" style="font-weight: bold;">NO </text>
+        <text x="169" y="35" style="font-weight: bold; font-size: 8;">2 </text>
+        <text x="250" y="35" style="font-weight: bold;">O </text>
+        <text x="265" y="35" style="font-weight: bold; font-size: 8;">3 </text>
+        <text x="350" y="35" style="font-weight: bold;">SO </text> 
+        <text x="368" y="35" style="font-weight: bold; font-size: 8;">2 </text>
         
       </svg>
+      </div>
     </div>
     </div>
-  </div>
 
+  </div>
+  </div>
 <!-- <svg width="960" height="500" id="dash_pie"></svg> -->
 </body>
 </html>

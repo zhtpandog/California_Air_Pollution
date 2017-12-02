@@ -144,10 +144,10 @@ function update(data, graphId, w, h, margin, county, dayofweek, season) {
 	co_on = false;
 	ozone_on = false;
 
-	if (d3.select("m_no2").property("checked")) {no2_on = true;}
-	if (d3.select("m_so2").property("checked")) {so2_on = true;}
-	if (d3.select("m_co").property("checked")) {co_on = true;}
-	if (d3.select("m_ozone").property("checked")) {ozone_on = true;}
+	if (d3.select("#" + graphId + "_no2").property("checked")) {no2_on = true;}
+	if (d3.select("#" + graphId + "_so2").property("checked")) {so2_on = true;}
+	if (d3.select("#" + graphId + "_co").property("checked")) {co_on = true;}
+	if (d3.select("#" + graphId + "_ozone").property("checked")) {ozone_on = true;}
 
 	// reload corresponding data
 	d3.json(data, function(json) {

@@ -1,0 +1,57 @@
+County,Pollutant,Sample
+Alameda,CO,0.01246034
+Contra Costa,CO,0.009252424
+Fresno,CO,0.00841268
+Humboldt,CO,0.006533604
+Imperial,CO,0.007042831
+Los Angeles,CO,0.010199964
+Orange,CO,0.011896499
+Riverside,CO,0.007154904
+Sacramento,CO,0.01063564
+San Bernardino,CO,0.011099338
+San Diego,CO,0.011467177
+Santa Barbara,CO,0.005366834
+Santa Clara,CO,0.013372871
+Solano,CO,0.010839608
+Alameda,NO2,0.109131002
+Contra Costa,NO2,0.061569634
+Fresno,NO2,0.104955461
+Humboldt,NO2,0.018236545
+Imperial,NO2,0.08267239
+Los Angeles,NO2,0.154868223
+Orange,NO2,0.158806263
+Riverside,NO2,0.084669058
+Sacramento,NO2,0.068328687
+San Bernardino,NO2,0.183702091
+San Diego,NO2,0.093091472
+Santa Barbara,NO2,0.026654691
+Santa Clara,NO2,0.136568868
+Solano,NO2,0.072016527
+Alameda,Ozone,0.356317993
+Contra Costa,Ozone,0.360410456
+Fresno,Ozone,0.4640728
+Humboldt,Ozone,0.353247076
+Imperial,Ozone,0.432601965
+Los Angeles,Ozone,0.412432205
+Orange,Ozone,0.417756155
+Riverside,Ozone,0.52324289
+Sacramento,Ozone,0.388479845
+San Bernardino,Ozone,0.557254165
+San Diego,Ozone,0.495797266
+Santa Barbara,Ozone,0.42688764
+Santa Clara,Ozone,0.348586014
+Solano,Ozone,0.363594123
+Alameda,SO2,0.011427313
+Contra Costa,SO2,0.015858708
+Fresno,SO2,0.006151218
+Humboldt,SO2,0.003458054
+Imperial,SO2,0.009386846
+Los Angeles,SO2,0.007901866
+Orange,SO2,0.001511487
+Riverside,SO2,0.003125907
+Sacramento,SO2,0.035469512
+San Bernardino,SO2,0.008911554
+San Diego,SO2,0.001276565
+Santa Barbara,SO2,0.002521814
+Santa Clara,SO2,0.002704225
+Solano,SO2,0.009727463

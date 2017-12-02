@@ -1,6 +1,6 @@
 ﻿var organs_config = {
 	'organ_1':{
-		'hover': '<b><u>APPENDIX</u></b><br>',//organ hover content
+		'hover': '<b><u>APPENDIX</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',//organ hover content
 		'enable':true,//true/false to enable/disable this organ
 		'url':'https://en.wikipedia.org/wiki/Appendix_(anatomy)',//Goto URL
 		'target':'same_window',//open link in new window:new_window, open in current window:same_window, or none for nothing.
@@ -21,7 +21,7 @@
 		'outlineDownOpacity':'0.8',// opacity of that color from 0-1 (e.g 0.3, can be 0 to hide it)
 	},
 	'organ_2':{
-		'hover': '<b><u>BLADDER</u></b><br>',
+		'hover': '<b><u>BLADDER</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Urinary_bladder',
 		'target':'same_window',
@@ -42,7 +42,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_3':{
-		'hover': '<b><u>DIAPHRAGM</u></b><br>',
+		'hover': '<b><u>DIAPHRAGM</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Thoracic_diaphragm',
 		'target':'same_window',
@@ -63,7 +63,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_4':{
-		'hover': '<b><u>GALLBLADDER</u></b><br>',
+		'hover': '<b><u>GALLBLADDER</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Gallbladder',
 		'target':'same_window',
@@ -105,7 +105,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_6':{
-		'hover': '<b><u>KIDNEYS</u></b><br>',
+		'hover': '<b><u>KIDNEYS</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Kidney',
 		'target':'same_window',
@@ -126,7 +126,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_7':{
-		'hover': '<b><u>LARGE INTESTINE</u></b><br>',
+		'hover': '<b><u>LARGE INTESTINE</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Large_intestine',
 		'target':'same_window',
@@ -147,7 +147,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_8':{
-		'hover': '<b><u>LARYNX</u></b><br>',
+		'hover': '<b><u>LARYNX</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Larynx',
 		'target':'same_window',
@@ -231,7 +231,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_12':{
-		'hover': '<b><u>PANCREAS</u></b><br>',
+		'hover': '<b><u>PANCREAS</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Pancreas',
 		'target':'same_window',
@@ -252,7 +252,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_13':{
-		'hover': '<b><u>SMALL INTESTINE</u></b><br>',
+		'hover': '<b><u>SMALL INTESTINE</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Small_intestine',
 		'target':'same_window',
@@ -273,7 +273,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_14':{
-		'hover': '<b><u>SPLEEN</u></b><br>',
+		'hover': '<b><u>SPLEEN</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Spleen',
 		'target':'same_window',
@@ -294,7 +294,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_15':{
-		'hover': '<b><u>STOMACH</u></b><br>',
+		'hover': '<b><u>STOMACH</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Stomach',
 		'target':'same_window',
@@ -315,7 +315,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_16':{
-		'hover': '<b><u>THYROID</u></b><br>',
+		'hover': '<b><u>THYROID</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Thyroid',
 		'target':'same_window',
@@ -336,7 +336,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_17':{
-		'hover': '<b><u>TRACHEA</u></b><br>',
+		'hover': '<b><u>TRACHEA</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Trachea',
 		'target':'same_window',
@@ -357,7 +357,7 @@
 		'outlineDownOpacity':'0.8',
 	},
 	'organ_18':{
-		'hover': '<b><u>URETERS</u></b><br>',
+		'hover': '<b><u>URETERS</u></b><br><span style="color: #E55451">Although the pollutants do not directly cause harm to this organ, they can still affect the organ as part of your body.</span><br>',
 		'enable':true,
 		'url':'https://en.wikipedia.org/wiki/Ureter',
 		'target':'same_window',
