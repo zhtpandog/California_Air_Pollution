@@ -2,6 +2,7 @@
 ## team member: Haotian Zhang, Jing Peng, Fan Pan, Qianhui You ##
 ## demo link: http://scf.usc.edu/~fanpan/project2/index.html ##
 ## backup demo link: http://www-scf.usc.edu/~zhan559/lorelei/index.html ##
+## Link to presentation: https://github.com/INF554Fall17/project-lorelei/blob/master/finalPresentation.pdf ##
 
 ## Week 1 ##
 Progress:  
