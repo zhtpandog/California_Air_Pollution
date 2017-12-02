@@ -23,7 +23,11 @@
       display: table-cell;
       width: 20%;
     }
+
 /*
+=======
+
+>>>>>>> 1366188a986d8844fc736e74cc6e2879ae3edabd
     .logo1 {
       position:absolute;
       display: table-cell;
@@ -64,6 +68,7 @@
       display: table-cell;
       width: 20%;
     }*/
+
 
 /*    .child1, .child9 {
       position:absolute;
@@ -222,11 +227,13 @@ var margin2 = {top: 150, right: 100, bottom: 100, left: 100},
 
 var margin3 = {top: 100, right: 100, bottom: 100, left: 100};
 
+
 var svg;
 var dataset;
 
 
 function drawPie(svg, dataset, margin, radius, flag) {
+
     var hue = d3.scale.category10();
     var colors = {Mon:"#dd1c77", Tues:"#99000d", Wed:"#fec44f", Thurs:"#2ca25f",Fri:"#bdbdbd",Sat:"#43a2ca",Sun:"#756bb1"};
 
@@ -303,6 +310,7 @@ function drawPie(svg, dataset, margin, radius, flag) {
 	              if (i % 5 === 0) {
 	              	d3.select("#air").text("");
 	              	d3.select("#season").text(partition.nodes(root).slice(1)[i].name).attr("x",0);
+
 	              	d3.select("#num").text(Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
 	              }
 	              else {
@@ -496,12 +504,14 @@ function drawPie(svg, dataset, margin, radius, flag) {
     function fill(d) {
       var p = d;
       while (p.depth > 1) p = p.parent;
+
       if (flag == 0) {
       	var c = d3.lab(hue(p.name));
       }
       else {
       	var c = d3.lab(colors[p.name]);
       }
+
       c.l = luminance(d.sum);
       return c;
     }
@@ -546,6 +556,7 @@ svg = d3.select(".child4").append("svg").classed("winter_svg", true);
 dataset = "winter.json"; 
 drawPie(svg, dataset, margin3, radius2, 4);
 d3.select(".winter_svg").append("text").text("winter").attr("y", 103).attr("x",100).attr("text-anchor", "middle").attr("font-weight", "bold")
+
 
 </script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
