@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <style>
+
+  circle,
+  path {
+    cursor: pointer;
+  }
+
+  circle {
+    fill: none;
+    pointer-events: all;
+  }
+
+    /*.parent1, .parent2, .parent3, .parent4 {*/
+    .parent, .parentreporter, .logos {
+      display: table;
+      width: 100%;
+    }
+
+    .child1, .child2, .child3, .child4 {
+      display: table-cell;
+      width: 20%;
+    }
+
+    .logo1 {
+      position:absolute;
+      display: table-cell;
+      bottom: 52%;
+      left: 10.7%;
+      font-size: 10px;
+      pointer-events: none;
+    }
+
+    .logo2 {
+      position:absolute;
+      display: table-cell;
+      bottom: 52%;
+      left: 35.1%;
+      font-size: 10px;
+      pointer-events: none;
+    }
+
+    .logo3 {
+      position:absolute;
+      display: table-cell;
+      bottom: 52%;
+      left: 60.2%;
+      font-size: 10px;
+      pointer-events: none;
+    }
+
+    .logo4 {
+      position:absolute;
+      display: table-cell;
+      bottom: 52%;
+      left: 85.6%;
+      font-size: 10px;
+      pointer-events: none;
+    }
+
+    .childreporter1, .childreporter2, .childreporter3, .childreporter4 {
+      display: table-cell;
+      width: 20%;
+    }
+
+/*    .child1, .child9 {
+      position:absolute;
+      display: table-cell;
+      top: 510px;
+      left: 0px;
+    }
+
+    .child5 {
+      position:absolute;
+      display: table-cell;
+      top: 780px;
+      left: 0px;
+    }
+
+    .child2, .child6, .child10 {
+      position:absolute;
+      display: table-cell;
+      left: 300px;
+    }
+    .child3, .child7, .child11 {
+      position:absolute;
+      display: table-cell;
+      left: 600px;
+    }
+    .child4, .child8, .child12 {
+      position:absolute;
+      display: table-cell;
+      left: 900px;
+  }*/
+
+    .upper {
+      display: table;
+      width: 100%;
+    }
+
+    .des {
+      position:absolute;
+      display: table-cell;
+      top: 10%;
+      left: 2%;
+      pointer-events: none;
+    }
+
+    .pollute {
+      position:absolute;
+      display: table-cell;
+      top: 15.5%;
+      left: 62.5%;
+      pointer-events: none;
+    }
+
+    .reporter {
+      position:absolute;
+      display: table-cell;
+      top: 17.8%;
+      left: 62.3%;
+      pointer-events: none;
+    }
+    
+    .number {
+      position:absolute;
+      display: table-cell;
+      top: 20%;
+      left: 62.3%;
+      pointer-events: none;
+    }
+
+    .mainchart {
+      display: table-cell;
+      width: 70%; /* adjust */
+    }
+
+
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+
+<center>
+  <div class="upper">
+  	<div class="des">
+      <div style="width:650px; height:500px">
+  		<h2>Sunburst Diagram</h2>
+  		<p>Sunburst diagram is a multilevel pie chart used to represent the proportion of different values found at each level in a hierarchy.The main sunburst diagram to show comparison between total pollutant amounts of four seasons, as well as the proportion of four pollutants in each season.Four small multiples, each representing one season of a year, to show comparison between total pollutant amounts of seven days of a week, as well as the proportion of four pollutants in each day</p>
+    </div>
+  	</div>
+    <div class="mainchart">
+
+	    <div class="pollute">
+	      <h4><span id="air" class="badge badge-light">All</span></h4>
+	    </div>   
+
+	    <div class="reporter">
+	      <h4><span id="season" class="badge badge-light">Year</span></h4>
+	    </div>
+	    <div class="number">
+	      <h4><span id="num" class="badge badge-light"></span></h4>
+	    </div>
+    </div>
+  </div>
+
+	<div class ="parent">
+	  <div class="child1">
+	    <div class="logo1">
+	      <h6>Spring</h6>
+	    </div>  
+	  </div>
+	  <div class="child2">
+	    <div class="logo2">
+	      <h6>Summer</h6>
+	    </div> 
+	  </div>  
+	  <div class="child3">
+	    <div class="logo3">
+	      <h6>Autumn</h6>
+	    </div>   
+	  </div>
+	  <div class="child4">
+	    <div class="logo4">
+	      <h6>Winter</h6>
+	    </div> 
+	  </div>
+	</div>
+	<div class ="parentreporter">
+	  <div class="childreporter1">
+	  	<h4><span id="spring" class="badge badge-light"></span></h4>
+	  </div>
+	  <div class="childreporter2">
+	  	<h4><span id="summer" class="badge badge-light"></span></h4>
+	  </div>  
+	  <div class="childreporter3">
+	  	<h4><span id="autumn" class="badge badge-light"></span></h4>
+	  </div>
+	  <div class="childreporter4">
+	  	<h4><span id="winter" class="badge badge-light"></span></h4>
+	  </div>
+	</div>
+</center>
+
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var margin = {top: 225, right: 350, bottom: 225, left: 350},
+    radius = Math.min(margin.top, margin.right, margin.bottom, margin.left) - 10;
+
+var margin2 = {top: 100, right: 150, bottom: 100, left: 150},
+    radius2 = Math.min(margin2.top, margin2.right, margin2.bottom, margin2.left) - 10;
+
+var svg;
+var dataset;
+
+
+function drawPie(svg, dataset, margin, radius, flag) {
+
+    var hue = d3.scale.category10();
+
+    var luminance = d3.scale.sqrt()
+        .domain([0, 30])
+        .clamp(true)
+        .range([85, 20]);
+
+    var partition = d3.layout.partition()
+        .sort(function(a, b) { return d3.ascending(a.name, b.name); })
+        .size([2 * Math.PI, radius]);
+
+    var svg = svg.attr("width", margin.left + margin.right)
+        // .attr("height", margin.top + margin.bottom)
+        .attr("height", margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var arc = d3.svg.arc()
+        .startAngle(function(d) { return d.x; })
+        .endAngle(function(d) { return d.x + d.dx ; })
+        .padAngle(.01)
+        .padRadius(radius / 3)
+        .innerRadius(function(d) { return radius / 3 * d.depth; })
+        .outerRadius(function(d) { return radius / 3 * (d.depth + 1) - 1; });
+
+    d3.json(dataset, function(error, root) {
+      if (error) throw error;
+
+      // Compute the initial layout on the entire tree to sum sizes.
+      // Also compute the full name and fill color for each node,
+      // and stash the children so they can be restored as we descend.
+      partition
+          .value(function(d) { return d.size; })
+          .nodes(root)
+          .forEach(function(d) {
+            d._children = d.children;
+            d.sum = d.value;
+            d.key = key(d);
+            d.fill = fill(d);
+          });
+
+      // Now redefine the value function to use the previously-computed sum.
+      partition
+          .children(function(d, depth) { return depth < 2 ? d._children : null; })
+          .value(function(d) { return d.sum; });
+
+      if (flag==0) var yearsum = partition.nodes(root).slice(1)[0].value + partition.nodes(root).slice(1)[5].value + 
+      partition.nodes(root).slice(1)[15].value + partition.nodes(root).slice(1)[10].value;
+      else var yearsum = partition.nodes(root).slice(1)[0].value + partition.nodes(root).slice(1)[5].value + 
+      partition.nodes(root).slice(1)[15].value + partition.nodes(root).slice(1)[10].value + partition.nodes(root).slice(1)[20].value + 
+      partition.nodes(root).slice(1)[25].value + partition.nodes(root).slice(1)[30].value;
+      console.log(yearsum);
+
+      var path = svg.selectAll("path")
+          .data(partition.nodes(root).slice(1))
+          .enter().append("path")
+          .attr("d", arc)
+          .style("fill", function(d) { return d.fill; })
+          .each(function(d) { this._current = updateArc(d); })
+          .on("click", zoomIn)
+            .on("mouseover", function(d, i){
+              console.log(partition.nodes(root).slice(1));
+              console.log(i);
+              if (flag==0) {
+	              if (i % 5 === 0) {
+	              	d3.select("#air").text("");
+	              	d3.select("#season").text(partition.nodes(root).slice(1)[i].name);
+	              	d3.select("#num").text(Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#air").text(partition.nodes(root).slice(1)[i].name);
+	                d3.select("#season").text(partition.nodes(root).slice(1)[i].parent.name);
+	                d3.select("#num").text(Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==1) {
+	              if (i % 5 === 0) {
+	              	d3.select("#spring").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#spring").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==2) {
+	              if (i % 5 === 0) {
+	              	d3.select("#summer").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#summer").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==3) {
+	              if (i % 5 === 0) {
+	              	d3.select("#autumn").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#autumn").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==4) {
+	              if (i % 5 === 0) {
+	              	d3.select("#winter").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#winter").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+          });
+
+      var center = svg.append("circle")
+          .attr("r", radius / 3)
+          .attr("fill", "black")
+          .on("click", zoomOut);
+
+      center.append("title")
+          .text("zoom out");
+
+      function zoomIn(p) {
+        if (p.depth > 1) p = p.parent;
+        if (!p.children) return;
+        zoom(p, p);
+      }
+
+      function zoomOut(p) {
+        if (!p.parent) return;
+        zoom(p.parent, p);
+      }
+
+      // Zoom to the specified new root.
+      function zoom(root, p) {
+        if (document.documentElement.__transition__) return;
+
+        // Rescale outside angles to match the new layout.
+        var enterArc,
+            exitArc,
+            outsideAngle = d3.scale.linear().domain([0, 2 * Math.PI]);
+
+        function insideArc(d) {
+          return p.key > d.key
+              ? {depth: d.depth - 1, x: 0, dx: 0} : p.key < d.key
+              ? {depth: d.depth - 1, x: 2 * Math.PI, dx: 0}
+              : {depth: 0, x: 0, dx: 2 * Math.PI};
+        }
+
+        function outsideArc(d) {
+          return {depth: d.depth + 1, x: outsideAngle(d.x), dx: outsideAngle(d.x + d.dx) - outsideAngle(d.x)};
+        }
+
+        center.datum(root);
+
+        // When zooming in, arcs enter from the outside and exit to the inside.
+        // Entering outside arcs start from the old layout.
+        if (root === p) enterArc = outsideArc, exitArc = insideArc, outsideAngle.range([p.x, p.x + p.dx]);
+
+        path = path.data(partition.nodes(root).slice(1), function(d) { return d.key; });
+
+        // When zooming out, arcs enter from the inside and exit to the outside.
+        // Exiting outside arcs transition to the new layout.
+        if (root !== p) enterArc = insideArc, exitArc = outsideArc, outsideAngle.range([p.x, p.x + p.dx]);
+
+        d3.transition().duration(d3.event.altKey ? 7500 : 750).each(function() {
+          path.exit().transition()
+              .style("fill-opacity", function(d) { return d.depth === 1 + (root === p) ? 1 : 0; })
+              .attrTween("d", function(d) { return arcTween.call(this, exitArc(d)); })
+              .remove();
+
+          path.enter().append("path")
+              .style("fill-opacity", function(d) { return d.depth === 2 - (root === p) ? 1 : 0; })
+              .style("fill", function(d) { return d.fill; })
+              .on("click", zoomIn)
+            .on("mouseover", function(d, i){
+              console.log(partition.nodes(root).slice(1));
+              console.log(i);
+              if (flag==0) {
+	              if (i % 5 === 0) {
+	              	d3.select("#air").text("");
+	              	d3.select("#season").text(partition.nodes(root).slice(1)[i].name);
+	              	d3.select("#num").text(Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#air").text(partition.nodes(root).slice(1)[i].name);
+	                d3.select("#season").text(partition.nodes(root).slice(1)[i].parent.name);
+	                d3.select("#num").text(Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==1) {
+	              if (i % 5 === 0) {
+	              	d3.select("#spring").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#spring").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==2) {
+	              if (i % 5 === 0) {
+	              	d3.select("#summer").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#summer").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==3) {
+	              if (i % 5 === 0) {
+	              	d3.select("#autumn").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#autumn").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+              if (flag==4) {
+	              if (i % 5 === 0) {
+	              	d3.select("#winter").text(partition.nodes(root).slice(1)[i].name + ": " + 
+	              		Math.round(partition.nodes(root).slice(1)[i].value / yearsum * 10000) / 100 + "%");
+	              }
+	              else {
+	                d3.select("#winter").text(partition.nodes(root).slice(1)[i].name + " of " +
+	                	partition.nodes(root).slice(1)[i].parent.name + ": " +
+	                	Math.round(partition.nodes(root).slice(1)[i].value / partition.nodes(root).slice(1)[i].parent.value * 10000) / 100 + "%");
+	              }
+              }
+          })
+              .each(function(d) { this._current = enterArc(d); });
+
+          path.transition()
+              .style("fill-opacity", 1)
+              .attrTween("d", function(d) { return arcTween.call(this, updateArc(d)); });
+        });
+      }
+    });
+
+    function key(d) {
+      var k = [], p = d;
+      while (p.depth) k.push(p.name), p = p.parent;
+      return k.reverse().join(".");
+    }
+
+    function fill(d) {
+      var p = d;
+      while (p.depth > 1) p = p.parent;
+      var c = d3.lab(hue(p.name));
+      c.l = luminance(d.sum);
+      return c;
+    }
+
+    function arcTween(b) {
+      var i = d3.interpolate(this._current, b);
+      this._current = i(0);
+      return function(t) {
+        return arc(i(t));
+      };
+    }
+
+    function updateArc(d) {
+      return {depth: d.depth, x: d.x, dx: d.dx};
+    }
+
+    // d3.select(self.frameElement).style("height", margin.top + margin.bottom + "px");
+    d3.select(self.frameElement).style("height", "800px");
+}
+
+svg = d3.select(".mainchart").append("svg");  
+dataset = "pollution.json";      
+drawPie(svg, dataset, margin, radius, 0);
+
+svg = d3.select(".child1").append("svg");
+dataset = "spring.json";  
+drawPie(svg, dataset, margin2, radius2, 1);
+
+svg = d3.select(".child2").append("svg");
+dataset = "summer.json"; 
+drawPie(svg, dataset, margin2, radius2, 2);
+
+svg = d3.select(".child3").append("svg");
+dataset = "autumn.json"; 
+drawPie(svg, dataset, margin2, radius2, 3);
+
+svg = d3.select(".child4").append("svg");
+dataset = "winter.json"; 
+drawPie(svg, dataset, margin2, radius2, 4);
+
+
+
+
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
