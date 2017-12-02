@@ -3,6 +3,8 @@
 ## demo link: http://scf.usc.edu/~fanpan/project2/index.html ##
 ## backup demo link: http://www-scf.usc.edu/~zhan559/lorelei/index.html ##
 ## Link to presentation: https://github.com/INF554Fall17/project-lorelei/blob/master/finalPresentation.pdf ##
+## Link to paper(pdf): https://github.com/INF554Fall17/project-lorelei/blob/master/visualize-air-pollution.pdf ##
+## Link to paper(overleaf): https://www.overleaf.com/read/hrdhrqpqggvb ##
 
 ## Week 1 ##
 Progress:  
